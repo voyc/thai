@@ -8,7 +8,7 @@ import httplib, urllib, sys
 url = 'http://sanskrit.voyc.com/'
 
 arr = [
-	('code_url', url + 'namespace.js'),
+	('code_url', url + 'js/namespace.js'),
 	('code_url', url + 'minimal/minimal.js'),
 	('code_url', url + 'icon/icon.js'),
 	('code_url', url + 'icon/lib/menu.js'),

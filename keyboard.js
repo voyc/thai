@@ -134,7 +134,7 @@ voyc.Keyboard.prototype = {
 //		s += '</tr>';
 
 		// draw keypad rows and columns
-		var numcols=13;
+		var numcols=14;
 		var numrows = 5;
 		var a;
 		var cell = '';

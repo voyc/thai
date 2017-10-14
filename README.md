@@ -1,6 +1,6 @@
-# Sanskrit
-Sanskrit keyboard.
+# Thai
+Thai keyboard.
 
-Used for typing and learning the sanskrit language.
+Used for typing and learning the Thai language.
 
-http://sanskrit.voyc.com
+http://thai.voyc.com
