@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>Thai</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
+<link  href='../icon/icon.css' rel='stylesheet' type='text/css'></link>
+<script src='../js/namespace.js'></script>
+<script src='../icon/icon.js'></script>
+<script src='../icon/lib/menu.js'></script>
+<script src='../icon/lib/gear.js'></script>
+<script src='../jslib/utils.js'></script>
+<script src='../jslib/dragger.js'></script>
+<link  href='../minimal/minimal.css' rel='stylesheet' type='text/css'></link>
+<script src='../minimal/minimal.js'></script>
+<script>
+/*
+Diacritics to indicate pitch
+‸	Caret	Falling, does not display in font Courier New
+ˇ	Caron	Rising
+`	Grave accent	Low
+´	Acute accent	High
+ʉ	U Bar	Say U while smiling
+*/
+
+voyc.when = {
+	name: "when",
+	title: "When",
+	reversible:true,
+	language:false,
+	sketch:false,
+	translit:false,
+	audio:false,
+	db: false,
+	hm: false, // show translit with question or answer
+	cards: [
+		//{q:'', t:'mua-rai', a:'when'},
+		{id:1200, q:'ตอนนี้', t:'dton-nii', a:'now'},
+		{id:1201, q:'วันนี้', t:'wan-nii', a:'today'},
+		{id:1202, q:'คืนนี้', t:'kʉʉn-nii', a:'tonight'},
+		{id:1203, q:'เมื่อวานนี้', t:'mua wan-nii', a:'yesterday'},
+		{id:1204, q:'เมื่อคืนนี้', t:'mua kʉʉn-nii', a:'last night'},
+		{id:1205, q:'วันพรุ่งนี้', t:'prung-nii', a:'tomorrow'},
+		{id:1206, q:'วันจันทร์', t:'prung-nii', a:'Monday'},
+
+		{id:1211, q:'เช้า', t:'', a:'morning'},
+		{id:1212, q:'บ่าย', t:'', a:'afternoon'},
+		{id:1213, q:'เยิน', t:'', a:'evening'},
+		{id:1214, q:'คืน', t:'', a:'night'},
+		{id:1215, q:'เที่ยง', t:'', a:'noon'},
+		{id:1216, q:'เที่ยงคืน', t:'', a:'midnight'},
+		{id:1217, q:'รุ่งเช้า', t:'', a:'dawn'},
+		{id:1218, q:'คำ', t:'', a:'dusk'},
+		
+		
+//		{q:'', t:'glaang', a:'middle'},
+//		{q:'', t:'dton glaang wan', a:'middle of the day'},
+//		{q:'', t:'dton glaang kʉʉn', a:'middle of the night'},
+//		{q:'', t:'dton chaao', a:'in the morning'},
+//		{q:'', t:'dton baai', a:'in the afternoon'},
+//		{q:'', t:'dton yen', a:'in the evening (16:30-19:00)'},
+//		{q:'', t:'tuk-wan',   a:'every day'},
+//		{q:'', t:'tuk-kʉʉn',  a:'every night'},
+//		{q:'', t:'tuk-chaao', a:'every morning'},
+//		{q:'', t:'tuk-baai',  a:'every afternoon'},
+//		{q:'', t:'tuk-yen',   a:'every evening'},
+//		{q:'', t:'chaao-nii', a:'this morning'},
+//		{q:'', t:'baai-nii',  a:'this afternoon'},
+//		{q:'', t:'yen-nii',   a:'this evening'},
+//		{q:'', t:'Pom bpai suu kong dton yen.',   a:'I go shopping in the evening.'},
+//		{q:'', t:'Pom bpai suu gab-kaao tuk-chaao.',   a:'I go buy food every morning.'},
+//		{q:'', t:'Pom bpai dtalaad dton baai.',   a:'I go to market in the afternoon.'},
+//		{q:'', t:'Pom ork gamlang tuk baai.',   a:'I work out every afternoon.'},
+
+//		{q:'mua-rai', a:'when'},
+//		{q:'dton-nii', a:'now'},
+//		{q:'wan-nii', a:'today'},
+//		{q:'kʉʉn-nii', a:'tonight'},
+//		{q:'mua wan-nii', a:'yesterday'},
+//		{q:'mua kʉʉn-nii', a:'last night'},
+//		{q:'prung-nii', a:'tomorrow'},
+//		{q:'glaang', a:'middle'},
+//		{q:'dton glaang wan', a:'middle of the day'},
+//		{q:'dton glaang kʉʉn', a:'middle of the night'},
+//		{q:'dton chaao', a:'in the morning'},
+//		{q:'dton baai', a:'in the afternoon'},
+//		{q:'dton yen', a:'in the evening (16:30-19:00)'},
+//		{q:'tuk-wan',   a:'every day'},
+//		{q:'tuk-kʉʉn',  a:'every night'},
+//		{q:'tuk-chaao', a:'every morning'},
+//		{q:'tuk-baai',  a:'every afternoon'},
+//		{q:'tuk-yen',   a:'every evening'},
+//		{q:'chaao-nii', a:'this morning'},
+//		{q:'baai-nii',  a:'this afternoon'},
+//		{q:'yen-nii',   a:'this evening'},
+//		{q:'Pom bpai suu kong dton yen.',   a:'I go shopping in the evening.'},
+//		{q:'Pom bpai suu gab-kaao tuk-chaao.',   a:'I go buy food every morning.'},
+//		{q:'Pom bpai dtalaad dton baai.',   a:'I go to market in the afternoon.'},
+//		{q:'Pom ork gamlang tuk baai.',   a:'I work out every afternoon.'},
+	]
+}
+voyc.practice = function(set) {
+	// open the Flash window
+	var delay = 200;
+	var url = 'http://flash.voyc.com';
+	if (window.location.href.indexOf('file:') > -1) {
+		url = 'file:///C:/Users/John/webapps/flash/index.html'; // local testing
+	}
+	if (voyc.winFlash && !voyc.winFlash.closed) {
+		console.log('Flash already open');
+		voyc.winFlash.focus();
+	}
+	else {
+		console.log('opening Flash');
+		voyc.winFlash = window.open(url, 'flash');
+		delay = 1200;
+	}
+	
+	// build a data structure from selected
+	var cset = set;
+	if (cset == 'selected') {
+	}
+
+	// pass the data structure to the Flash window
+	setTimeout(function() {
+		console.log('posting message to Flash');
+		voyc.winFlash.postMessage(cset, '*');
+	}, delay);
+}
+voyc.row = "<tr id='%id%'><td>%q%</td><td class='tright'>%a%</td></tr>";
+voyc.draw = function(set) {
+	var s = '';
+	var st = '';
+	var c = {};
+	for (var ndx in set.cards) {
+		c = set.cards[ndx];
+		st = voyc.row;
+		st = st.replace('%id%', c.id );
+		st = st.replace('%q%', c.q );
+		st = st.replace('%a%', c.a );
+		s += st;
+	}
+	var desk = document.getElementById('desk');
+	desk.innerHTML = s;
+	(new voyc.Minimal()).attachSelect(desk);
+}
+voyc.getCardById = function(id) {
+	var card = {};
+	for (var ndx in voyc.when.cards) {
+		card = voyc.when.cards[ndx];
+		if (card.id == id) {
+			return(card);
+		}
+	}
+}
+voyc.generate = function() {
+	var adaypart = [1211,1212,1213,1214,1215,1216,1217,1218];
+	var aday = [1200,1201,1202,1203,1204,1205,1206];
+	var patternTh = "%daypart% %day%";
+	var patternEn = "%day% %daypart%";
+
+	var s = '';
+	var stTh = '';
+	var stEn = '';
+	var st = '';
+	var card = {};
+	for (var day=0; day < aday.length; day++) {
+		for (var daypart=0; daypart<adaypart.length; daypart++) {
+			cardday = voyc.getCardById([aday[day]]);
+			carddaypart = voyc.getCardById([adaypart[daypart]]);
+			stTh = patternTh;
+			stTh = stTh.replace('%daypart%', carddaypart.q);
+			stTh = stTh.replace('%day%', cardday.q);
+
+			stEn = patternEn;
+			stEn = stEn.replace('%daypart%', carddaypart.a);
+			stEn = stEn.replace('%day%', cardday.a);
+
+			st = voyc.row;
+			voyc.row = "<tr id='%id%'><td>%q%</td><td class='tright'>%a%</td></tr>";
+			st = st.replace('%id%', 0 );
+			st = st.replace('%q%', stTh );
+			st = st.replace('%a%', stEn );
+			
+			s += st;
+		}
+	}
+	var gen = document.getElementById('gen');
+	gen.innerHTML = s;
+	(new voyc.Minimal()).attachSelect(gen);
+}
+window.addEventListener('load', function(evt) {
+	document.getElementById('when').addEventListener('click', function(evt) { 
+		voyc.practice(voyc.when);
+	}, false);
+	document.getElementById('practice').addEventListener('click', function(evt) { 
+		voyc.practice('selected');
+	}, false);
+	document.getElementById('generate').addEventListener('click', function(evt) { 
+		voyc.generate();
+	}, false);
+	voyc.draw(voyc.when);
+}, false);
+</script>
+</head>
+<body>
+<button id=when>When</button>
+<button id=practice>Practice</button>
+<button id=generate>Generate When Phrases</button>
+<br/>
+				<div select class='panel list blu'>
+					<h3>Gutteral Consonants</h3>
+					<table>
+						<tr id='8430'><td>कमल</td><td class='tcenter'>ka-ma-la</td><td class='tright'>lotus</td></tr>
+						<tr id='8431'><td>खग</td> <td class='tcenter'>kha-ga</td>  <td class='tright'>bird</td></tr>
+						<tr id='8432'><td>गगन</td><td class='tcenter'>ga-ga-na</td><td class='tright'>sky</td></tr>
+						<tr id='8433'><td>घटः</td> <td class='tcenter'>gha-ṭah</td> <td class='tright'>jar</td></tr>
+					</table>
+				</div>
+
+<div select class='panel list blu'>
+	<h3>When</h3>
+	<table id='desk' style='margin:0'>
+	</table>
+</div>
+				
+				
+<div select class='panel list blu'>
+	<h3>Gen</h3>
+	<table id='gen' style='margin:0'>
+	</table>
+</div>
+				
+				
+</body>
+</html>

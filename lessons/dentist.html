@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>Kind Dentist</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<script src='../js/namespace.js'></script>
+<script src='../fx/sound.js'></script>
+<link  href='../icon/icon.css' rel='stylesheet' type='text/css'></link>
+<script src='../icon/icon.js'></script>
+<script src='../icon/lib/speaker.js'></script>
+
+<style>
+.thai {
+	font-size:1.5rem;
+}
+.english {
+	font-size:1rem;
+}
+sentence {
+	display:block;
+	border-bottom: 1px solid gray;
+}
+word[break] {
+	border-left: 1px solid gray;
+}
+word {
+	margin-right: .5rem;
+}
+sylcont {
+	position:relative;
+	margin-right: .5rem;
+}
+sylspc {
+	opacity:0.0;
+}
+syllable {
+	position:absolute;
+}
+syllable[tone=M] {
+	color:blue;
+}
+syllable[tone=H] {
+	transform: translate(0,-.5rem);
+	color:blue;
+}
+syllable[tone=M] {
+	color:green;
+}
+syllable[tone=L] {
+	transform: translate(0,.5rem);
+	color:brown;
+}
+syllable[tone=R] {
+	transform: rotate(-30deg);
+	color:red;
+}
+syllable[tone=F] {
+	transform: rotate(30deg);
+	color:orange;
+}
+button[a] {
+	margin-right:.3rem;
+}
+</style>
+
+<script>
+
+/*
+Eng
+Eng literal, thai word order
+Thai
+Translit
+Audio
+  Components
+  Tags
+
+Auto add sup tags to translit
+Test, which field to make q, all other fields are answer
+
+Thai: separate words and tilt for tone
+*/
+voyc.deck = [
+	// tone:'2M4M-3M3M 3M4H'
+	{l:1, id:'01', c:['dentist'], t:'line01', th:'มาเรียรุ้สึกปวดฟันของเขา', tone:'2M4M 3H3L 3L 3M 3R 3R', en:'Maria feels pain in her teeth.', wo:'Maria know-feel ache tooth her.'},
+	{l:1, id:'02', c:['dentist'], t:'line02', th:'มาเรียบอกแม่ของเขา', tone:'2M4M-3L 3F-3R 3R', en:'She tells her mom.', wo:'Maria tell mom her.'},
+	{l:1, id:'03', c:['dentist'], t:'line03', th:'แม่พามาเรียไปหาหมอฟัน', tone:'3F 2M 2M4M 2M 2M 3R3M', en:'Her mom takes her to the dentist.', wo:'Mom take Maria goto see doctor-tooth.'},
+	{l:1, id:'04', c:['dentist'], t:'line04', th:'มาเรียกลัว', tone:'3F2M 4M', en:'Maria is scared.', wo:'Maria scared.'},
+	{l:1, id:'05', c:['dentist'], t:'line05', th:'เขาเข้าไปห้องรอ', tone:'3R 4F2M 4F2M', en:'She enters the waiting room.', wo:'She enter-goto room-wait.'},
+	{l:1, id:'06', c:['dentist'], t:'line06', th:'เลขาเรียกชื่อของมาเรีย', tone:'2H2M 5F 4F3R 2M4M', en:'The secretary calls Maria\'s name.', wo:'Secretary calls name of Maria.'},
+	{l:1, id:'07', c:['dentist'], t:'line07', th:'มาเรียเข้าไป', tone:'2M4M 4F2M', en:'Maria goes in.', wo:'Maria enter-goto.'},
+	{l:1, id:'08', c:['dentist'], t:'line08', th:'มาเรียนั่งในเก้าอี้ใหญ', tone:'2M4M 4F 2M 4F3F3M', en:'Maria sits in a big chair.', wo:'Maria sit in chair big.'},
+	{l:1, id:'09', c:['dentist'], t:'line09', th:'เขารอหมอฟัน', tone:'3R 2M 3R3M', en:'She waits for the dentist.', wo:'She wait dentist.'},
+	{l:1, id:'10', c:['dentist'], t:'line10', th:'หมอฟันมาถึง', tone:'3R3M 2M3R', en:'The dentist arrives.', wo:'Doctor-tooth come-arrive.'},
+	{l:1, id:'11', c:['dentist'], t:'line11', th:'หมอฟันระวังกับฟันของมาเรีย', tone:'3R3M 2H3M 3L 3M 3R 2M4M', en:'He is careful with Maria\'s teeth.', wo:'Doctor-tooth careful with teeth of Maria.'},
+	{l:1, id:'12', c:['dentist'], t:'line12', th:'หมอฟันให้แปรงสีฟันใหม่แก่เขา', tone:'3R3M 3F 4M2R3M 4L 3L 3R', en:'He gives her a new toothbrush.', wo:'Doctor-tooth give toothbrush new to her.'},
+	{l:1, id:'13', c:['dentist'], t:'line13', th:'มาเรียรุ้สึกดี', tone:'2M4M 3H3L 2M', en:'Maria feels good.', wo:'Maria know-feel good.'},
+]
+
+voyc.components = [
+	{l:1, id:'01', c:[''], t:'', th:'มาเรีย', tone:'', en:'Maria', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'รอ', tone:'', en:'wait', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ห้อง', tone:'', en:'room', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ห้องรอ', tone:'', en:'waiting-room', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ห้อง', tone:'', en:'room', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'เข้า', tone:'', en:'enter', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'เข้าไป', tone:'', en:'enter-goto', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'มา ', tone:'', en:'come', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'มาถึง', tone:'', en:'arrive', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'กับ', tone:'', en:'with', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ให้', tone:'', en:'give', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'แปรง', tone:'', en:'brush', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'สี', tone:'', en:'color', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ฟัน', tone:'', en:'tooth', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'แปรงสีฟัน', tone:'', en:'toothbrush', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'แก่', tone:'', en:'to', wo:''},
+]
+
+patterns = [
+//#person ให้ #object แก่ #person	#person give #object to #person
+//#person พา #person ไป หา #person		#person take #person to see #person
+]
+
+voyc.mode = 'Thai';
+
+var urlpattern = '../assets/sounds/dentist_%sound%.mp3';
+var fxfiles = [
+	'line01' ,
+	'line02' ,
+	'line03' ,
+	'line04' ,
+	'line05' ,
+	'line06' ,
+	'line07' ,
+	'line08' ,
+	'line09' ,
+	'line10',
+	'line11',
+	'line12',
+	'line13',
+];
+
+voyc.drawDeck = function(deck, mode) {
+	// draw
+	voyc.mode = mode;
+	document.getElementById('content').innerHTML = voyc.composeDeck(deck);
+	
+	// draw icons
+	var icon = new voyc.Icon();
+	icon.attachAll(document);
+	icon.drawAll();
+
+	// attach button handlers
+	var audiobuttons = document.querySelectorAll('button[a]');
+	for (var ndx=0; ndx<audiobuttons.length; ndx++) {
+		audiobuttons[ndx].addEventListener('click', function(evt) {
+			var a = evt.currentTarget.getAttribute('a');
+			soundfx.play(a);
+		}, false);
+	}
+}
+	
+voyc.composeDeck = function(deck) {
+	var s = '';
+	for (var i=0; i<deck.length; i++) {
+		switch (voyc.mode) {
+			case 'Thai': s += voyc.composeSentenceThai(deck[i]); break;
+			case 'Tone': s += voyc.composeSentenceTone(deck[i]); break;
+			case 'English' : s += voyc.composeSentenceEnglish(deck[i]); break;
+			case 'Literal' : s += voyc.composeSentenceLiteral(deck[i]); break;
+		}
+	}
+	return s;
+}
+
+voyc.composeSentenceEnglish = function(item) {
+	var s = '';
+	s += '<sentence class="english">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += item.en;
+	s += '</sentence>';
+	return s;
+}
+voyc.composeSentenceLiteral = function(item) {
+	var s = '';
+	s += '<sentence class="english">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += item.wo;
+	s += '</sentence>';
+	return s;
+}
+voyc.composeSentenceThai = function(item) {
+	var s = '';
+	s += '<sentence class="thai">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += item.th;
+	s += '</sentence>';
+	return s;
+}
+
+voyc.composeSentenceTone = function(item) {
+	var s = '';
+	var syl = '';
+	var spc = '';
+	s += '<sentence class="thai">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += '<word>';
+	var syllen = '';
+	var ndx = 0;
+	var n=0;
+	while (ndx<item.tone.length) {
+		syllen = item.tone[ndx];
+		ndx++;
+		
+		// word spacing
+		if (syllen == ' ' || syllen == '-') {
+			s += '</word>';
+			if (ndx < item.tone.length-1) {
+				if (syllen == '-') {
+					s += '<word break>';
+				}
+				else {
+					s += '<word>';
+				}
+			}
+		}
+
+		else {
+			syllen = Number(syllen);
+			syltone = item.tone[ndx];
+			ndx++;
+			for (var i=0; i<syllen; i++) {
+				spc +=item.th[n];
+				syl +=item.th[n]; 
+				n++;
+			}
+		}
+		s += '<sylcont><syllable tone="' + syltone + '">' + syl + '</syllable><sylspc>' + spc + '</sylspc></sylcont>';
+		spc = syl = '';
+	}
+	s += '</word>';
+	s += '</sentence>';
+	return s;
+}
+
+
+addEventListener('load', function() {
+	// load sounds
+	soundfx = new voyc.Sound();
+	soundfx.loadSounds(urlpattern, fxfiles, function(success) {
+		//document.getElementById('msg').innerHTML = 'loaded ' + (success) ? 'success' : 'fail';
+		console.log('sounds loaded ' + ((success) ? 'success' : 'fail'));
+	});
+
+	// draw text
+	voyc.drawDeck(voyc.deck, voyc.mode);
+
+	// attach button handlers
+	var buttons = document.querySelectorAll('button[mode]');
+	for (var ndx=0; ndx<buttons.length; ndx++) {
+		buttons[ndx].addEventListener('click', function(evt) {
+			var mode = evt.currentTarget.getAttribute('mode');
+			voyc.drawDeck(voyc.deck, mode);
+		}, false);
+	}
+}, false);
+</script>
+</head>
+<body>
+<div>
+<button mode=Thai>Thai</button>
+<button mode=Tone>Tone</button>
+<button mode=English>English</button>
+<button mode=Literal>Literal</button>
+<div id=content></div>
+</body>
+</html>

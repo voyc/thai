@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>Visiting the Doctor</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<script src='../js/namespace.js'></script>
+<script src='../fx/sound.js'></script>
+<link  href='../icon/icon.css' rel='stylesheet' type='text/css'></link>
+<script src='../icon/icon.js'></script>
+<script src='../icon/lib/speaker.js'></script>
+
+<style>
+.thai {
+	font-size:1.5rem;
+}
+.english {
+	font-size:1rem;
+}
+sentence {
+	display:block;
+	border-bottom: 1px solid gray;
+}
+word[break] {
+	border-left: 1px solid gray;
+}
+word {
+	margin-right: .5rem;
+}
+sylcont {
+	position:relative;
+	margin-right: .5rem;
+}
+sylspc {
+	opacity:0.0;
+}
+syllable {
+	position:absolute;
+}
+syllable[tone=M] {
+	color:blue;
+}
+syllable[tone=H] {
+	transform: translate(0,-.5rem);
+	color:blue;
+}
+syllable[tone=M] {
+	color:green;
+}
+syllable[tone=L] {
+	transform: translate(0,.5rem);
+	color:brown;
+}
+syllable[tone=R] {
+	transform: rotate(-30deg);
+	color:red;
+}
+syllable[tone=F] {
+	transform: rotate(30deg);
+	color:orange;
+}
+button[a] {
+	margin-right:.3rem;
+}
+</style>
+
+<script>
+
+/*
+Eng
+Eng literal, thai word order
+Thai
+Translit
+Audio
+  Components
+  Tags
+
+Auto add sup tags to translit
+Test, which field to make q, all other fields are answer
+
+Thai: separate words and tilt for tone
+*/
+voyc.deck = [
+	{l:1, id: 1, c:['visitingdoctor'], t:'title', th:'ไปหาหมอ', tone:'2M2R3R', en:'Visiting the Doctor', wo:'go see doctor'},
+	{l:1, id: 2, c:['visitingdoctor'], t:'line1', th:'เฮลีย์รู้สึกตัวร้อน', tone:'2M4M-3M3M 3M4H', en:'Haley feels hot.', wo:'Haley know-feel body-hot'},
+	{l:1, id: 3, c:['visitingdoctor'], t:'line2', th:'แม่ของเขาจับหน้าผากดู', tone:'3F 3R3R-3L 4H3L2M', en:'Her mom touches her forehead.', wo:'mom her touch forehead-look'},
+	{l:1, id: 4, c:['visitingdoctor'], t:'line3', th:'เฮลีย์มีไข้', tone:'2M4M 2M 3F', en:'Haley has a fever.', wo:'Haley has fever'},
+	{l:1, id: 5, c:['visitingdoctor'], t:'line4', th:'แม่พาเฮลีย์ไปหาหมอ', tone:'3F 2M 2M4M 2M 2R 3R', en:'The mom takes Haley to a doctor.', wo:'Mom take Haley to see doctor'},
+	{l:1, id: 6, c:['visitingdoctor'], t:'line5', th:'หมอใจดี', tone:'3R 2M2M', en:'The doctor is kind.', wo:'doctor good-heart'},
+	{l:1, id: 7, c:['visitingdoctor'], t:'line6', th:'หมอให้สติกเกอร์แก่เขา', tone:'3R 3F 4M5M 3L 3R', en:'He gives her a sticker.', wo:'doctor give sticker to her'},
+	{l:1, id: 8, c:['visitingdoctor'], t:'line7', th:'หมอบอกให้เขาทานยา', tone:'3R 3L3F 3R 3M 2M', en:'He tells her to take a pill.', wo:'doctor tell her eat medicine'},
+	{l:1, id: 9, c:['visitingdoctor'], t:'line8', th:'หมอบอกให้เขาดื่มน้ำมากๆ', tone:'3R 3L3F 3R 4L 3H 3H1H', en:'He tells her to drink a lot of water.', wo:'doctor tell her drink water much'},
+	{l:1, id:10, c:['visitingdoctor'], t:'line9', th:'เฮลีย์ไปบ้าน', tone:'2M4M 2M 4F', en:'Haley goes home.', wo:'Haley goes home.'},
+	{l:1, id:11, c:['visitingdoctor'], t:'line10', th:'เฮลีย์ทานยาและดื่มน้ำ', tone:'2M4M 3M 2M 3H 4L 3H', en:'She takes the pill and drinks water.', wo:'Haley take pill and drink water'},
+	{l:1, id:12, c:['visitingdoctor'], t:'line11', th:'เขาทำอย่างนี้เป็นเวลาสามวัน', tone:'3R 2M 5F3H 4M2M2M 3R 3M', en:'She does this for three days.', wo:'She do like-this for three days.'},
+	{l:1, id:12, c:['visitingdoctor'], t:'line12', th:'เขามีสุขภาพดีอีกครั้ง', tone:'3R 2M-2M1M3F 2M-3L5H', en:'She is healthy again.', wo:'she has health good again'},
+]
+
+voyc.mode = 'Thai';
+
+var urlpattern = '../assets/sounds/visitdoctor_%sound%.mp3';
+var fxfiles = [
+	'title' ,
+	'line1' ,
+	'line2' ,
+	'line3' ,
+	'line4' ,
+	'line5' ,
+	'line6' ,
+	'line7' ,
+	'line8' ,
+	'line9' ,
+	'line10',
+	'line11',
+	'line12',
+	'complt',
+];
+
+voyc.drawDeck = function(deck, mode) {
+	// draw
+	voyc.mode = mode;
+	document.getElementById('content').innerHTML = voyc.composeDeck(deck);
+	
+	// draw icons
+	var icon = new voyc.Icon();
+	icon.attachAll(document);
+	icon.drawAll();
+
+	// attach button handlers
+	var audiobuttons = document.querySelectorAll('button[a]');
+	for (var ndx=0; ndx<audiobuttons.length; ndx++) {
+		audiobuttons[ndx].addEventListener('click', function(evt) {
+			var a = evt.currentTarget.getAttribute('a');
+			soundfx.play(a);
+		}, false);
+	}
+}
+	
+voyc.composeDeck = function(deck) {
+	var s = '';
+	for (var i=0; i<deck.length; i++) {
+		switch (voyc.mode) {
+			case 'Thai': s += voyc.composeSentenceThai(deck[i]); break;
+			case 'Tone': s += voyc.composeSentenceTone(deck[i]); break;
+			case 'English' : s += voyc.composeSentenceEnglish(deck[i]); break;
+			case 'Literal' : s += voyc.composeSentenceLiteral(deck[i]); break;
+		}
+	}
+	return s;
+}
+
+voyc.composeSentenceEnglish = function(item) {
+	var s = '';
+	s += '<sentence class="english">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += item.en;
+	s += '</sentence>';
+	return s;
+}
+voyc.composeSentenceLiteral = function(item) {
+	var s = '';
+	s += '<sentence class="english">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += item.wo;
+	s += '</sentence>';
+	return s;
+}
+voyc.composeSentenceThai = function(item) {
+	var s = '';
+	s += '<sentence class="thai">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += item.th;
+	s += '</sentence>';
+	return s;
+}
+
+voyc.composeSentenceTone = function(item) {
+	var s = '';
+	var syl = '';
+	var spc = '';
+	s += '<sentence class="thai">';
+	s += "<button a="+item.t+"><icon type=draw name=speaker></icon></button>";
+	s += '<word>';
+	var syllen = '';
+	var ndx = 0;
+	var n=0;
+	while (ndx<item.tone.length) {
+		syllen = item.tone[ndx];
+		ndx++;
+		
+		// word spacing
+		if (syllen == ' ' || syllen == '-') {
+			s += '</word>';
+			if (ndx < item.tone.length-1) {
+				if (syllen == '-') {
+					s += '<word break>';
+				}
+				else {
+					s += '<word>';
+				}
+			}
+		}
+
+		else {
+			syllen = Number(syllen);
+			syltone = item.tone[ndx];
+			ndx++;
+			for (var i=0; i<syllen; i++) {
+				spc +=item.th[n];
+				syl +=item.th[n]; 
+				n++;
+			}
+		}
+		s += '<sylcont><syllable tone="' + syltone + '">' + syl + '</syllable><sylspc>' + spc + '</sylspc></sylcont>';
+		spc = syl = '';
+	}
+	s += '</word>';
+	s += '</sentence>';
+	return s;
+}
+
+
+addEventListener('load', function() {
+	// load sounds
+	soundfx = new voyc.Sound();
+	soundfx.loadSounds(urlpattern, fxfiles, function(success) {
+		//document.getElementById('msg').innerHTML = 'loaded ' + (success) ? 'success' : 'fail';
+		console.log('sounds loaded ' + ((success) ? 'success' : 'fail'));
+	});
+
+	// draw text
+	voyc.drawDeck(voyc.deck, voyc.mode);
+
+	// attach button handlers
+	var buttons = document.querySelectorAll('button[mode]');
+	for (var ndx=0; ndx<buttons.length; ndx++) {
+		buttons[ndx].addEventListener('click', function(evt) {
+			var mode = evt.currentTarget.getAttribute('mode');
+			voyc.drawDeck(voyc.deck, mode);
+		}, false);
+	}
+}, false);
+</script>
+</head>
+<body>
+<div>
+<button mode=Thai>Thai</button>
+<button mode=Tone>Tone</button>
+<button mode=English>English</button>
+<button mode=Literal>Literal</button>
+<div id=content></div>
+</body>
+</html>

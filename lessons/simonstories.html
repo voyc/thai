@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>Thai</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
+<link  href='../minimal/minimal.css' rel='stylesheet' type='text/css'></link>
+<script src='../js/namespace.js'></script>
+<script src='../minimal/minimal.js'></script>
+<script src='../jslib/utils.js'></script>
+<script src='../jslib/dragger.js'></script>
+<script src='../jslib/observer.js'></script>
+<script src='../jslib/browserhistory.js'></script>
+<script src='../jslib/sketch.js'></script>
+<link  href='../icon/icon.css' rel='stylesheet' type='text/css'></link>
+<script src='../icon/icon.js'></script>
+<script src='../icon/lib/menu.js'></script>
+<script src='../icon/lib/gear.js'></script>
+<script src='../icon/lib/speaker.js'></script>
+<link  href='../css/theme.css' rel='stylesheet' type='text/css'></link>
+
+<style>
+div.panel table {
+	margin:0;
+}
+</style>
+
+<script>
+voyc.label = 'cards';
+voyc.cats = []; voyc.cards = [];
+voyc.deck = [
+	{l:1, id: 1, c:['oldandnew'], q:'ใหม่และเก่า', a:'New and Old'},
+	{l:1, id: 2, c:['oldandnew'], q:'วันพรุ่งนี้เป็นวันแรกของโรงเรียน', a:'Tomorrow is the first day of school.'},
+	{l:1, id: 3, c:['oldandnew'], q:'บาร์บาร่าดูที่เป้ของเขา', a:'Barbara looks at her backpack.'},
+	{l:1, id: 4, c:['oldandnew'], q:'มันมีรู  มันสกปรก', a:'It has holes. It is dirty.'},
+	{l:1, id: 5, c:['oldandnew'], q:'เขาต้องการใบใหม่',a:'She needs a new one.'},
+	{l:1, id: 6, c:['oldandnew'], q:'แม่ของเขาพาเขาไปช้อปปิ้ง', a:'Her mom takes her shopping.'},
+	{l:1, id: 7, c:['oldandnew'], q:'มีเป้หลายใบ', a:'There are so many backpacks.'},
+	{l:1, id: 8, c:['oldandnew'], q:'เป้หนึ่งใบมีดาวสีเหลือง', a:'One backpack has yellow stars.'},
+	{l:1, id: 9, c:['oldandnew'], q:'อีกใบหนึ่มีลายรุ้งกินนํ้า', a:'Another one has rainbow stripes.'},
+	{l:1, id:10, c:['oldandnew'], q:'อีกใบหนึ่มีลายสุนัข', a:'Another one has dogs (patterns).'},
+	{l:1, id:11, c:['oldandnew'], q:'บาร์บาร่าชอบใบนี้', a:'Barbara likes this one.'},
+	{l:1, id:12, c:['oldandnew'], q:'เขาซื้อมัน', a:'She buys it.'},
+]
+
+voyc.init = function() {
+	console.log('save cards to local storage');
+	localStorage.setItem(voyc.labelcards, JSON.stringify(voyc.deck));
+}
+
+voyc.retrieve = function() {
+	console.log('retrieve cards from local storage');
+	voyc.cards = JSON.parse(localStorage.getItem(voyc.labelcards));
+}
+
+voyc.practice = function(cat) {
+	var set = {
+		name: cat,
+		title: cat,
+		reversible:true,
+		language:true,
+		sketch:true,
+		translit:false,
+		audio:false,
+		db: false,
+		hm: false, // show translit with question or answer
+		cards: []
+	}
+
+	var card = {};
+	var a = [];
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		var a = card.c;
+		if (a.indexOf(cat) >= 0) {
+			set.cards.push(card);
+		}
+	}
+
+	// open the Flash window
+	var delay = 200;
+	var url = 'http://flash.voyc.com';
+	if (window.location.href.indexOf('file:') > -1) {
+		url = 'file:///C:/Users/John/webapps/flash/index.html'; // local testing
+	}
+	if (voyc.winFlash && !voyc.winFlash.closed) {
+		console.log('Flash already open');
+		voyc.winFlash.focus();
+	}
+	else {
+		console.log('opening Flash');
+		voyc.winFlash = window.open(url, 'flash');
+		delay = 1200;
+	}
+	
+	// pass the data structure to the Flash window
+	var cset = set;
+	setTimeout(function() {
+		console.log('posting message to Flash');
+		voyc.winFlash.postMessage(cset, '*');
+	}, delay);
+}
+
+voyc.getCardById = function(id) {
+	var card = false;
+	for (var i=0; i<voyc.deck.length; i++) {
+		if (voyc.deck[i].id == id) {
+			card = voyc.deck[i];
+			break;
+		}
+	}
+	return card;
+}
+
+voyc.practicePanel = function() {
+	var set = {
+		name: 'panel',
+		title: 'panel',
+		reversible:true,
+		language:true,
+		sketch:true,
+		translit:false,
+		audio:false,
+		db: false,
+		hm: false, // show translit with question or answer
+		cards: []
+	}
+
+	// build the data structure from selected items
+	var card = {};
+	var selectedRows = document.querySelectorAll('tr.selected');
+	for (var ndx=0; ndx<selectedRows.length; ndx++) {
+		card = voyc.getCardById(parseInt(selectedRows[ndx].id));
+		if (card) {
+			set.cards.push(card);
+		}
+	}
+
+	// open the Flash window
+	var delay = 200;
+	var url = 'http://flash.voyc.com';
+	if (window.location.href.indexOf('file:') > -1) {
+		url = 'file:///C:/Users/John/webapps/flash/index.html'; // local testing
+	}
+	if (voyc.winFlash && !voyc.winFlash.closed) {
+		console.log('Flash already open');
+		voyc.winFlash.focus();
+	}
+	else {
+		console.log('opening Flash');
+		voyc.winFlash = window.open(url, 'flash');
+		delay = 1200;
+	}
+	
+	// pass the data structure to the Flash window
+	var cset = set;
+	setTimeout(function() {
+		console.log('posting message to Flash');
+		voyc.winFlash.postMessage(cset, '*');
+	}, delay);
+}
+window.addEventListener('load', function(evt) {
+	//voyc.drawButtons();
+	document.getElementById('init').addEventListener('click', function(evt) { voyc.init(); }, false);
+	document.getElementById('retrieve').addEventListener('click', function(evt) { voyc.retrieve(); }, false);
+	document.getElementById('practice').addEventListener('click', function(evt) { voyc.practicePanel(); }, false);
+	//voyc.drawDeck();
+	voyc.drawPanels();
+	var icon = new voyc.Icon();
+	icon.attachAll(document);
+	icon.drawAll();
+}, false);
+
+voyc.drawButtons = function(evt) {
+	// make a list of cats
+	var card = {};
+	var cats = [];
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		cats = card.c;
+		for (var j=0; j<cats.length; j++) {
+			if (voyc.cats.indexOf(cats[j]) < 0) {
+				voyc.cats.push(cats[j]);
+			}
+		}
+	}
+
+	// create a button for each cat
+	var s = '';
+	for (var i=0; i<voyc.cats.length; i++) {
+		s += '<button id=' + voyc.cats[i] + '>' + voyc.cats[i] + '</button>';
+	}
+	document.getElementById('buttons').innerHTML = s;
+
+	// attach a handler to each button
+	for (var i=0; i<voyc.cats.length; i++) {
+		document.getElementById(voyc.cats[i]).addEventListener('click', function(evt) { 
+			voyc.practice(evt.target.id); 
+		}, false);
+	}
+}
+
+voyc.drawDeck = function() {	
+	// draw deck
+	var s = '';
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		s += card.q + ' : ' + card.a + '<br/>';
+		cats = card.c;
+		for (var j=0; j<cats.length; j++) {
+			if (voyc.cats.indexOf(cats[j]) < 0) {
+				voyc.cats.push(cats[j]);
+			}
+		}
+	}
+	document.getElementById('deck').innerHTML = s;
+}
+
+voyc.drawPanels = function() {
+	var s = '';
+	s += 'panels';
+	document.getElementById('deck').innerHTML = s;
+
+	// make a list of cats
+	var card = {};
+	var cats = [];
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		cats = card.c;
+		for (var j=0; j<cats.length; j++) {
+			if (voyc.cats.indexOf(cats[j]) < 0) {
+				voyc.cats.push(cats[j]);
+			}
+		}
+	}
+
+	// draw a panel for each cat
+	var s = '';
+	var cat = '';
+	for (var i=0; i<voyc.cats.length; i++) {
+		cat = voyc.cats[i]
+		s += "<div select class='panel list blu'>";
+		//s += "<div class='panel list blu'>";
+		s += "<h3>" + cat + "</h3>";
+		s += "<table>";
+		var card = {};
+		var a = [];
+		for (var j=0; j<voyc.deck.length; j++) {
+			card = voyc.deck[j];
+			if (card.c.indexOf(cat) >= 0) {
+				s += "<tr id=" + card.id + ">";
+				s += "<td><icon type=draw name=speaker></icon></td><td>" + card.q + "</td><td>" + card.a + "</td>";
+				s += "</tr>";
+			}
+		}
+		s += "</table></div>";
+	}
+
+	// apply select attribute to each panel
+	var deck = document.getElementById('deck');
+	deck.innerHTML = s;
+	(new voyc.Minimal).attachSelect(deck);
+}
+
+</script>
+</head>
+<body>
+<div id=buttons></div>
+
+<button id=init>init</button>
+<button id=retrieve>retrieve</button>
+<button id=selectall>select all</button>
+<button id=practice>practice</button>
+
+<div id=deck></div>
+
+<audio controls><source src="a/newandold_title.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line1.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line2.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line3.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line4.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line5.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line6.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line7.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line8.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line9.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line10.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_line11.mp3" type="audio/mpeg"></audio><br/>
+<audio controls><source src="a/newandold_complt.mp3" type="audio/mpeg"></audio><br/>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+ใหม่และเก่า[sound:newandold_title.mp3]	New and Old
+วันพรุ่งนี้เป็นวันแรกของโรงเรียน[sound:newandold_line1.mp3]	Tomorrow is the first day of school.
+บาร์บาร่าดูที่เป้ของเขา[sound:newandold_line2.mp3]	Barbara looks at her backpack.
+มันมีรู  มันสกปรก[sound:newandold_line3.mp3]	It has holes. It is dirty.
+เขาต้องการใบใหม่[sound:newandold_line4.mp3]	She needs a new one.
+แม่ของเขาพาเขาไปช้อปปิ้ง[sound:newandold_line5.mp3]	Her mom takes her shopping.
+มีเป้หลายใบ[sound:newandold_line6.mp3]	There are so many backpacks.
+เป้หนึ่งใบมีดาวสีเหลือง[sound:newandold_line7.mp3]	One backpack has yellow stars.
+อีกใบหนึ่มีลายรุ้งกินนํ้า[sound:newandold_line8.mp3]	Another one has rainbow stripes.
+อีกใบหนึ่มีลายสุนัข[sound:newandold_line9.mp3]	Another one has dogs (patterns).
+บาร์บาร่าชอบใบนี้[sound:newandold_line10.mp3]	Barbara likes this one.
+เขาซื้อมัน[sound:newandold_line11.mp3]	She buys it.

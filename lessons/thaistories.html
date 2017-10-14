@@ -1,0 +1,499 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>Thai</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
+<link  href='../minimal/minimal.css' rel='stylesheet' type='text/css'></link>
+<script src='../js/namespace.js'></script>
+<script src='../minimal/minimal.js'></script>
+<script src='../jslib/utils.js'></script>
+<script src='../jslib/dragger.js'></script>
+<script src='../jslib/observer.js'></script>
+<script src='../jslib/browserhistory.js'></script>
+<script src='../jslib/sketch.js'></script>
+<link  href='../icon/icon.css' rel='stylesheet' type='text/css'></link>
+<script src='../icon/icon.js'></script>
+<script src='../icon/lib/menu.js'></script>
+<script src='../icon/lib/gear.js'></script>
+<link  href='../css/theme.css' rel='stylesheet' type='text/css'></link>
+
+<style>
+div.panel table {
+	margin:0;
+}
+</style>
+
+<script>
+/*
+Diacritics to indicate pitch
+‸	Caret	Falling, does not display in font Courier New
+ˇ	Caron	Rising
+`	Grave accent	Low
+´	Acute accent	High
+ʉ	U Bar	Say U while smiling
+*/
+
+//var voyc = {};
+voyc.label = 'cards';
+voyc.cats = []; //['conversation','whatwhenwhere','isntit','actiontime','morningnoonnight','numbers','clock','directions','things','days','whichunittime','whereareyougoing','whatareyoudoing','test'];
+voyc.cards = [];
+voyc.deck = [
+	{l:8, id:100, c:['questions'], q:'อะไร', a:'what'},
+	{l:8, id:101, c:['questions'], q:'เมื่อไหร่', a:'when'},
+	{l:8, id:102, c:['questions'], q:'ที่ไหน', a:'where'},
+	{l:8, id:103, c:['questions'], q:'ใคร', a:'who'},
+	{l:8, id:104, c:['questions'], q:'อย่างไร', a:'how'},
+	{l:8, id:105, c:['questions'], q:'ทำไม', a:'why'},
+	{l:8, id:106, c:['questions'], q:'เท่าไร', a:'how much'},
+	{l:8, id:107, c:['questions'], q:'นานเท่าไร', a:'how long'},
+	{l:8, id:108, c:['questions'], q:'กี่', a:'how many'},
+	{l:8, id:109, c:['questions'], q:'กี่โมง', a:'what time'},
+	{l:8, id:110, c:['questions'], q:'กี่ครั้ง', a:'how many times'},
+	{l:8, id:112, c:['questions'], q:'กี่นาที', a:'how many minutes'},
+	{l:8, id:113, c:['questions'], q:'กี่ชั่วโมง', a:'how many hours'},
+	{l:8, id:114, c:['questions'], q:'กี่วัน', a:'how many days'},
+	{l:8, id:115, c:['questions'], q:'กี่อาทิตย์', a:'how many weeks'},
+	{l:8, id:116, c:['questions'], q:'กี่เดือน', a:'how many months'},
+	{l:8, id:117, c:['questions'], q:'กี่ปี', a:'how many years'},
+
+	{l:9, id:130, c:['questions A'], q:'ทำ', a:'do'},
+	{l:9, id:131, c:['questions A'], q:'ซื้อ', a:'buy'},
+	{l:9, id:132, c:['questions A'], q:'กิน', a:'eat'},
+	{l:9, id:133, c:['questions A'], q:'ไป', a:'go to'},
+	{l:9, id:134, c:['questions A'], q:'คุณ', a:'you'},
+	{l:9, id:135, c:['questions A'], q:'จะ', a:'will'},
+	{l:9, id:136, c:['questions A'], q:'มา', a:'come'},
+	{l:9, id:137, c:['questions A'], q:'กลับมา', a:'come back'},
+	{l:9, id:133, c:['questions A'], q:'ไป', a:'go to'},
+	{l:9, id:138, c:['questions A'], q:'ไปเที่ยว', a:'travel'},
+	{l:9, id:139, c:['questions A'], q:'คนเดียว', a:'alone'},
+
+	{l:9, id:140, c:['questions A'], q:'ที่นั่น', a:'there'},
+//	{l:9, id:141, c:['questions A'], q:'', a:''},
+//	{l:9, id:142, c:['questions A'], q:'', a:''},
+//	{l:9, id:143, c:['questions A'], q:'', a:''},
+//	{l:9, id:144, c:['questions A'], q:'', a:''},
+//	{l:9, id:145, c:['questions A'], q:'', a:''},
+//	{l:9, id:146, c:['questions A'], q:'', a:''},
+//	{l:9, id:147, c:['questions A'], q:'', a:''},
+//	{l:9, id:148, c:['questions A'], q:'', a:''},
+//	{l:9, id:149, c:['questions A'], q:'', a:''},
+
+	{l:10, id:150, c:['New and Old'], q:'วันพรุ่งนี้', a:'tomorrow'},
+	{l:10, id:151, c:['New and Old'], q:'ใหม่', a:'new'},
+	{l:10, id:152, c:['New and Old'], q:'เก่า', a:'old'},
+	{l:10, id:153, c:['New and Old'], q:'วันแรก', a:'the first day'},
+	{l:10, id:154, c:['New and Old'], q:'เป้', a:'backpack'},
+	{l:10, id:153, c:['New and Old'], q:'วันแรก', a:'the first day'},
+	{l:10, id:155, c:['New and Old'], q:'ของ', a:'of (possessive)'},
+	{l:10, id:156, c:['New and Old'], q:'รู', a:'hole'},
+	{l:10, id:157, c:['New and Old'], q:'สกปรก', a:'dirty'},
+	{l:10, id:158, c:['New and Old'], q:'ต้องการ', a:'need'},
+	{l:10, id:159, c:['New and Old'], q:'ใบใหม่', a:'a new one (container, leaf)'},
+	{l:10, id:160, c:['New and Old'], q:'พาเขาไป', a:'take her to'},
+	{l:10, id:161, c:['New and Old'], q:'ดาวสีเหลือง', a:'yellow stars'},
+	{l:10, id:162, c:['New and Old'], q:'ลายสุนัข', a:'dog patterns'},
+	{l:10, id:163, c:['New and Old'], q:'ใบนี้', a:'this one'},
+	{l:10, id:164, c:['New and Old'], q:'โรงเรียน', a:'school'},
+//	{l:10, id:165, c:['New and Old'], q:'', a:''},
+//	{l:10, id:166, c:['New and Old'], q:'', a:''},
+//	{l:10, id:167, c:['New and Old'], q:'', a:''},
+//	{l:10, id:168, c:['New and Old'], q:'', a:''},
+//	{l:10, id:169, c:['New and Old'], q:'', a:''},
+
+	{l:1, id:1, c:['catandmouse'], q:'หลอดด้าย', a:'yarn'},
+	{l:1, id:2, c:['catandmouse'], q:'ท้อง', a:'tummy'},
+	{l:1, id:3, c:['catandmouse'], q:'ยังคง', a:'still'},
+	{l:1, id:4, c:['catandmouse'], q:'งีบหลับ', a:'take nap'},
+	{l:1, id:5, c:['catandmouse'], q:'ขโมย', a:'steal'},
+
+	{l:5, id:29, c:['schoolfieldtrip'], q:'ทัศน', a:'visually'},
+	{l:5, id:30, c:['schoolfieldtrip'], q:'ศึกษา', a:'study'},
+	{l:5, id:31, c:['schoolfieldtrip'], q:'ทัศนศึกษา', a:'field trip'},
+	{l:5, id:32, c:['schoolfieldtrip'], q:'ดอลลาร์', a:'dollar'},
+	{l:5, id:33, c:['schoolfieldtrip'], q:'ต้องการ', a:'need'},
+	{l:5, id:34, c:['schoolfieldtrip'], q:'หาเงิน', a:'earn (find) money'},
+	{l:5, id:35, c:['schoolfieldtrip'], q:'เอง', a:'myself/yourself/himself'},
+	{l:5, id:36, c:['schoolfieldtrip'], q:'ร้าน', a:'store'},
+	{l:5, id:37, c:['schoolfieldtrip'], q:'มะนาว', a:'lemon'},
+	{l:5, id:38, c:['schoolfieldtrip'], q:'น้ำ', a:'water'},
+	{l:5, id:39, c:['schoolfieldtrip'], q:'น้ำมะนาว', a:'lemonade'},
+	{l:5, id:40, c:['schoolfieldtrip'], q:'ร้านน้ำมะนาว', a:'lemonade stand', t:'raan<sup>H</sup> naam<sup>H</sup> ma<sup>H</sup> naao<sup>M</sup>'},
+	{l:5, id:41, c:['schoolfieldtrip'], q:'ร้านน้ำมะนาว', a:'raan<sup>H</sup> naam<sup>H</sup> ma<sup>H</sup> naao<sup>M</sup>'},
+	{l:5, id:42, c:['schoolfieldtrip'], q:'สุก', a:'ripe'},
+	{l:5, id:43, c:['schoolfieldtrip'], q:'แล้ว', a:'already'},
+	{l:5, id:44, c:['schoolfieldtrip'], q:'ด้วย', a:'then'},
+	{l:5, id:45, c:['schoolfieldtrip'], q:'สุกแล้วด้วย', a:'also ripe'},
+	{l:5, id:46, c:['schoolfieldtrip'], q:'เริ่ม', a:'start'},
+	{l:5, id:47, c:['schoolfieldtrip'], q:'เข้าคิว', a:'in line (enter queue)'},
+	{l:5, id:48, c:['schoolfieldtrip'], q:'ถูก', a:'cheap'},
+	{l:5, id:49, c:['schoolfieldtrip'], q:'พอ', a:'enough'},
+	{l:5, id:50, c:['schoolfieldtrip'], q:'สำเร็จ', a:'success'},
+	{l:5, id:51, c:['schoolfieldtrip'], q:'ตลาด', a:'market'},
+	{l:5, id:52, c:['schoolfieldtrip'], q:'เปิด', a:'open (up)'},
+	{l:5, id:53, c:['schoolfieldtrip'], q:'วางแผน', a:'plan'},
+
+	{l:6, id:61, c:['schoolfieldtripplus'], q:'สัปปะรด', a:'pineapple'},
+	{l:6, id:62, c:['schoolfieldtripplus'], q:'เสาวรส', a:'passion fruit'},
+	{l:6, id:63, c:['schoolfieldtripplus'], q:'ส้ม', a:'orange'},
+	{l:6, id:64, c:['schoolfieldtripplus'], q:'แตงโม', a:'watermelon'},
+	{l:6, id:65, c:['schoolfieldtripplus'], q:'มะพร้าว', a:'coconut'},
+	{l:6, id:66, c:['schoolfieldtripplus'], q:'เมือง', a:'city'},
+	{l:6, id:67, c:['schoolfieldtripplus'], q:'เก่า', a:'old (object)'},
+	{l:6, id:68, c:['schoolfieldtripplus'], q:'เมืองเก่า', a:'old city'},
+	{l:6, id:69, c:['schoolfieldtripplus'], q:'ของเก่า', a:'antique (adj)'},
+	{l:6, id:70, c:['schoolfieldtripplus'], q:'แก่', a:'dark, old age (adj)'},
+	{l:6, id:71, c:['schoolfieldtripplus'], q:'อ่อน', a:'soft'},
+	{l:6, id:72, c:['schoolfieldtripplus'], q:'เขียว', a:'green'},
+	{l:6, id:73, c:['schoolfieldtripplus'], q:'เพี่อจะ', a:'...in order to...'},
+	{l:6, id:74, c:['schoolfieldtripplus'], q:'มากกว่า', a:'more than'},
+	{l:6, id:75, c:['schoolfieldtripplus'], q:'งู', a:'snake'},
+	{l:6, id:76, c:['schoolfieldtripplus'], q:'กลัว', a:'scared'},
+	{l:6, id:77, c:['schoolfieldtripplus'], q:'กล้า', a:'bold (brave)'},
+	{l:6, id:78, c:['schoolfieldtripplus'], q:'คุณกลัวงู', a:'you scared (of) snake'},
+	{l:6, id:79, c:['schoolfieldtripplus'], q:'ตุ๊กแก', a:'gecko'},
+	{l:6, id:80, c:['schoolfieldtripplus'], q:'ตอน', a:'when'},
+	{l:6, id:81, c:['schoolfieldtripplus'], q:'เสมอ', a:'...always'},
+	{l:6, id:82, c:['schoolfieldtripplus'], q:'บ่อยๆ', a:'...often'},
+	{l:6, id:83, c:['schoolfieldtripplus'], q:'ปกติ', a:'usually...'},
+	{l:6, id:84, c:['schoolfieldtripplus'], q:' บางครั้ง', a:'sometimes...'},
+	{l:6, id:85, c:['schoolfieldtripplus'], q:'เปาะเปี๊ยะ', a:'spring rolls'},
+	{l:6, id:86, c:['schoolfieldtripplus'], q:'กระเป๋า', a:'bag'},
+	{l:6, id:87, c:['schoolfieldtripplus'], q:'ก๊วยเตี๋ยว', a:'noodle'},
+	{l:6, id:88, c:['schoolfieldtripplus'], q:'โต๊ะ', a:'table'},
+	{l:6, id:89, c:['schoolfieldtripplus'], q:'ตู้', a:'cabinet'},
+	{l:6, id:90, c:['schoolfieldtripplus'], q:'ตู้เย็น', a:'fridge'},
+	{l:6, id:91, c:['schoolfieldtripplus'], q:'หนัง', a:'movie'},
+	{l:6, id:92, c:['schoolfieldtripplus'], q:'สือ', a:'media'},
+	{l:6, id:93, c:['schoolfieldtripplus'], q:'หนังสือ', a:'book'},
+	{l:6, id:94, c:['schoolfieldtripplus'], q:'ตู้หนังสือ', a:'bookcase'},
+	{l:6, id:95, c:['schoolfieldtripplus'], q:'เท้า', a:'foot'},
+	{l:6, id:96, c:['schoolfieldtripplus'], q:'รอง', a:'support (under)'},
+	{l:6, id:97, c:['schoolfieldtripplus'], q:'รองเท้า', a:'shoe'},
+	{l:6, id:98, c:['schoolfieldtripplus'], q:'ตู้รองเท้า', a:'shoe cabinet'},
+
+	{l:3, id:15, c:['landscape'], q:'ต้นไม้', a:'tree'},
+	{l:3, id:16, c:['landscape'], q:'แม่น้ำ', a:'river'},
+	{l:3, id:17, c:['landscape'], q:'ทะเล', a:'sea'},
+	{l:3, id:18, c:['landscape'], q:'ภูเขา', a:'mountain'},
+	{l:3, id:19, c:['landscape'], q:'คลอง', a:'canal'},
+	{l:3, id:20, c:['landscape'], q:'ทุ่งนา', a:'rice field'},
+	{l:3, id:21, c:['landscape'], q:'ป่า', a:'forest'},
+	{l:3, id:22, c:['landscape'], q:'ว่ายน้ำ', a:'swim'},
+	{l:3, id:23, c:['landscape'], q:'ชายหาด', a:'beach'},
+
+	{l:4, id:24, c:['dentist'], q:'ฟัน', a:'teeth'},
+	{l:4, id:27, c:['dentist'], q:'เจ็บ', a:'hurt'},
+	{l:4, id:25, c:['dentist'], q:'ปาก', a:'mouth'},
+	{l:4, id:26, c:['dentist'], q:'ทันตแพทย์', a:'dentist'},
+	{l:4, id:28, c:['dentist'], q:'ปวด', a:'ache'},
+
+	{l:2, id:6, c:['whatwherewhen'], q:'Kun ja kgin arai?', a:'You will eat what?'},
+	{l:2, id:7, c:['whatwherewhen'], q:'Kun ja kgin tii-naiˇ?', a:'You will eat where?'},
+	{l:2, id:8, c:['whatwherewhen'], q:'Kun ja kgin mua-rai?', a:'You will eat when?'},
+	{l:2, id:9, c:['whatwherewhen'], q:'Kun ja kgin gii-mong?', a:'You will eat what time?'},
+	{l:2, id:10, c:['whatwherewhen'], q:'Kun ja kgin gab krai?', a:'You will eat with whom?'},
+	
+	{l:7, id:11, c:['alphabet-middle-class'], q:'ก', a:'kg, gai, chicken'},
+	{l:7, id:12, c:['alphabet-middle-class'], q:'จ', a:'j, jan, plate'},
+	{l:7, id:13, c:['alphabet-middle-class'], q:'ด', a:'d, dek, child'},
+	{l:7, id:14, c:['alphabet-middle-class'], q:'ต', a:'dt, dtao, turtle'},
+]
+
+voyc.init = function() {
+	console.log('save cards to local storage');
+	localStorage.setItem(voyc.labelcards, JSON.stringify(voyc.deck));
+}
+
+voyc.retrieve = function() {
+	console.log('retrieve cards from local storage');
+	voyc.cards = JSON.parse(localStorage.getItem(voyc.labelcards));
+}
+
+voyc.xpractice = function(set) {
+	// open the Flash window
+	var delay = 200;
+	var url = 'http://flash.voyc.com';
+	if (window.location.href.indexOf('file:') > -1) {
+		url = 'file:///C:/Users/John/webapps/flash/index.html'; // local testing
+	}
+	if (voyc.winFlash && !voyc.winFlash.closed) {
+		console.log('Flash already open');
+		voyc.winFlash.focus();
+	}
+	else {
+		console.log('opening Flash');
+		voyc.winFlash = window.open(url, 'flash');
+		delay = 1200;
+	}
+	
+	// pass the data structure to the Flash window
+	var cset = set;
+	setTimeout(function() {
+		console.log('posting message to Flash');
+		voyc.winFlash.postMessage(cset, '*');
+	}, delay);
+}
+
+voyc.practice = function(cat) {
+	var set = {
+		name: cat,
+		title: cat,
+		reversible:true,
+		language:true,
+		sketch:true,
+		translit:false,
+		audio:false,
+		db: false,
+		hm: false, // show translit with question or answer
+		cards: []
+	}
+
+	var card = {};
+	var a = [];
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		var a = card.c;
+		if (a.indexOf(cat) >= 0) {
+			set.cards.push(card);
+		}
+	}
+
+	// open the Flash window
+	var delay = 200;
+	var url = 'http://flash.voyc.com';
+	if (window.location.href.indexOf('file:') > -1) {
+		url = 'file:///C:/Users/John/webapps/flash/index.html'; // local testing
+	}
+	if (voyc.winFlash && !voyc.winFlash.closed) {
+		console.log('Flash already open');
+		voyc.winFlash.focus();
+	}
+	else {
+		console.log('opening Flash');
+		voyc.winFlash = window.open(url, 'flash');
+		delay = 1200;
+	}
+	
+	// pass the data structure to the Flash window
+	var cset = set;
+	setTimeout(function() {
+		console.log('posting message to Flash');
+		voyc.winFlash.postMessage(cset, '*');
+	}, delay);
+}
+
+voyc.getCardById = function(id) {
+	var card = false;
+	for (var i=0; i<voyc.deck.length; i++) {
+		if (voyc.deck[i].id == id) {
+			card = voyc.deck[i];
+			break;
+		}
+	}
+	return card;
+}
+
+voyc.practicePanel = function() {
+	var set = {
+		name: 'panel',
+		title: 'panel',
+		reversible:true,
+		language:true,
+		sketch:true,
+		translit:false,
+		audio:false,
+		db: false,
+		hm: false, // show translit with question or answer
+		cards: []
+	}
+
+	// build the data structure from selected items
+	var card = {};
+	var selectedRows = document.querySelectorAll('tr.selected');
+	for (var ndx=0; ndx<selectedRows.length; ndx++) {
+		card = voyc.getCardById(parseInt(selectedRows[ndx].id));
+		if (card) {
+			set.cards.push(card);
+		}
+	}
+
+	// open the Flash window
+	var delay = 200;
+	var url = 'http://flash.voyc.com';
+	if (window.location.href.indexOf('file:') > -1) {
+		url = 'file:///C:/Users/John/webapps/flash/index.html'; // local testing
+	}
+	if (voyc.winFlash && !voyc.winFlash.closed) {
+		console.log('Flash already open');
+		voyc.winFlash.focus();
+	}
+	else {
+		console.log('opening Flash');
+		voyc.winFlash = window.open(url, 'flash');
+		delay = 1200;
+	}
+	
+	// pass the data structure to the Flash window
+	var cset = set;
+	setTimeout(function() {
+		console.log('posting message to Flash');
+		voyc.winFlash.postMessage(cset, '*');
+	}, delay);
+}
+window.addEventListener('load', function(evt) {
+	//voyc.drawButtons();
+	document.getElementById('init').addEventListener('click', function(evt) { voyc.init(); }, false);
+	document.getElementById('retrieve').addEventListener('click', function(evt) { voyc.retrieve(); }, false);
+	document.getElementById('practice').addEventListener('click', function(evt) { voyc.practicePanel(); }, false);
+	//voyc.drawDeck();
+	voyc.drawPanels();
+}, false);
+
+voyc.drawButtons = function(evt) {
+	// make a list of cats
+	var card = {};
+	var cats = [];
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		cats = card.c;
+		for (var j=0; j<cats.length; j++) {
+			if (voyc.cats.indexOf(cats[j]) < 0) {
+				voyc.cats.push(cats[j]);
+			}
+		}
+	}
+
+	// create a button for each cat
+	var s = '';
+	for (var i=0; i<voyc.cats.length; i++) {
+		s += '<button id=' + voyc.cats[i] + '>' + voyc.cats[i] + '</button>';
+	}
+	document.getElementById('buttons').innerHTML = s;
+
+	// attach a handler to each button
+	for (var i=0; i<voyc.cats.length; i++) {
+		document.getElementById(voyc.cats[i]).addEventListener('click', function(evt) { 
+			voyc.practice(evt.target.id); 
+		}, false);
+	}
+}
+
+voyc.drawDeck = function() {	
+	// draw deck
+	var s = '';
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		s += card.q + ' : ' + card.a + '<br/>';
+		cats = card.c;
+		for (var j=0; j<cats.length; j++) {
+			if (voyc.cats.indexOf(cats[j]) < 0) {
+				voyc.cats.push(cats[j]);
+			}
+		}
+	}
+	document.getElementById('deck').innerHTML = s;
+}
+
+voyc.drawPanels = function() {
+	var s = '';
+	s += 'panels';
+	document.getElementById('deck').innerHTML = s;
+
+	// make a list of cats
+	var card = {};
+	var cats = [];
+	for (var i=0; i<voyc.deck.length; i++) {
+		card = voyc.deck[i];
+		cats = card.c;
+		for (var j=0; j<cats.length; j++) {
+			if (voyc.cats.indexOf(cats[j]) < 0) {
+				voyc.cats.push(cats[j]);
+			}
+		}
+	}
+
+	// draw a panel for each cat
+	var s = '';
+	var cat = '';
+	for (var i=0; i<voyc.cats.length; i++) {
+		cat = voyc.cats[i]
+		s += "<div select class='panel list blu'>";
+		s += "<h3>" + cat + "</h3>";
+		s += "<table>";
+		var card = {};
+		var a = [];
+		for (var j=0; j<voyc.deck.length; j++) {
+			card = voyc.deck[j];
+			if (card.c.indexOf(cat) >= 0) {
+				s += "<tr id=" + card.id + ">";
+				s += "<td>" + card.q + "</td><td>" + card.a + "</td>";
+				s += "</tr>";
+			}
+		}
+		s += "</table></div>";
+	}
+
+	// apply select attribute to each panel
+	var deck = document.getElementById('deck');
+	deck.innerHTML = s;
+	(new voyc.Minimal).attachSelect(deck);
+
+/*
+<div class=panel>panel</div>
+				<div select class='panel list blu'>
+					<h3>Vowels</h3>
+					<table>
+						<tr id='0001'><td>กะ</td>	<td class='tcenter'>a</td>	<td class='tright'></td></tr>
+						<tr id='0002'><td>กา</td>	<td class='tcenter'>aa</td>	<td class='tright'></td></tr>
+						<tr id='0003'><td>กิ</td>	<td class='tcenter'>i</td>	<td class='tright'></td></tr>
+						<tr id='0004'><td>กี</td>	<td class='tcenter'>ii</td>	<td class='tright'></td></tr>
+						<tr id='0005'><td>กึ</td>	<td class='tcenter'>ʉ</td>	<td class='tright'></td></tr>
+						<tr id='0006'><td>กื</td>	<td class='tcenter'>ʉʉ</td>	<td class='tright'></td></tr>
+						<tr id='0007'><td>กุ</td>	<td class='tcenter'>u</td>	<td class='tright'></td></tr>
+						<tr id='0008'><td>กู</td>	<td class='tcenter'>uu</td>	<td class='tright'></td></tr>
+						<tr id='0009'><td>เก</td>	<td class='tcenter'>e</td>	<td class='tright'></td></tr>
+						<tr id='0010'><td>แก</td>	<td class='tcenter'>ae</td>	<td class='tright'></td></tr>
+						<tr id='0011'><td>โก</td>	<td class='tcenter'>oo</td>	<td class='tright'></td></tr>
+						<tr id='0012'><td>กว</td>	<td class='tcenter'>ua</td>	<td class='tright'></td></tr>
+					</table>
+				</div>
+*/
+}
+
+</script>
+</head>
+<body>
+<div id=buttons></div>
+
+<button id=init>init</button>
+<button id=retrieve>retrieve</button>
+<button id=selectall>select all</button>
+<button id=practice>practice</button>
+
+<div id=deck></div>
+
+<!--
+<div select class='panel list blu'>
+	<h3>Vowels</h3>
+	<table>
+		<tr id='0001'><td>กะ</td>	<td class='tcenter'>a</td>	<td class='tright'></td></tr>
+		<tr id='0002'><td>กา</td>	<td class='tcenter'>aa</td>	<td class='tright'></td></tr>
+		<tr id='0003'><td>กิ</td>	<td class='tcenter'>i</td>	<td class='tright'></td></tr>
+		<tr id='0004'><td>กี</td>	<td class='tcenter'>ii</td>	<td class='tright'></td></tr>
+		<tr id='0005'><td>กึ</td>	<td class='tcenter'>ʉ</td>	<td class='tright'></td></tr>
+		<tr id='0006'><td>กื</td>	<td class='tcenter'>ʉʉ</td>	<td class='tright'></td></tr>
+		<tr id='0007'><td>กุ</td>	<td class='tcenter'>u</td>	<td class='tright'></td></tr>
+		<tr id='0008'><td>กู</td>	<td class='tcenter'>uu</td>	<td class='tright'></td></tr>
+		<tr id='0009'><td>เก</td>	<td class='tcenter'>e</td>	<td class='tright'></td></tr>
+		<tr id='0010'><td>แก</td>	<td class='tcenter'>ae</td>	<td class='tright'></td></tr>
+		<tr id='0011'><td>โก</td>	<td class='tcenter'>oo</td>	<td class='tright'></td></tr>
+		<tr id='0012'><td>กว</td>	<td class='tcenter'>ua</td>	<td class='tright'></td></tr>
+	</table>
+</div>
+-->
+</body>
+</html>

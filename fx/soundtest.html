@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<title>sound test</title>
+		<script>
+			var voyc = {};
+
+			var urlpattern = '../x/a/newandold_%sound%.mp3';
+			var fxfiles = [
+				'title' ,
+				'line1' ,
+				'line2' ,
+				'line3' ,
+				'line4' ,
+				'line5' ,
+				'line6' ,
+				'line7' ,
+				'line8' ,
+				'line9' ,
+				'line10',
+				'line11',
+				'complt',
+			];
+
+			window.addEventListener('load', function() {
+				soundfx = new voyc.Sound();
+				soundfx.loadSounds(urlpattern, fxfiles, function(success) {
+					document.getElementById('msg').innerHTML = 'loaded ' + (success) ? 'success' : 'fail';
+				});
+
+				document.getElementById('btn-title' ).addEventListener('click', function() { soundfx.play( 'title' )}, false);
+				document.getElementById('btn-line1' ).addEventListener('click', function() { soundfx.play( 'line1' )}, false);
+				document.getElementById('btn-line2' ).addEventListener('click', function() { soundfx.play( 'line2' )}, false);
+				document.getElementById('btn-line3' ).addEventListener('click', function() { soundfx.play( 'line3' )}, false);
+				document.getElementById('btn-line4' ).addEventListener('click', function() { soundfx.play( 'line4' )}, false);
+				document.getElementById('btn-line5' ).addEventListener('click', function() { soundfx.play( 'line5' )}, false);
+				document.getElementById('btn-line6' ).addEventListener('click', function() { soundfx.play( 'line6' )}, false);
+				document.getElementById('btn-line7' ).addEventListener('click', function() { soundfx.play( 'line7' )}, false);
+				document.getElementById('btn-line8' ).addEventListener('click', function() { soundfx.play( 'line8' )}, false);
+				document.getElementById('btn-line9' ).addEventListener('click', function() { soundfx.play( 'line9' )}, false);
+				document.getElementById('btn-line10').addEventListener('click', function() { soundfx.play( 'line10')}, false);
+				document.getElementById('btn-line11').addEventListener('click', function() { soundfx.play( 'line11')}, false);
+				document.getElementById('btn-complt').addEventListener('click', function() { soundfx.play( 'complt')}, false);
+			}, false);
+		</script>
+		<script src='sound.js'></script>
+	</head>
+	<body>
+		<h1>sound test</h1>
+		<input type=button id=btn-title  value='title ' /><br/>
+		<input type=button id=btn-line1  value='line1 ' /><br/>
+		<input type=button id=btn-line2  value='line2 ' /><br/>
+		<input type=button id=btn-line3  value='line3 ' /><br/>
+		<input type=button id=btn-line4  value='line4 ' /><br/>
+		<input type=button id=btn-line5  value='line5 ' /><br/>
+		<input type=button id=btn-line6  value='line6 ' /><br/>
+		<input type=button id=btn-line7  value='line7 ' /><br/>
+		<input type=button id=btn-line8  value='line8 ' /><br/>
+		<input type=button id=btn-line9  value='line9 ' /><br/>
+		<input type=button id=btn-line10 value='line10' /><br/>
+		<input type=button id=btn-line11 value='line11' /><br/>
+		<input type=button id=btn-complt value='complt' /><br/>
+		<p id='msg'>loading...</p>
+		</body>
+</html>
