@@ -5,7 +5,7 @@ import httplib, urllib, sys
 # Define the parameters for the POST request and encode them in
 # a URL-safe format.
 
-url = 'http://sanskrit.voyc.com/'
+url = 'http://thai.voyc.com/'
 
 arr = [
 	('code_url', url + 'js/namespace.js'),

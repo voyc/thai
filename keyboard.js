@@ -7,11 +7,11 @@ voyc.Keyboard = function() {
 	if (voyc.Keyboard._instance) return voyc.Keyboard._instance;
 	else voyc.Keyboard._instance = this;
 
-	this.rownames = ['', 'Middle&nbsp;Class', 'High&nbsp;Class', 'Low&nbsp;Class', 'Low&nbsp;Class Sonorant', 'Digit'];
+	this.rownames = ['', 'Middle&nbsp;Class', 'High&nbsp;Class', 'Low&nbsp;Class', 'Sonorant', 'Sanskrit', 'Digit'];
+	this.rowtags  = ['', 'mid', 'high', 'low', 'sonorant', 'sanskrit', 'digit'];
 	this.buffer = [];  // array of keys to the alphabet table
 	this.typing = true;
 	this.alphabet = {};  // table will be loaded dynamically from ./alphabet/th.js file
-	//this.winFlash = null;
 }
 
 voyc.Keyboard.configdefault = {	
@@ -68,48 +68,23 @@ voyc.Keyboard.prototype = {
 		var skybd = '<table id="keyboard_subtable" class="sub"><tr>';
 		skybd += '<td class="noborder hog"><textarea id="tbs" class="typingwindow devanagari"></textarea></td>';
 		skybd += '<td class="noborder"><button id="clear">Clear</button></td>';
-		skybd += '<td class="noborder hog"><textarea id="tbt" class="typingwindow translit"></textarea></td>';
+		skybd += '<td class="noborder hog hidden"><textarea id="tbt" class="typingwindow translit"></textarea></td>';
 		skybd += '</tr></table>';
-
-		// digit subtable
-		var sdigit = '<table id="digit_subtable" class="sub"><tr class="noborder">';
-		var row = 6;
-		for (var col=1; col<16; col++) {
-			id = 'cell_' + row + '_' + col;
-			sdigit += '<td id="' + id + '" class="key"></td>';
-		}
-		sdigit += '</tr></table>';
 
 		// analytics subtable
 		sanal = '';
 		sanal += '<table id="analytics"><tr>';
+		sanal += '<td><fieldset>';
+		sanal += '<table>';
+		sanal += '<tr><td><td class="hdr pool" tag="tonemark">Tone Mark</td></tr>';
+		sanal += '<tr><td><td class="hdr pool" tag="special">Special</td></tr>';
+		sanal += '<tr><td><td class="hdr pool" tag="combo">Combo</td></tr>';
+		sanal += '</table></fieldset></td>';
 		sanal += '<td>';
 		sanal += '<button id="practice" >Practice</button>';
 		sanal += '<button id="clearselection" >Clear Selection</button>';
 		sanal += '</td></tr>';
 		sanal += '</table>';
-
-		// two vowel dipthong subtables
-//		var sv = '<table id="dipthong_letter_subtable" class="sub">';
-//		var sd = '<table id="dipthong_diacritic_subtable" class="sub">';
-//		var row = 2;
-//		for (var i=0; i<7; i++) {
-//			if (i==0) {
-//				sv += '<tr><td class="hdr" id="dipthong_letter_subhdr">Letter</td></tr>';
-//				sd += '<tr><td class="hdr" id="dipthong_diacritic_subhdr">Diacritic</td></tr>';
-//			}
-//			else if (i==1 || i==6) {
-//				sv += '<tr><td class="spacer">&nbsp;</td></tr>';
-//				sd += '<tr><td class="spacer">&nbsp;</td></tr>';
-//			}
-//			else {
-//				sv += '<tr><td id="cell_'+row+'_14" class="key"></td></tr>';
-//				sd += '<tr><td id="cell_'+row+'_15" class="key"></td></tr>';
-//				row++;
-//			}
-//		}
-//		sv += '</table>';
-//		sd += '</table>';
 
 		// big table starts here
 		var s = '<div id="keypad"><table>';
@@ -118,42 +93,22 @@ voyc.Keyboard.prototype = {
 		s += '<tr id="typing"><td colspan="16" class="noborder">' + skybd + '</td></tr>';
 
 		// first row: consonant, ending, vowel
-		s += '<tr class="colhdrrow"><td class="noborder"></td><td class="hdr" colspan="9">Consonant</td><td class="hdr" colspan="6">Vowel</td></tr>';
-
-		// second row: soft/hard/short/long/dipthong
-//		s += '<tr class="colhdrrow">';
-//		s += '<td class="noborder"></td><td class="hdr" colspan="2">Hard</td><td class="hdr" colspan="3">Soft</td><td class="hdr">Soft</td><td class="hdr">Hard</td><td class="hdr">Soft</td>';
-//		s += '<td class="hdr">Ending</td><td class="hdr" colspan="2">Short</td><td class="hdr" colspan="2">Long</td><td class="hdr" colspan="2">Dipthong</td>';
-//		s += '</tr>';
-
-		// third row: unaspirate/aspirate/letter/diacritic, embed subtables
-//		s += '<tr class="colhdrrow">';
-//		s += '<td class="noborder"></td><td class="hdr">Unaspirate</td><td class="hdr">Aspirate</td><td class="hdr">Unaspirate</td><td class="hdr">Aspirate</td><td class="hdr">Nasal</td><td class="hdr" tag="semivowel">Semi-vowel</td><td class="hdr">Sibilant</td><td class="hdr">Aspirate</td>';
-//		s += '<td class="hdr">Diacritic</td><td class="hdr">Letter</td><td class="hdr">Diacritic</td><td class="hdr">Letter</td><td class="hdr">Diacritic</td>';
-////		s += '<td rowspan="6" id="dipthong_letter_hdr" class="noborder">' + sv + '</td><td rowspan="6" id="dipthong_diacritic_hdr" class="noborder">' + sd + '</td>';
-//		s += '</tr>';
+		s += '<tr class="colhdrrow"><td class="noborder"></td><td class="hdr" colspan="7">Consonant</td><td class="hdr" colspan="6">Vowel</td><td class="hdr"></td></tr>';
 
 		// draw keypad rows and columns
 		var numcols=14;
-		var numrows = 5;
+		var numrows = 6;
 		var a;
 		var cell = '';
 		for (var row=1; row<=numrows; row++) {
 			s += '<tr>';
-			s += '<td class="rowhdr hdr" id="rowhdr_' + row + '"">'+this.rownames[row]+'</td>';
+			s += '<td class="rowhdr hdr" id="rowhdr_' + row + '" tag="' + this.rowtags[row] + '">'+this.rownames[row]+'</td>';
 			for (var col=1; col<=(numcols); col++) {
 				var id = 'cell_' + row + '_' + col;
 				s += '<td class="key" id="' +id+ '">&nbsp;</td>';
 			}
-//			if (row==1) {
-//				s += '<td rowspan="5" class="noborder" id="dipthong_letter_container"></td>';
-//				s += '<td rowspan="5" class="noborder" id="dipthong_diacritic_container"></td>';
-//			}
 			s += '</tr>';
 		}
-
-		// digits, spacebar, special
-		s += '<tr id="digits"><td colspan="16" class="noborder">'+sdigit+'</td></tr>';
 
 		// analytics
 		s += '<tr><td id="analyticscontainer" colspan="16" class="noborder">'+sanal+'</td></tr>';
@@ -183,7 +138,6 @@ voyc.Keyboard.prototype = {
 
 		// spacebar
 		id = 'cell_6_11';
-//		cell  = '<div class="devanagari">spc</div>';
 		cell  = '<div class="devanagari">&#x23b5;</div>';
 		cell += '<div class="translit hidden"></div>';
 		voyc.$(id).innerHTML = cell;
@@ -329,18 +283,6 @@ voyc.Keyboard.prototype = {
 		for (var i=0; i<rowhdrs.length; i++) {
 			voyc.toggleAttribute(rowhdrs[i], 'hidden', '', !b);
 		}
-
-//		// special handling of the dipthong columns
-//		if (b) {
-//			voyc.$('dipthong_letter_hdr').appendChild(voyc.$('dipthong_letter_subtable'));
-//			voyc.$('dipthong_diacritic_hdr').appendChild(voyc.$('dipthong_diacritic_subtable'));
-//		}
-//		else {
-//			voyc.$('dipthong_letter_container').appendChild(voyc.$('dipthong_letter_subtable'));
-//			voyc.$('dipthong_diacritic_container').appendChild(voyc.$('dipthong_diacritic_subtable'));
-//		}
-//		voyc.toggleAttribute(voyc.$('dipthong_letter_subhdr'), 'hidden', '', !b);
-//		voyc.toggleAttribute(voyc.$('dipthong_diacritic_subhdr'), 'hidden', '', !b);
 
 		// row of fieldsets
 		voyc.toggleAttribute(voyc.$('analytics'), 'hidden', '', !b);
@@ -509,7 +451,7 @@ voyc.Keyboard.prototype = {
 		
 		// build data structure including array of cards
 		window.data = {
-			name: 'Sanskrit Alphabet',
+			name: 'Thai Alphabet',
 			reversible:true,
 			language:true,
 			sketch:true,
@@ -646,3 +588,4 @@ voyc.Keyboard.prototype.getTranslitFromString = function(s) {
 	return t;
 }
 
+	
