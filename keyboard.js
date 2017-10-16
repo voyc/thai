@@ -60,6 +60,7 @@ voyc.Keyboard.prototype = {
 		var showtranslit = this.setConfig( 'showtranslit', this.getConfig('showtranslit'));
 		voyc.$('showtypewriter').checked = (mode == 'typewriter');
 		voyc.$('showanalytics').checked = (mode == 'learning');
+		voyc.$('showanalytics').checked = (mode == 'learning');
 		voyc.$('showtranslit').checked = (showtranslit == 'on');
 	},
 
@@ -423,11 +424,11 @@ voyc.Keyboard.prototype = {
 			for (var i=0; i<ra.length; i++) {
 				r = ra[i];
 				o = {
-					i:parseInt(r.getAttribute('u'),10),
-					n:i+1,
-					q:r.querySelector('div:nth-child(1)').innerHTML,
-					t:r.querySelector('div:nth-child(1)').innerHTML,
-					a:r.querySelector('div:nth-child(2)').innerHTML,
+					'i':parseInt(r.getAttribute('u'),10),
+					'n':i+1,
+					'q':r.querySelector('div:nth-child(1)').innerHTML,
+					't':r.querySelector('div:nth-child(1)').innerHTML,
+					'a':r.querySelector('div:nth-child(2)').innerHTML,
 				};
 				cards.push(o);
 			}
@@ -438,11 +439,11 @@ voyc.Keyboard.prototype = {
 				r = this.alphabet['alphabet'][key];
 				if (r['t'] && r['t'] != ' ') {
 					o = {
-						i:r['i'],
-						n:seq++,
-						q:r['s'],
-						t:r['t'],
-						a:r['t'],
+						'i':r['i'],
+						'n':seq++,
+						'q':r['s'],
+						't':r['t'],
+						'a':r['t'],
 					};
 					cards.push(o);
 				}
@@ -451,18 +452,20 @@ voyc.Keyboard.prototype = {
 		
 		// build data structure including array of cards
 		window.data = {
-			name: 'Thai Alphabet',
-			reversible:true,
-			language:true,
-			sketch:true,
-			translit:false,
-			audio:false,
-			db: false,
-			hm: false, // show translit with question or answer
-			cards: cards,
+			'name': 'practice',
+			'title': 'Thai Alphabet',
+			'reversible':true,
+			'language':true,
+			'sketch':true,
+			'translit':false,
+			'audio':false,
+			'db': false,
+			'hm': false, // show translit with question or answer
+			'cards': cards,
 		}
 
 		// open the Flash window
+		var browserTimeToOpen = 100;
 		var url = 'http://flash.voyc.com';
 		if (window.location.href.indexOf('file:') > -1) {
 			url = '../flash/index.html'; // local testing
@@ -473,6 +476,7 @@ voyc.Keyboard.prototype = {
 		}
 		else {
 			console.log('opening Flash');
+			browserTimeToOpen = 1000;
 			voyc.winFlash = window.open(url, 'flash');
 		}
 		
@@ -480,7 +484,7 @@ voyc.Keyboard.prototype = {
 		setTimeout(function() {
 			console.log('posting message to Flash');
 			voyc.winFlash.postMessage(window.data, '*');
-		}, 200);
+		}, browserTimeToOpen);
 	},
 }
 
