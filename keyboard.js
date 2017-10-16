@@ -12,6 +12,7 @@ voyc.Keyboard = function() {
 	this.buffer = [];  // array of keys to the alphabet table
 	this.typing = true;
 	this.alphabet = {};  // table will be loaded dynamically from ./alphabet/th.js file
+	this.post = new voyc.Post('flash','http://flash.voyc.com','../flash/index.html');
 }
 
 voyc.Keyboard.configdefault = {	
@@ -451,7 +452,7 @@ voyc.Keyboard.prototype = {
 		}
 		
 		// build data structure including array of cards
-		window.data = {
+		data = {
 			'name': 'practice',
 			'title': 'Thai Alphabet',
 			'reversible':true,
@@ -463,28 +464,8 @@ voyc.Keyboard.prototype = {
 			'hm': false, // show translit with question or answer
 			'cards': cards,
 		}
-
-		// open the Flash window
-		var browserTimeToOpen = 100;
-		var url = 'http://flash.voyc.com';
-		if (window.location.href.indexOf('file:') > -1) {
-			url = '../flash/index.html'; // local testing
-		}
-		if (voyc.winFlash && !voyc.winFlash.closed) {
-			console.log('Flash already open');
-			voyc.winFlash.focus();
-		}
-		else {
-			console.log('opening Flash');
-			browserTimeToOpen = 1000;
-			voyc.winFlash = window.open(url, 'flash');
-		}
 		
-		// pass the data structure to the Flash window
-		setTimeout(function() {
-			console.log('posting message to Flash');
-			voyc.winFlash.postMessage(window.data, '*');
-		}, browserTimeToOpen);
+		this.post.post(data);
 	},
 }
 
