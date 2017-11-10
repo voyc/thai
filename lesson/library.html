@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>Kind Dentist</title>
+<title>Library</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
@@ -105,38 +105,27 @@ Thai: separate words and tilt for tone
 
 voyc.deck = [
 	// tone:'2M4M-3M3M 3M4H' 1 number + 1 letter for each syllable, space to separate words, hyphen to separate word and rythym
-	{l:1, id:'01', c:['dentist'], t:'line01', th:'มาเรียรุ้สึกปวดฟันของเขา', tone:'2M4M 3H3L 3L 3M 3R 3R', en:'Maria feels pain in her teeth.', wo:'Maria know-feel ache tooth her.'},
-	{l:1, id:'02', c:['dentist'], t:'line02', th:'มาเรียบอกแม่ของเขา', tone:'2M4M-3L 3F-3R 3R', en:'She tells her mom.', wo:'Maria tell mom her.'},
-	{l:1, id:'03', c:['dentist'], t:'line03', th:'แม่พามาเรียไปหาหมอฟัน', tone:'3F 2M 2M4M 2M 2M 3R3M', en:'Her mom takes her to the dentist.', wo:'Mom take Maria goto see doctor-tooth.'},
-	{l:1, id:'04', c:['dentist'], t:'line04', th:'มาเรียกลัว', tone:'3F2M 4M', en:'Maria is scared.', wo:'Maria scared.'},
-	{l:1, id:'05', c:['dentist'], t:'line05', th:'เขาเข้าไปห้องรอ', tone:'3R 4F2M 4F2M', en:'She enters the waiting room.', wo:'She enter-goto room-wait.'},
-	{l:1, id:'06', c:['dentist'], t:'line06', th:'เลขาเรียกชื่อของมาเรีย', tone:'2H2M 5F 4F3R 2M4M', en:'The secretary calls Maria\'s name.', wo:'Secretary calls name of Maria.'},
-	{l:1, id:'07', c:['dentist'], t:'line07', th:'มาเรียเข้าไป', tone:'2M4M 4F2M', en:'Maria goes in.', wo:'Maria enter-goto.'},
-	{l:1, id:'08', c:['dentist'], t:'line08', th:'มาเรียนั่งในเก้าอี้ใหญ', tone:'2M4M 4F 2M 4F3F3M', en:'Maria sits in a big chair.', wo:'Maria sit in chair big.'},
-	{l:1, id:'09', c:['dentist'], t:'line09', th:'เขารอหมอฟัน', tone:'3R 2M 3R3M', en:'She waits for the dentist.', wo:'She wait dentist.'},
-	{l:1, id:'10', c:['dentist'], t:'line10', th:'หมอฟันมาถึง', tone:'3R3M 2M3R', en:'The dentist arrives.', wo:'Doctor-tooth come-arrive.'},
-	{l:1, id:'11', c:['dentist'], t:'line11', th:'หมอฟันระวังกับฟันของมาเรีย', tone:'3R3M 2H3M 3L 3M 3R 2M4M', en:'He is careful with Maria\'s teeth.', wo:'Doctor-tooth careful with teeth of Maria.'},
-	{l:1, id:'12', c:['dentist'], t:'line12', th:'หมอฟันให้แปรงสีฟันใหม่แก่เขา', tone:'3R3M 3F 4M2R3M 4L 3L 3R', en:'He gives her a new toothbrush.', wo:'Doctor-tooth give toothbrush new to her.'},
-	{l:1, id:'13', c:['dentist'], t:'line13', th:'มาเรียรุ้สึกดี', tone:'2M4M 3H3L 2M', en:'Maria feels good.', wo:'Maria know-feel good.'},
+	{l:1, id:'01', c:['library'], t:'title' , th:'การเดินทางไปห้องสมุด', tone:'3M4M3M2M 4F1L3L', en:'A Trip to the Library', wo:'how-walk-way-go-to room-notebook'},
+	{l:1, id:'02', c:['library'], t:'line01', th:'มาร์คต้องการหังสือ', tone:'5F 4F3M 3R3R', en:'Mark needs a book.', wo:'Mark must-how book.'},
+	{l:1, id:'03', c:['library'], t:'line02', th:'เขาไม่มีเงิน', tone:'3R 3F 2M 4M', en:'He does not have money.', wo:'he no have money'},
+	{l:1, id:'04', c:['library'], t:'line03', th:'แม่พามาร์คไปห้องสมุด', tone:'3F 2M 5F 2M 4F1M3H', en:'His mom takes him to the library.', wo:'Mom take Mark go-to library'},
+	{l:1, id:'05', c:['library'], t:'line04', th:'มาร์คสามารถยืมหนังสือได้ฟรี', tone:'5F 2M2M2H 3M 4R3R 3F 3M', en:'Mark can borrow books for free.', wo:'Mark can borrow book for free'},
+	{l:1, id:'06', c:['library'], t:'line05', th:'มาร์คเข้าห้องสมุด', tone:'5F 4F 4F1L3L', en:'Mark enters the library.', wo:'Mark enter library'},
+	{l:1, id:'06', c:['library'], t:'line06', th:'มีหนังสือหลายเล่ม', tone:'2M 4R3R 4R 4F', en:'There are so many books.', wo:'have book many classifier'},
+	{l:1, id:'07', c:['library'], t:'line07', th:'มีหนังสือเรื่องสัตว์', tone:'2M 4R3R 6F 5F', en:'There are books about animals.', wo:'have book about animal'},
+	{l:1, id:'08', c:['library'], t:'line08', th:'มีหนังสือเรื่องโจรสลัด', tone:'2M 4R3R 6F 3L1L3H', en:'There are books about pirates.', wo:'have book about pirate'},
+	{l:1, id:'09', c:['library'], t:'line09', th:'มีหนังสือเรื่องวิทยาศาสตร์', tone:'2M 4R3R 6F 2H1M2M6L', en:'There are books about science', wo:'have book about science'},
+	{l:1, id:'10', c:['library'], t:'line10', th:'มาร์คยืมทั้งหมด', tone:'5F 3M 4F3L', en:'Mark borrows them all', wo:'Mark borrow all'},
 ]
 
 voyc.components = [
-	{l:1, id:'01', c:[''], t:'', th:'มาเรีย', tone:'', en:'Maria', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'รอ', tone:'', en:'wait', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ห้อง', tone:'', en:'room', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ห้องรอ', tone:'', en:'waiting-room', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ห้อง', tone:'', en:'room', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'เข้า', tone:'', en:'enter', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'เข้าไป', tone:'', en:'enter-goto', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'มา ', tone:'', en:'come', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'มาถึง', tone:'', en:'arrive', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'กับ', tone:'', en:'with', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ให้', tone:'', en:'give', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'แปรง', tone:'', en:'brush', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'สี', tone:'', en:'color', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ฟัน', tone:'', en:'tooth', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'แปรงสีฟัน', tone:'', en:'toothbrush', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'แก่', tone:'', en:'to', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'การ', tone:'3M', en:'prefix or suffix to make noun', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ต้อง', tone:'', en:'must', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'ต้องการ', tone:'', en:'need', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'', tone:'', en:'', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'', tone:'', en:'', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'', tone:'', en:'', wo:''},
+	{l:1, id:'01', c:[''], t:'', th:'', tone:'', en:'', wo:''},
 ]
 
 patterns = [
@@ -146,8 +135,9 @@ patterns = [
 
 voyc.dmode = 'Thai';
 
-var urlpattern = '../assets/sounds/dentist_%sound%.mp3';
+var urlpattern = '../assets/sounds/library_%sound%.mp3';
 var fxfiles = [
+	'title' ,
 	'line01' ,
 	'line02' ,
 	'line03' ,
@@ -158,9 +148,6 @@ var fxfiles = [
 	'line08' ,
 	'line09' ,
 	'line10',
-	'line11',
-	'line12',
-	'line13',
 ];
 
 voyc.drawDeck = function(deck, dmode) {

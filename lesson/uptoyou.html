@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>Kind Dentist</title>
+<title>Up To You</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
@@ -90,53 +90,17 @@ Test, which field to make q, all other fields are answer
 Thai: separate words and tilt for tone
 */
 
-/**
-มันเป็นความลับ	it is secret	it is the-secret
-
-แล้วแต่คุณ	up to you (casual)	already but you
-
-ขึ้นอยู่กับคุณ	up to you (formal)	up in with you
-
-ตามสบาย	"Do as you please.  Make yourself at home."	follow comfortable
-
-ไก่ผัดเม็ดมะม่วง	chicken fried with cashews
-*/
-
-
 voyc.deck = [
 	// tone:'2M4M-3M3M 3M4H' 1 number + 1 letter for each syllable, space to separate words, hyphen to separate word and rythym
-	{l:1, id:'01', c:['dentist'], t:'line01', th:'มาเรียรุ้สึกปวดฟันของเขา', tone:'2M4M 3H3L 3L 3M 3R 3R', en:'Maria feels pain in her teeth.', wo:'Maria know-feel ache tooth her.'},
-	{l:1, id:'02', c:['dentist'], t:'line02', th:'มาเรียบอกแม่ของเขา', tone:'2M4M-3L 3F-3R 3R', en:'She tells her mom.', wo:'Maria tell mom her.'},
-	{l:1, id:'03', c:['dentist'], t:'line03', th:'แม่พามาเรียไปหาหมอฟัน', tone:'3F 2M 2M4M 2M 2M 3R3M', en:'Her mom takes her to the dentist.', wo:'Mom take Maria goto see doctor-tooth.'},
-	{l:1, id:'04', c:['dentist'], t:'line04', th:'มาเรียกลัว', tone:'3F2M 4M', en:'Maria is scared.', wo:'Maria scared.'},
-	{l:1, id:'05', c:['dentist'], t:'line05', th:'เขาเข้าไปห้องรอ', tone:'3R 4F2M 4F2M', en:'She enters the waiting room.', wo:'She enter-goto room-wait.'},
-	{l:1, id:'06', c:['dentist'], t:'line06', th:'เลขาเรียกชื่อของมาเรีย', tone:'2H2M 5F 4F3R 2M4M', en:'The secretary calls Maria\'s name.', wo:'Secretary calls name of Maria.'},
-	{l:1, id:'07', c:['dentist'], t:'line07', th:'มาเรียเข้าไป', tone:'2M4M 4F2M', en:'Maria goes in.', wo:'Maria enter-goto.'},
-	{l:1, id:'08', c:['dentist'], t:'line08', th:'มาเรียนั่งในเก้าอี้ใหญ', tone:'2M4M 4F 2M 4F3F3M', en:'Maria sits in a big chair.', wo:'Maria sit in chair big.'},
-	{l:1, id:'09', c:['dentist'], t:'line09', th:'เขารอหมอฟัน', tone:'3R 2M 3R3M', en:'She waits for the dentist.', wo:'She wait dentist.'},
-	{l:1, id:'10', c:['dentist'], t:'line10', th:'หมอฟันมาถึง', tone:'3R3M 2M3R', en:'The dentist arrives.', wo:'Doctor-tooth come-arrive.'},
-	{l:1, id:'11', c:['dentist'], t:'line11', th:'หมอฟันระวังกับฟันของมาเรีย', tone:'3R3M 2H3M 3L 3M 3R 2M4M', en:'He is careful with Maria\'s teeth.', wo:'Doctor-tooth careful with teeth of Maria.'},
-	{l:1, id:'12', c:['dentist'], t:'line12', th:'หมอฟันให้แปรงสีฟันใหม่แก่เขา', tone:'3R3M 3F 4M2R3M 4L 3L 3R', en:'He gives her a new toothbrush.', wo:'Doctor-tooth give toothbrush new to her.'},
-	{l:1, id:'13', c:['dentist'], t:'line13', th:'มาเรียรุ้สึกดี', tone:'2M4M 3H3L 2M', en:'Maria feels good.', wo:'Maria know-feel good.'},
+	{l:1, id:'01', c:['uptoyou'], t:'', th:'มันเป็นความลับ', tone:'3M 4M 4M3L', en:'It is secret.', wo:'it is the-secret'},
+	{l:1, id:'02', c:['uptoyou'], t:'', th:'แล้วแต่คุณ', tone:'4F 3L 3M', en:'up to you (casual)', wo:'already but you'},
+	{l:1, id:'03', c:['uptoyou'], t:'', th:'ขึ้นอยู่กับคุณ', tone:'3F2M3F 3L 3M', en:'up to you (formal)', wo:'up in with you'},
+	{l:1, id:'04', c:['uptoyou'], t:'', th:'ตามสบาย', tone:'3M 1M3M', en:'"Do as you please.  Make yourself at home."', wo:'follow comfortable'},
+	{l:1, id:'05', c:['uptoyou'], t:'', th:'ไก่ผัดเม็ดมะม่วง', tone:'3L3L4H2H4F', en:'chicken fried with cashews', wo:'chicken fried with cashews'},
+	//{l:1, id:'06', c:['uptoyou'], t:'', th:'', tone:'', en:'', wo:''},
 ]
 
 voyc.components = [
-	{l:1, id:'01', c:[''], t:'', th:'มาเรีย', tone:'', en:'Maria', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'รอ', tone:'', en:'wait', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ห้อง', tone:'', en:'room', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ห้องรอ', tone:'', en:'waiting-room', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ห้อง', tone:'', en:'room', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'เข้า', tone:'', en:'enter', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'เข้าไป', tone:'', en:'enter-goto', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'มา ', tone:'', en:'come', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'มาถึง', tone:'', en:'arrive', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'กับ', tone:'', en:'with', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ให้', tone:'', en:'give', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'แปรง', tone:'', en:'brush', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'สี', tone:'', en:'color', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'ฟัน', tone:'', en:'tooth', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'แปรงสีฟัน', tone:'', en:'toothbrush', wo:''},
-	{l:1, id:'01', c:[''], t:'', th:'แก่', tone:'', en:'to', wo:''},
 ]
 
 patterns = [
@@ -212,7 +176,7 @@ voyc.practice = function(evt) {
 		var r;
 		for (key in voyc.deck) {
 			r = voyc.deck[key];
-			if (r['t'] && r['t'] != ' ') {
+		//	if (r['t'] && r['t'] != ' ') {
 				o = {
 					'i':r['i'],
 					'n':seq++,
@@ -221,7 +185,7 @@ voyc.practice = function(evt) {
 					'a':r['en'],
 				};
 				cards.push(o);
-			}
+		//	}
 		}
 	}
 	
@@ -355,7 +319,7 @@ addEventListener('load', function() {
 	<header class='xfixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>Thai Lesson: Dentist</span>
+			<span id='hdrtitle' style='vertical-align:middle'>Thai Lesson: Up To You</span>
 		</hdr>
 	</header>
 	<section>
