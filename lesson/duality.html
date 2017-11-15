@@ -23,51 +23,27 @@
 <script src='../icon/lib/menu.js'></script>
 
 <script>
-voyc.groupduality = {
+voyc.setduality = {
 	title: 'duality',
-	ida: [1101,1102,1103,1104,1105,1106,1002,1107,1108,1109,1110,1111,1112,1113]
+	ida: [1101,1102,1103] //,1104,1105,1106,1002,1107,1108,1109,1110,1111,1112,1113]
 };
 
-voyc.grouppairs = {
+voyc.setpairs = {
 	title: 'pairs',
-	idseq: 2000000,
-	ida: [[1101,1114,1102],[1103,1114,1104],[1105,1114,1106],[1002,1114,1107],[1108,1114,1109],[1110,1114,1111],[1112,1114,1113]]
+	ida: [[1101,1114,1102],[1103,1114,1104]] //,[1105,1114,1106],[1002,1114,1107],[1108,1114,1109],[1110,1114,1111],[1112,1114,1113]]
 };
 
-voyc.drawGroupSentence = function(group) {
-	s = '';
-	s += "<div select class='panel list blu'>";
-	s += "<h3>" + group.title + "</h3>";
-	s += "<table>";
-	var sen,card;
-	idseq = group.idseq;
-	for (var i=0; i<group.ida.length; i++) {
-		sen = group.ida[i];
-		th = en = translit = '';
-		for (var j=0; j<sen.length; j++) {
-			card = voyc.getCardById(sen[j]);
-			th += card.th;
-			if (translit) translit += ' ';
-			translit += card.translit;
-			if (en) en += ' ';
-			en += card.en;
-		}
-		s += "<tr id=" + idseq + ">";
-		s += "<td class='thai'>" + th + "</td>";
-		s += "<td class='english'>" + translit + "</td>";
-		s += "<td class='english'>" + en + "</td>";
-		s += "</tr>";
-		idseq++;
-	}
-	s += "</table></div>";
-	return s;
-}
+voyc.setnew = {
+	title: 'new',
+	ida: [5000,10000, 20000]
+};
 
 addEventListener('load', function() {
 	// draw panels content
 	s = '';
-	s += voyc.drawGroup(voyc.groupduality);
-	s += voyc.drawGroupSentence(voyc.grouppairs);
+	s += voyc.drawPanel(voyc.setduality);
+	s += voyc.drawPanel(voyc.setpairs);
+	s += voyc.drawPanel(voyc.setnew);
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 

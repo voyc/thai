@@ -36,25 +36,122 @@ voyc.getCardById = function(id) {
 	return card;
 }
 
-voyc.drawGroup = function(group) {
-	s = '';
+// a panel has title and ida
+voyc.drawPanel = function(panel) {
+	var s = '';
 	s += "<div select class='panel list blu'>";
-	s += "<h3>" + group.title + "</h3>";
+	s += "<h3>" + panel.title + "</h3>";
 	s += "<table>";
-	var card;
-	for (var i=0; i<group.ida.length; i++) {
-		card = voyc.getCardById(group.ida[i]);
-		s += "<tr id=" + card.id + ">";
-		s += "<td class='thai'>" + card.th + "</td>";
-		s += "<td class='english'>" + card.translit + "</td>";
-		s += "<td class='english'>" + card.en + "</td>";
-		s += "</tr>";
+	var c = {id:0, th:'', translit:'', en:''};
+	var p = {};
+	for (var i=0; i<panel.ida.length; i++) {  // loop thru each p in panel
+		//p = voyc.getCardById(panel.ida[i]);
+		p = panel.ida[i];
+		c = {id:0, th:'', translit:'', en:''};
+		c = voyc.composeSet(p,c);
+		s += voyc.drawRow(c);
 	}
 	s += "</table></div>";
 	return s;
 }
 
-voyc.drawPanel = function(title,cb) {
+voyc.composeSet = function(p, c) {
+	var item = {};
+	if (p.length) {
+		for (var i=0; i<p.length; i++) {  // loop thru each item in p
+			item = p[i];
+			if (item.length) {
+				c = voyc.composeSet(item, c);  // recursive call to self
+			}
+			else {
+				card = voyc.getCardById(item);
+				switch(card.typ) {
+					case 'word':
+						c = voyc.composeCard(card, c);
+						break;
+					case 'phrase':
+					case 'sentence':
+						c = voyc.composeSet(card.set, c);
+						break;
+				}
+			}
+		}
+	}
+	else {
+		card = voyc.getCardById(p);
+		switch(card.typ) {
+			case 'word':
+				c = voyc.composeCard(card, c);
+				break;
+			case 'phrase':
+			case 'sentence':
+				c = voyc.composeSet(card.set, c);
+				break;
+		}
+	}
+	return c;
+}
+
+// concatenate one card to a group of cards
+// card is input
+// c is input and output
+voyc.composeCard = function(card, c) {
+	c.id += card.id;
+	c.th += card.th;
+	c.translit = voyc.concatWords(c.translit, card.translit);
+	c.en = voyc.concatWords(c.en, card.en);
+	return c;
+}
+
+voyc.concatWords = function(t,s,sep) {
+	sp = sep || ' ';
+	if (t) 
+		t += ' ';
+	t += s;
+	return t;
+}
+
+voyc.drawRow = function(card, s) {
+	var s = '';
+	s += "<tr id=" + card.id + ">";
+	s += "<td class='thai'>" + card.th + "</td>";
+	s += "<td class='english'>" + card.translit + "</td>";
+	s += "<td class='english'>" + card.en + "</td>";
+	s += "</tr>";
+	return s;
+}
+
+voyc.xdrawSetSentence = function(set) {
+	s = '';
+	s += "<div select class='panel list blu'>";
+	s += "<h3>" + set.title + "</h3>";
+	s += "<table>";
+	var sen,card;
+	idseq = set.idseq;
+	for (var i=0; i<set.ida.length; i++) {
+		sen = set.ida[i];
+		th = en = translit = '';
+		for (var j=0; j<sen.length; j++) {
+			card = voyc.getCardById(sen[j]);
+			th += card.th;
+			if (translit) translit += ' ';
+			translit += card.translit;
+			if (en) en += ' ';
+			en += card.en;
+		}
+		s += "<tr id=" + idseq + ">";
+		s += "<td class='thai'>" + th + "</td>";
+		s += "<td class='english'>" + translit + "</td>";
+		s += "<td class='english'>" + en + "</td>";
+		s += "</tr>";
+		idseq++;
+	}
+	s += "</table></div>";
+	return s;
+}
+
+
+voyc.xdrawPanel = function(title,cb) {
 	s = '';
 	s += "<div select class='panel list blu'>";
 	s += "<h3>" + title + "</h3>";
@@ -194,7 +291,10 @@ addEventListener('load', function() {
 	// fix translit
 	for (key in voyc.dict) {
 		card = voyc.dict[key];
-		card.translit = card.translit.replace( /(.*)\_(.*)/, '$1<sup>$2</sup>');
+		if (card.translit) {
+			//card.translit = card.translit.replace( /(.*)\_(.*)/g, '$1<sup>$2</sup>');
+			card.translit = card.translit.replace( /(.*?)\_([FMRHL])/g, '$1<sup>$2</sup>');
+		}
 	}
 	
 	// create post object to call flash

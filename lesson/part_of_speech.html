@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>Double Consonant</title>
+<title>Part of Speech</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
@@ -23,27 +23,28 @@
 <script src='../icon/lib/menu.js'></script>
 
 <script>
-voyc.setshorto = {
-	title: 'implied short o',  // implied short o between beginning and ending consonant
-	ida: [1006,1017,1020,1022,1025,1037,1040,1041,1043,1044,1046,1052,1054,1065,1066,1089,1095,1097,1102],
-};
+voyc.drawGroups = function() {
+	s = '';
+	s += voyc.drawPanel('verb'         , function(r) {return (r.ns == '1' && r.part == 'verb' )});
+	s += voyc.drawPanel('noun'         , function(r) {return (r.ns == '1' && r.part == 'noun' )});
+	s += voyc.drawPanel('adjective'    , function(r) {return (r.ns == '1' && r.part == 'adj'  )});
+	s += voyc.drawPanel('adverb'       , function(r) {return (r.ns == '1' && r.part == 'adv'  )});
+	s += voyc.drawPanel('conjunction'  , function(r) {return (r.ns == '1' && r.part == 'conj' )});
+	s += voyc.drawPanel('interjection' , function(r) {return (r.ns == '1' && r.part == 'intj' )});
+	s += voyc.drawPanel('pronoun'      , function(r) {return (r.ns == '1' && r.part == 'pron' )});
+	s += voyc.drawPanel('preposition'  , function(r) {return (r.ns == '1' && r.part == 'prep' )});
+	voyc.$('content').innerHTML = s;
+	(new voyc.Minimal()).attachAll(voyc.$('content'));
+}
 
-voyc.setdipthong = {
-	title: 'dipthong', // a cluster of consonants pronounced together
-	ida:[1014],
-};
 
 addEventListener('load', function() {
 	// draw panels content
-	s = '';
-	s += voyc.drawSet(voyc.setshorto);
-	s += voyc.drawSet(voyc.setdipthong);
-	voyc.$('content').innerHTML = s;
-	(new voyc.Minimal()).attachAll(voyc.$('content'));
+	voyc.drawGroups();
 
 	// practice button
 	voyc.$('practice').addEventListener('click', function(event) {
-		voyc.practice({'title': 'Thai Double Consonants'});
+		voyc.practice({'title': 'Thai Short Words'});
 	});
 
 	// load sounds, etc.
@@ -55,7 +56,7 @@ addEventListener('load', function() {
 	<header class='fixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>100 Short Words</span>
+			<span id='hdrtitle' style='vertical-align:middle'>Parts of Speech</span>
 			<button id="practice" >Practice</button>
 		</hdr>
 	</header>
