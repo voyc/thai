@@ -36,6 +36,20 @@ voyc.getCardById = function(id) {
 	return card;
 }
 
+// story
+voyc.drawStory = function(storyid) {
+	// read from dict where typ = 'sentence' and story = storyid order by line
+	var dic = {};
+	var s = '';
+	for (var i=0; i<voyc.dict.length; i++) {
+		dic = voyc.dict[i];
+		if (dic.typ == 'sentence' && dic.story == storyid) {
+			s += voyc.composeSentenceEnglish(dic);
+		}
+	}
+	document.getElementById('content').innerHTML = s;
+}
+
 // a panel has title and ida
 voyc.drawPanel = function(panel) {
 	var s = '';
@@ -44,12 +58,30 @@ voyc.drawPanel = function(panel) {
 	s += "<table>";
 	var c = {id:0, th:'', translit:'', en:''};
 	var p = {};
-	for (var i=0; i<panel.ida.length; i++) {  // loop thru each p in panel
-		//p = voyc.getCardById(panel.ida[i]);
-		p = panel.ida[i];
-		c = {id:0, th:'', translit:'', en:''};
-		c = voyc.composeSet(p,c);
-		s += voyc.drawRow(c);
+	if (panel.cb) {
+		for (key in voyc.dict) {
+			card = voyc.dict[key];
+			if (panel.cb(card)) {
+				if (card.set) {
+					p = card.set;
+					c = {id:0, th:'', translit:'', en:''};
+					c = voyc.composeSet(p,c);
+					s += voyc.drawRow(c);
+				}
+				else {
+					voyc.composeCard(card);
+				}
+			}
+		}
+	}
+	else if (panel.ida) {
+		for (var i=0; i<panel.ida.length; i++) {  // loop thru each p in panel
+			//p = voyc.getCardById(panel.ida[i]);
+			p = panel.ida[i];
+			c = {id:0, th:'', translit:'', en:''};
+			c = voyc.composeSet(p,c);
+			s += voyc.drawRow(c);
+		}
 	}
 	s += "</table></div>";
 	return s;
@@ -69,7 +101,9 @@ voyc.composeSet = function(p, c) {
 					case 'word':
 						c = voyc.composeCard(card, c);
 						break;
+					case 'cword':
 					case 'phrase':
+					case 'expression':
 					case 'sentence':
 						c = voyc.composeSet(card.set, c);
 						break;
@@ -151,7 +185,7 @@ voyc.xdrawSetSentence = function(set) {
 }
 
 
-voyc.xdrawPanel = function(title,cb) {
+voyc.drawPanelF = function(title,cb) {
 	s = '';
 	s += "<div select class='panel list blu'>";
 	s += "<h3>" + title + "</h3>";
@@ -169,7 +203,7 @@ voyc.xdrawPanel = function(title,cb) {
 	s += "</table></div>";
 	return s;
 }
-	
+
 voyc.practice = function(opt) {
 	// pull an array of selected elements, or all
 	var ra = document.querySelectorAll('tr[id].selected');

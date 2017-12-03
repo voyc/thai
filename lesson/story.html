@@ -2,16 +2,15 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>One Syllable Words</title>
+<title>Story</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
 <link  href='../minimal/minimal.css' rel='stylesheet' type='text/css'></link>
 <link  href='../icon/icon.css' rel='stylesheet' type='text/css'></link>
-<link  href='../css/lesson.css' rel='stylesheet' type='text/css'></link>
 <script src='../js/namespace.js'></script>
-<script src='../js/dict.js'></script>
 <script src='../js/lesson.js'></script>
+<script src='../js/dict.js'></script>
 <script src='../minimal/minimal.js'></script>
 <script src='../jslib/utils.js'></script>
 <script src='../jslib/dragger.js'></script>
@@ -22,52 +21,98 @@
 <script src='../icon/lib/speaker.js'></script>
 <script src='../icon/lib/menu.js'></script>
 
-<script>
-voyc.drawGroups = function() {
-	s = '';
-	s += voyc.drawPanelF('mid-class live'        , function(r) {return (r.ccls == 'm' && r.end == 'live' && r.mark == 0)});
-	s += voyc.drawPanelF('high-class live'       , function(r) {return (r.ccls == 'h' && r.end == 'live' && r.mark == 0)});
-	s += voyc.drawPanelF('low-class live'        , function(r) {return (r.ccls == 'l' && r.end == 'live' && r.mark == 0)});
-	s += '<hr/>';
-	s += voyc.drawPanelF('mid-class dead'        , function(r) {return (r.ccls == 'm' && r.end == 'dead')});
-	s += voyc.drawPanelF('high-class dead'       , function(r) {return (r.ccls == 'h' && r.end == 'dead')});
-	s += voyc.drawPanelF('low-class dead short'  , function(r) {return (r.ccls == 'l' && r.end == 'dead' && r.tone == 'H')});
-	s += voyc.drawPanelF('low-class dead long'   , function(r) {return (r.ccls == 'l' && r.end == 'dead' && r.tone == 'F')});
-	s += '<hr/>';
-	s += voyc.drawPanelF('mid-class live mark 1' , function(r) {return (r.ccls == 'm' && r.end == 'live' && r.mark == 1)});
-	s += voyc.drawPanelF('high-class live mark 1', function(r) {return (r.ccls == 'h' && r.end == 'live' && r.mark == 1)});
-	s += voyc.drawPanelF('low-class live mark 1' , function(r) {return (r.ccls == 'l' && r.end == 'live' && r.mark == 1)});
-	s += '<hr/>';
-	s += voyc.drawPanelF('mid-class live mark 2' , function(r) {return (r.ccls == 'm' && r.end == 'live' && r.mark == 2)});
-	s += voyc.drawPanelF('high-class live mark 2', function(r) {return (r.ccls == 'h' && r.end == 'live' && r.mark == 2)});
-	s += voyc.drawPanelF('low-class live mark 2' , function(r) {return (r.ccls == 'l' && r.end == 'live' && r.mark == 2)});
-	voyc.$('content').innerHTML = s;
-	(new voyc.Minimal()).attachAll(voyc.$('content'));
+<style>
+.thai {
+	font-size:1.5rem;
 }
+.english {
+	font-size:1rem;
+}
+sentence {
+	display:block;
+	border-bottom: 1px solid gray;
+}
+word[break] {
+	border-left: 1px solid gray;
+}
+word {
+	margin-right: .5rem;
+}
+sylcont {
+	position:relative;
+	margin-right: .5rem;
+}
+sylspc {
+	opacity:0.0;
+}
+syllable {
+	position:absolute;
+}
+syllable[tone=M] {
+	color:blue;
+}
+syllable[tone=H] {
+	transform: translate(0,-.5rem);
+	color:blue;
+}
+syllable[tone=M] {
+	color:green;
+}
+syllable[tone=L] {
+	transform: translate(0,.5rem);
+	color:brown;
+}
+syllable[tone=R] {
+	transform: rotate(-30deg);
+	color:red;
+}
+syllable[tone=F] {
+	transform: rotate(30deg);
+	color:orange;
+}
+button[a] {
+	margin-right:.3rem;
+}
+</style>
 
+<script>
 
 addEventListener('load', function() {
-	// draw panels content
-	voyc.drawGroups();
-
-	// practice button
-	voyc.$('practice').addEventListener('click', function(event) {
-		voyc.practice({'title': 'Thai Short Words'});
-	});
-
-	// load sounds, etc.
 	voyc.initLesson();
+
+	// draw text
+	voyc.drawStory(100);
+
+	// attach button handlers
+	var buttons = document.querySelectorAll('button[dmode]');
+	for (var ndx=0; ndx<buttons.length; ndx++) {
+		buttons[ndx].addEventListener('click', function(evt) {
+			var dmode = evt.currentTarget.getAttribute('dmode');
+			voyc.drawDeck(voyc.deck, dmode);
+		}, false);
+	}
+
+	// create post object
+	voyc.post = new voyc.Post('flash','http://flash.voyc.com','../../flash/index.html');
 }, false);
 </script>
 </head>
 <body>
-	<header class='fixed'>
+	<header class='xfixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>Short Words</span>
-			<button id="practice" >Practice</button>
+			<span id='hdrtitle' style='vertical-align:middle'>Thai Lesson: Story</span>
 		</hdr>
 	</header>
+	<section>
+		<button dmode=Thai>Thai</button>
+		<button dmode=Tone>Tone</button>
+		<button dmode=English>English</button>
+		<button dmode=Literal>Literal</button>
+	</section>
+	<section>
+		<button id="practice" >Practice</button>
+	</section>
 
 	<section id='content'></section>
 

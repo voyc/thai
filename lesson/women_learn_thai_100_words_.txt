@@ -1,0 +1,104 @@
+(.*?)\:[\ \t](.*?)[\ \t]\/(.*?)\/
+th:'$2',\ttranslit:'$3',\thint:'',\tpart:'',\tlvl:1, en:'$1',
+
+
+already (tense marker): แล้ว /láew/
+be [v]:	เป็น /bpen/
+th:'อยู่',	translit:'yòo',	hint:'',	part:'',	lvl:1, en:'be at, live at, stay',
+th:'สวย',	translit:'sŭay',	hint:'',	part:'',	lvl:1, en:'beautiful, attractive, pretty',
+th:'ใหญ่',	translit:'yài',	hint:'',	part:'',	lvl:1, en:'big',
+can: ได้	/dâai/
+cannot:	ไม่ได้ /mâi-dâai/
+come, arrive (shows direction to the speaker):	มา /maa/
+delicious: อร่อย	/a-ròi/
+do, make: ทำ /tam/
+doctor: หมอ /mŏr/
+don’t!: อย่า! /yàa/
+excuse me, I’m sorry: ขอโทษ /kŏr tôht/
+expensive: แพง	/paeng/
+far: ไกล /glai/
+fast: เร็ว /reo/
+full (food): อิ่ม	/ìm/
+get, receive, accept: รับ /ráp/
+go, leave, depart (shows direction away from the speaker): ไป /bpai/
+good: ดี	/dee/
+have: มี	/mee/
+he, she, him, her, they, them: เขา /kăo/
+hello, goodbye, see you later: สวัสดี /sà-wàt-dee/
+help, aid, assist [v]: ช่วย /chûay/
+here: ที่นี่ /têe-nêe/
+hot (spicy): เผ็ด /pèt/
+hot (temperature): ร้อน /rón/
+hotel: โรงแรม /rohng-raem/
+how: ยังไง /yang-ngai/
+how much, how many: เท่าไหร่ /tâo-rài/
+how much, how many: กี่ /gèe/
+hungry: หิวข้าว /hĭw kâao/
+I, me, my [f]: ฉัน /chăn/
+I, me, my [m]: ผม /pŏm/
+injured: บาดเจ็บ /bàat jèp/
+know (someone, something, someplace): รู้จัก /róo-jàk/
+know (something): ทราบ /sâap/ รู้ /róo/
+left: ซ้าย /sáai/
+like: ชอบ /chôp/
+little bit: นิดหน่อย /nít-nòi/
+look, see, appear, seem, watch: ดู /doo/
+lost: หลงทาง /lŏng taang/
+market: ตลาด /dtà-làat/
+name: ชื่อ /chêu/
+near: ใกล้ /glâi/
+no problem, that’s ok, nevermind: ไม่เป็นไร /mâi-bpen-rai/
+no, not: ไม่ /mâi/
+now, right now, at this moment:	ตอนนี้ /dton-née/
+stop, park: จอด /jòt/
+one more time: อีกที /èek-tee/
+person, people, classifier for people: คน /kon/
+police: ตำรวจ /dtam-rùat/
+P: Polite particle [f]: ค่ะ /kâ/
+P: Polite particle [m]: ครับ /kráp/
+P: Question particle: ไหม /măi/
+P: Question particle [f]: คะ /ká/
+P: Question, confirmative [m/f]: เหรอ or หรือ /rĕr or rĕu/
+P: Question, “what about …?”: ล่ะ /lâ/
+P: Softener, makes it more persuasive: นะ /ná/
+P: Softens request or command, a bit: หน่อย /nòi/
+P: Used in requests, congratulations or condolences ด้วย (ค่ะ/นะคะ) /dûay/ (ka/ná-ka)
+really:	จริงๆ /jing-jing/
+restaurant: ร้านอาหาร /ráan aa-hăan/
+right: ขวา /kwăa/
+slowly, slower:	ช้าช้า /cháa-cháa/
+speak: พูด /pôot/
+stop!: หยุด! /yùt/
+straight: ตรงไป	/dtrong-bpai/
+sure [v]: แน่ใจ	/nâe-jai/
+Thai currency: บาท /bàat/
+thank you: ขอบคุณ /kòp-kun/
+that: นั่น /nán/
+there:	ที่นั่น /têe-nân/
+there (further): ที่โน่น /têe-nôhn/
+think, calculate: คิด /kít/
+thirsty: หิวน้ำ /hĭw-náam/
+this, these: นี่ /nêe/
+tired: เหนื่อย /nèuay/
+to, at, that, which, who, the place, area: ที่ /têe/
+today: วันนี้ /wan-née/
+toilet:	ห้องน้ำ /hông-náam/
+tomorrow: พรุ่งนี้ /prûng-née/
+turn: เลี้ยว /líeow/
+understand: เข้าใจ /kâo-jai/
+u-turn: กลับรถ /glàp-rót/
+very much, a lot, very:	มาก /mâak/
+want, take, bring: เอา /ao/ (รับ /ráp/)
+want to: อยาก /yàak/
+we, us, our: เรา	/rao/
+well, fine: สบายดี /sà-baai-dee/
+what: อะไร /a-rai/
+when, whenever:	เมื่อไหร่	/mêua-rài/
+where (shortened version of ที่ไหน), whichever one: ไหน /năi/
+where is: ที่ไหน	/têe năi/
+who, someone, anyone: ใคร /krai/
+why: ทำไม /tam-mai/
+write: เขียน /kĭan/
+yes: key-word response, ใช่, ครับ, ค่ะ /châi, kráp, kâ/
+yesterday: เมื่อวานนี้ /mêua-waan-née/
+you: คุณ	/kun/
