@@ -50,87 +50,101 @@ voyc.drawStory = function(storyid) {
 	document.getElementById('content').innerHTML = s;
 }
 
-// a panel has title and ida
+/**
+	entry point, draw a panel
+	input panel is an object containing title and set, or title and cb
+**/
 voyc.drawPanel = function(panel) {
 	var s = '';
 	s += "<div select class='panel list blu'>";
 	s += "<h3>" + panel.title + "</h3>";
 	s += "<table>";
-	var c = {id:0, th:'', translit:'', en:''};
-	var p = {};
+
+	// build set
 	if (panel.cb) {
+		panel.set = panel.set || [];
 		for (key in voyc.dict) {
 			card = voyc.dict[key];
 			if (panel.cb(card)) {
-				if (card.set) {
-					p = card.set;
-					c = {id:0, th:'', translit:'', en:''};
-					c = voyc.composeSet(p,c);
-					s += voyc.drawRow(c);
-				}
-				else {
-					voyc.composeCard(card);
-				}
+				panel.set.push(card.id);
 			}
 		}
 	}
-	else if (panel.ida) {
-		for (var i=0; i<panel.ida.length; i++) {  // loop thru each p in panel
-			//p = voyc.getCardById(panel.ida[i]);
-			p = panel.ida[i];
-			c = {id:0, th:'', translit:'', en:''};
-			c = voyc.composeSet(p,c);
+
+	// compose and draw
+	var p;
+	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
+		p = panel.set[i];
+		c = voyc.compose(p);
+		if (c) {
 			s += voyc.drawRow(c);
 		}
 	}
+
 	s += "</table></div>";
 	return s;
 }
 
-voyc.composeSet = function(p, c) {
-	var item = {};
-	if (p.length) {
-		for (var i=0; i<p.length; i++) {  // loop thru each item in p
-			item = p[i];
-			if (item.length) {
-				c = voyc.composeSet(item, c);  // recursive call to self
-			}
-			else {
-				card = voyc.getCardById(item);
-				switch(card.typ) {
-					case 'word':
-						c = voyc.composeCard(card, c);
-						break;
-					case 'cword':
-					case 'phrase':
-					case 'expression':
-					case 'sentence':
-						c = voyc.composeSet(card.set, c);
-						break;
-				}
-			}
+/**
+	Compose a set of cards.
+	A set can contain nested sets.  set=[1,2,[3,4,[5,6,7]],8,9]
+	input set array; Each element is an id or an array of ids.  
+	output/output c is an object that looks very much like a card
+*/
+voyc.firstsetid = 1000000;
+voyc.nextsetid = voyc.firstsetid;
+voyc.tempset = {};
+
+voyc.compose = function(set, c) {
+	// first time, initialize output c
+	var id = set;
+	if (!c) {
+		if (set.length) {
+			id = voyc.nextsetid++;
+			voyc.tempset[id] = set;
+		}
+		else if (set >= voyc.firstsetid ) {
+			id = set;
+			set = voyc.tempset[id];
 		}
 	}
-	else {
-		card = voyc.getCardById(p);
-		switch(card.typ) {
-			case 'word':
-				c = voyc.composeCard(card, c);
-				break;
-			case 'phrase':
-			case 'sentence':
-				c = voyc.composeSet(card.set, c);
-				break;
+	c = {'id':id, th:'', en:'', translit:''};
+
+	// force set to always be an array
+	if (!set.length)  set = [set];
+
+	var item = {};
+	for (var i=0; i<set.length; i++) {  // loop thru each item in set
+		item = set[i];
+		if (item.length) {
+			c = voyc.compose(item, c);  // recursive call to self
+		}
+		else {
+			card = voyc.getCardById(item);  // ** get card
+			if (card.set) {
+				c = voyc.compose(card.set, c);  // recursive call to self
+			}
+			else {
+				c = voyc.composeCard(card, c);  // ** compose card
+			}
 		}
 	}
 	return c;
 }
 
-// concatenate one card to a group of cards
-// card is input
-// c is input and output
+/**
+	compose a set
+	input p is either a set or a single id
+	output c
+*/
+
+/** 
+	concatenate one card to a group of cards
+	card is input
+	c is input and output
+*/
 voyc.composeCard = function(card, c) {
-	c.id += card.id;
+	if (!c.id)  c.id = card.id;
 	c.th += card.th;
 	c.translit = voyc.concatWords(c.translit, card.translit);
 	c.en = voyc.concatWords(c.en, card.en);
@@ -155,79 +169,33 @@ voyc.drawRow = function(card, s) {
 	return s;
 }
 
-voyc.xdrawSetSentence = function(set) {
-	s = '';
-	s += "<div select class='panel list blu'>";
-	s += "<h3>" + set.title + "</h3>";
-	s += "<table>";
-	var sen,card;
-	idseq = set.idseq;
-	for (var i=0; i<set.ida.length; i++) {
-		sen = set.ida[i];
-		th = en = translit = '';
-		for (var j=0; j<sen.length; j++) {
-			card = voyc.getCardById(sen[j]);
-			th += card.th;
-			if (translit) translit += ' ';
-			translit += card.translit;
-			if (en) en += ' ';
-			en += card.en;
-		}
-		s += "<tr id=" + idseq + ">";
-		s += "<td class='thai'>" + th + "</td>";
-		s += "<td class='english'>" + translit + "</td>";
-		s += "<td class='english'>" + en + "</td>";
-		s += "</tr>";
-		idseq++;
-	}
-	s += "</table></div>";
-	return s;
-}
-
-
-voyc.drawPanelF = function(title,cb) {
-	s = '';
-	s += "<div select class='panel list blu'>";
-	s += "<h3>" + title + "</h3>";
-	s += "<table>";
-	for (key in voyc.dict) {
-		card = voyc.dict[key];
-		if (cb(card)) {
-			s += "<tr id=" + card.id + ">";
-			s += "<td class='thai'>" + card.th + "</td>";
-			s += "<td class='english'>" + card.translit + "</td>";
-			s += "<td class='english'>" + card.en + "</td>";
-			s += "</tr>";
-			}
-		}
-	s += "</table></div>";
-	return s;
-}
-
 voyc.practice = function(opt) {
 	// pull an array of selected elements, or all
 	var ra = document.querySelectorAll('tr[id].selected');
 	if (!ra.length) {
 		ra = document.querySelectorAll('tr[id]');
 	}
+	if (!ra.length) {
+		console.log( 'array is empty');
+		alert( 'array is empty');
+		return;
+	}
 
 	// build data array pulling cards from dict
 	var cards = [];
-	var r,o,a;
-	if (ra.length) {
-		var seq = 1;
-		for (var i=0; i<ra.length; i++) {
-			a = ra[i];
-			r = voyc.getCardById(a.id);
-			o = {
-				'i':r['id'],
-				'n':seq++,
-				'q':r['th'],
-				't':r['translit'],
-				'a':r['en'],
-			};
-			cards.push(o);
-		}
+	var a,o;
+	var seq = 1;
+	for (var i=0; i<ra.length; i++) {
+		a = ra[i];
+		c = voyc.compose(parseInt(a.id));
+		o = {
+			'i':c['id'],
+			'n':seq++,
+			'q':c['th'],
+			't':c['translit'],
+			'a':c['en'],
+		};
+		cards.push(o);
 	}
 	
 	// add options and cards to flashdata
@@ -235,6 +203,7 @@ voyc.practice = function(opt) {
 	voyc.merge(data,opt)
 	data['cards'] = cards	
 
+	// send to flash
 	voyc.post.post(data);
 }
 

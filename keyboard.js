@@ -13,6 +13,7 @@ voyc.Keyboard = function() {
 	this.typing = true;
 	this.alphabet = {};  // table will be loaded dynamically from ./alphabet/th.js file
 	this.post = new voyc.Post('flash','http://flash.voyc.com','../flash/index.html');
+	this.holdSelection = false;
 }
 
 voyc.Keyboard.configdefault = {	
@@ -27,6 +28,7 @@ voyc.Keyboard.prototype = {
 		this.drawKeys();
 		this.attachDomEventHandlers();
 		this.initConfig();
+		(new voyc.Minimal).attachAll(container);
 	},
 
 	getConfig: function(name) {
@@ -83,8 +85,9 @@ voyc.Keyboard.prototype = {
 		sanal += '<tr><td><td class="hdr pool" tag="combo">Combo</td></tr>';
 		sanal += '</table></fieldset></td>';
 		sanal += '<td>';
-		sanal += '<button id="practice" >Practice</button>';
+		sanal += '<button id="practice" >Flash</button>';
 		sanal += '<button id="clearselection" >Clear Selection</button>';
+		sanal += '<button toggle id="holdselection" >Hold Selection</button>';
 		sanal += '</td></tr>';
 		sanal += '</table>';
 
@@ -208,6 +211,11 @@ voyc.Keyboard.prototype = {
 			self.unhighAll();
 		});
 
+		// hold selection button
+		voyc.$('holdselection').addEventListener('click', function(event) {
+			self.holdSelection = !self.holdSelection;
+		});
+
 		// practice button
 		voyc.$('practice').addEventListener('click', function(event) {
 			self.practice(event);
@@ -232,7 +240,7 @@ voyc.Keyboard.prototype = {
 	},
 
 	highTag: function(event, tag, boo) {
-		if (!event.ctrlKey) {
+		if (!event.ctrlKey && !this.holdSelection) {
 			this.unhighAll();
 		}
 		var to = this.alphabet['tags'][tag];
@@ -335,7 +343,7 @@ voyc.Keyboard.prototype = {
 
 		// if NOT in typing mode, highlight the key
 		else {
-			if (!event.ctrlKey) {
+			if (!event.ctrlKey && !this.holdSelection) {
 				this.unhighAll();
 			}
 			e.classList.toggle('selected');

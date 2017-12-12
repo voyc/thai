@@ -25,25 +25,25 @@
 <script>
 voyc.setshorto = {
 	title: 'implied short o',  // implied short o between beginning and ending consonant
-	ida: [1006,1017,1020,1022,1025,1037,1040,1041,1043,1044,1046,1052,1054,1065,1066,1089,1095,1097,1102],
+	set: [1006,1017,1020,1022,1025,1037,1040,1041,1043,1044,1046,1052,1054,1065,1066,1089,1095,1097,1102],
 };
 
 voyc.setdipthong = {
 	title: 'dipthong', // a cluster of consonants pronounced together
-	ida:[1014],
+	set:[1014],
 };
 
 addEventListener('load', function() {
 	// draw panels content
 	s = '';
-	s += voyc.drawSet(voyc.setshorto);
-	s += voyc.drawSet(voyc.setdipthong);
+	s += voyc.drawPanel(voyc.setshorto);
+	s += voyc.drawPanel(voyc.setdipthong);
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 
 	// practice button
 	voyc.$('practice').addEventListener('click', function(event) {
-		voyc.practice({'title': 'Thai Double Consonants'});
+		voyc.practice({'title': 'Double Consonants'});
 	});
 
 	// load sounds, etc.
@@ -55,7 +55,7 @@ addEventListener('load', function() {
 	<header class='fixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>100 Short Words</span>
+			<span id='hdrtitle' style='vertical-align:middle'>Double Consonants</span>
 			<button id="practice" >Practice</button>
 		</hdr>
 	</header>

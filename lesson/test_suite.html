@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>One Syllable Words</title>
+<title>Test Suite</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
@@ -23,25 +23,54 @@
 <script src='../icon/lib/menu.js'></script>
 
 <script>
+voyc.setsetwords = {
+	title: 'Words',
+	set:[1114,1117,1081,1199]
+};
+
+voyc.setsetnested = {
+	title: 'Nested',
+	set: [[1101,1114,1102],[1103,1114,1104]]
+};
+
+voyc.setsetwordsandnested = {
+	title: 'Words and nested',
+	set:[1114,1117,[1101,1114,1102],[1103,1114,1104],1081,1199]
+};
+
+voyc.setsetwordsets = {
+	title: 'Set of words',
+	set:[20500, 20500]
+};
+
+voyc.setcbwords = {
+	title: 'cb words',
+	cb: function(r) {return (r.part == 'conj')}
+};
+
+voyc.setcbsets = {
+	title: 'cb sets',
+	cb: function(r) {return (r.typ == 'expression')}
+};
+
 voyc.drawGroups = function() {
 	s = '';
-	s += voyc.drawPanel({title:'mid-class live'        , cb:function(r) {return (r.ccls == 'm' && r.end == 'live' && r.mark == 0  )}});
-	s += voyc.drawPanel({title:'high-class live'       , cb:function(r) {return (r.ccls == 'h' && r.end == 'live' && r.mark == 0  )}});
-	s += voyc.drawPanel({title:'low-class live'        , cb:function(r) {return (r.ccls == 'l' && r.end == 'live' && r.mark == 0  )}}); 	s += '<hr/>';
-	s += voyc.drawPanel({title:'mid-class dead'        , cb:function(r) {return (r.ccls == 'm' && r.end == 'dead'                 )}});
-	s += voyc.drawPanel({title:'high-class dead'       , cb:function(r) {return (r.ccls == 'h' && r.end == 'dead'                 )}});
-	s += voyc.drawPanel({title:'low-class dead short'  , cb:function(r) {return (r.ccls == 'l' && r.end == 'dead' && r.tone == 'H')}});
-	s += voyc.drawPanel({title:'low-class dead long'   , cb:function(r) {return (r.ccls == 'l' && r.end == 'dead' && r.tone == 'F')}}); s += '<hr/>';
-	s += voyc.drawPanel({title:'mid-class live mark 1' , cb:function(r) {return (r.ccls == 'm' && r.end == 'live' && r.mark == 1  )}});
-	s += voyc.drawPanel({title:'high-class live mark 1', cb:function(r) {return (r.ccls == 'h' && r.end == 'live' && r.mark == 1  )}});
-	s += voyc.drawPanel({title:'low-class live mark 1' , cb:function(r) {return (r.ccls == 'l' && r.end == 'live' && r.mark == 1  )}}); 	s += '<hr/>';
-	s += voyc.drawPanel({title:'mid-class live mark 2' , cb:function(r) {return (r.ccls == 'm' && r.end == 'live' && r.mark == 2  )}});
-	s += voyc.drawPanel({title:'high-class live mark 2', cb:function(r) {return (r.ccls == 'h' && r.end == 'live' && r.mark == 2  )}});
-	s += voyc.drawPanel({title:'low-class live mark 2' , cb:function(r) {return (r.ccls == 'l' && r.end == 'live' && r.mark == 2  )}});
+	console.log('start');
+	s += voyc.drawPanel(voyc.setsetwords);
+	console.log('setsetwords');
+	s += voyc.drawPanel(voyc.setsetnested);
+	console.log('setsetnested');
+	s += voyc.drawPanel(voyc.setsetwordsandnested);
+	console.log('setsetwordsandnested');
+	s += voyc.drawPanel(voyc.setsetwordsets);
+	console.log('setsetwordsets');
+	s += voyc.drawPanel(voyc.setcbwords);
+	console.log('setcbwords');
+	s += voyc.drawPanel(voyc.setcbsets);
+	console.log('setcbsets');
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 }
-
 
 addEventListener('load', function() {
 	// draw panels content
@@ -49,7 +78,7 @@ addEventListener('load', function() {
 
 	// practice button
 	voyc.$('practice').addEventListener('click', function(event) {
-		voyc.practice({'title': 'One Syllable Words'});
+		voyc.practice({'title': 'Test Suite'});
 	});
 
 	// load sounds, etc.
@@ -61,7 +90,7 @@ addEventListener('load', function() {
 	<header class='fixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>One Syllable Words</span>
+			<span id='hdrtitle' style='vertical-align:middle'>Test Suite</span>
 			<button id="practice" >Practice</button>
 		</hdr>
 	</header>

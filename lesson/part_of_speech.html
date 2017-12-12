@@ -25,14 +25,14 @@
 <script>
 voyc.drawGroups = function() {
 	s = '';
-	s += voyc.drawPanel('verb'         , function(r) {return (r.ns == '1' && r.part == 'verb' )});
-	s += voyc.drawPanel('noun'         , function(r) {return (r.ns == '1' && r.part == 'noun' )});
-	s += voyc.drawPanel('adjective'    , function(r) {return (r.ns == '1' && r.part == 'adj'  )});
-	s += voyc.drawPanel('adverb'       , function(r) {return (r.ns == '1' && r.part == 'adv'  )});
-	s += voyc.drawPanel('conjunction'  , function(r) {return (r.ns == '1' && r.part == 'conj' )});
-	s += voyc.drawPanel('interjection' , function(r) {return (r.ns == '1' && r.part == 'intj' )});
-	s += voyc.drawPanel('pronoun'      , function(r) {return (r.ns == '1' && r.part == 'pron' )});
-	s += voyc.drawPanel('preposition'  , function(r) {return (r.ns == '1' && r.part == 'prep' )});
+	s += voyc.drawPanel({title:'verb'         , cb:function(r) {return (r.ns == '1' && r.part == 'verb' )}});
+	s += voyc.drawPanel({title:'noun'         , cb:function(r) {return (r.ns == '1' && r.part == 'noun' )}});
+	s += voyc.drawPanel({title:'adjective'    , cb:function(r) {return (r.ns == '1' && r.part == 'adjx' )}});
+	s += voyc.drawPanel({title:'adverb'       , cb:function(r) {return (r.ns == '1' && r.part == 'advx' )}});
+	s += voyc.drawPanel({title:'conjunction'  , cb:function(r) {return (r.ns == '1' && r.part == 'conj' )}});
+	s += voyc.drawPanel({title:'interjection' , cb:function(r) {return (r.ns == '1' && r.part == 'intj' )}});
+	s += voyc.drawPanel({title:'pronoun'      , cb:function(r) {return (r.ns == '1' && r.part == 'pron' )}});
+	s += voyc.drawPanel({title:'preposition'  , cb:function(r) {return (r.ns == '1' && r.part == 'prep' )}});
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 }

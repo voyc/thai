@@ -16,6 +16,16 @@ Thai: separate words and tilt for
 ö	O diaeresis	simple grunt uh
 */
 
+/*
+typ = 
+	glyph
+	word
+	cword
+	phrase
+	expression
+	sentence
+*/
+
 voyc.components = [
 ]
 
@@ -26,6 +36,10 @@ patterns = [
 
 voyc.dict = [
 	// hint:'2M4M-3M3M 3M4H' 1 number + 1 letter for each syllable, space to separate words, hyphen to separate word and rythym
+
+	{id:100, typ:'glyph', ccls:'0', end:'', tone:'', th:'ๆ', 	translit:'',	en:'(repeat)'},
+
+
 	{id:1001, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ใจ',	translit:'jai_M',	hint:'2M', part:'noun', lvl:9, en:'heart'},
 	{id:1002, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ดี',	translit:'dii_M',	hint:'2M', part:'adjx', lvl:1, en:'good'},
 	{id:1003, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'เอา',	translit:'ao_M',	hint:'3M', part:'verb', lvl:1, en:'take'},
@@ -88,7 +102,7 @@ voyc.dict = [
 	{id:1063, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ฟัน',	translit:'fan_M',	hint:'3M', part:'noun', lvl:9, en:'teeth'},
 	{id:1064, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ฝัน',	translit:'fan_R',	hint:'3R', part:'noun', lvl:9, en:'dream'},
 	{id:1065, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ฝน',	translit:'fon_R',	hint:'2R', part:'noun', lvl:9, en:'rain'},
-	{id:1066, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'ตก',	translit:'dtak_L',	hint:'2L', part:'verb', lvl:9, en:'to fall'},
+	{id:1066, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'ตก',	translit:'dtok_L',	hint:'2L', part:'verb', lvl:9, en:'to fall'},
 	{id:1067, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'ชื่อ',	translit:'chʉʉ_F',	hint:'4F', part:'noun', lvl:1, en:'name'},
 	{id:1068, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'เพิ่ม',	translit:'pööm_F',	hint:'4F', part:'verb', lvl:9, en:'to add'},
 	{id:1069, typ:'word', ns:1, ccls:'m', end:'live', mark:'1', tone:'L', th:'ดื่ม',	translit:'dʉʉm_L',	hint:'4L', part:'verb', lvl:9, en:'drink'},
@@ -96,20 +110,20 @@ voyc.dict = [
 	{id:1071, typ:'word', ns:1, ccls:'h', end:'live', mark:'1', tone:'L', th:'ส่าย',	translit:'saai_L',	hint:'4L', part:'verb', lvl:9, en:'to sway'},
 	{id:1072, typ:'word', ns:1, ccls:'h', end:'live', mark:'1', tone:'L', th:'ใหม่',	translit:'mai_L',	hint:'4L', part:'adjx', lvl:9, en:'new'},
 	{id:1073, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'ไม่',	translit:'mai_F',	hint:'3F', part:'adjx', lvl:1, en:'not'},
-	{id:1074, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'ที่',	translit:'tii_F',	hint:'3F', part:'prep', lvl:1, en:'at'},
+	{id:1074, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'ที่',	translit:'tii_F',	hint:'3F', part:'prep', lvl:1, en:'at/a place'},
 	{id:1075, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'นี้',	translit:'nii_H',	hint:'3H', part:'pron', lvl:9, en:'this'},
 	{id:1076, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'นั่ง',	translit:'nang_F',	hint:'4F', part:'verb', lvl:9, en:'sit'},
 	{id:1077, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'แม่',	translit:'mae_F',	hint:'3F', part:'noun', lvl:9, en:'mom'},
 	{id:1078, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'พ่อ',	translit:'paw_F',	hint:'3F', part:'noun', lvl:9, en:'dad'},
 	{id:1079, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'เล่น',	translit:'len_F',	hint:'4F', part:'verb', lvl:9, en:'play'},
 	{id:1080, typ:'word', ns:1, ccls:'m', end:'live', mark:'2', tone:'F', th:'ได้',	translit:'dai_F',	hint:'3F', part:'verb', lvl:1, en:'can'},
-	{id:1081, typ:'word', ns:1, ccls:'m', end:'live', mark:'2', tone:'F', th:'ด้วย',	translit:'duaai_F',	hint:'4F', part:'advx', lvl:9, en:'also'},
+	{id:1081, typ:'word', ns:1, ccls:'m', end:'live', mark:'2', tone:'F', th:'ด้วย',	translit:'duaai_F',	hint:'4F', part:'conj', lvl:9, en:'also'},
 	{id:1082, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'เข้า',	translit:'kao_F',	hint:'4F', part:'verb', lvl:9, en:'enter'},
-	{id:1083, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'รู้',	translit:'ruu_H',	hint:'3H', part:'noun', lvl:9, en:'hole'},
+	{id:1083, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'รู้',	translit:'ruu_H',	hint:'2H', part:'verb', lvl:9, en:'know'},
 	{id:1084, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'น้ำ',	translit:'naam_H',	hint:'4H', part:'noun', lvl:9, en:'water'},
 	{id:1085, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'ช้า',	translit:'chaa_H',	hint:'3H', part:'advx', lvl:1, en:'slowly'},
 	{id:1086, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'เท้า',	translit:'tao_H',	hint:'4H', part:'noun', lvl:9, en:'feet'},
-	{id:1087, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'จัก',	translit:'jak_L',	hint:'3L', part:'verb', lvl:9, en:'must'},
+	{id:1087, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'จัก',	translit:'jak_L',	hint:'3L', part:'verb', lvl:9, en:'split'},
 	{id:1088, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'กับ',	translit:'gab_L',	hint:'3L', part:'prep', lvl:9, en:'with'},
 	{id:1091, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'อีก',	translit:'iik_L',	hint:'3L', part:'advx', lvl:9, en:'more/again'},
 	{id:1094, typ:'word', ns:1, ccls:'h', end:'dead', mark:'0', tone:'L', th:'อยาก',	translit:'yaak_L',	hint:'4L', part:'verb', lvl:1, en:'want'},
@@ -135,7 +149,7 @@ voyc.dict = [
 	{id:1114, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หรือ',	translit:'rʉʉ_R',	hint:'4R', part:'conj', lvl:9, en:'or'},
 	{id:1115, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ดาว',	translit:'daao_M',	hint:'3M', part:'noun', lvl:9, en:'star'},
 	{id:1116, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'เงิน',	translit:'ngön_M',	hint:'4M', part:'noun', lvl:9, en:'money'},
-	{id:1117, typ:'word', ns:1, ccls:'m', end:'live', mark:'1', tone:'L', th:'แต่',	translit:'dtaae_L',	hint:'3L', part:'intj', lvl:9, en:'but'},
+	{id:1117, typ:'word', ns:1, ccls:'m', end:'live', mark:'1', tone:'L', th:'แต่',	translit:'dtaae_L',	hint:'3L', part:'conj', lvl:9, en:'but'},
 	{id:1118, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'ร้าน',	translit:'raan_H',	hint:'4H', part:'noun', lvl:9, en:'shop'},
 	{id:1119, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ไทย',	translit:'tai_M',	hint:'3M', part:'adjx', lvl:9, en:'Thai'},
 	{id:1120, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ไหล',	translit:'lai_R',	hint:'3R', part:'verb', lvl:9, en:'flow'},
@@ -147,7 +161,7 @@ voyc.dict = [
 	{id:1126, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ขวา',	translit:'kwaa_R',	hint:'3R', part:'advx', lvl:1, en:'right'},
 	{id:1127, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'ซ้าย',	translit:'saai_H',	hint:'4H', part:'advx', lvl:1, en:'left'},
 	{id:1128, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ไป',	translit:'bai_M',	hint:'2M', part:'verb', lvl:1, en:'go to'},
-	{id:1129, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ตรง',	translit:'dtrong_M',	hint:'3M', part:'advx', lvl:1, en:'straight'},
+	{id:1129, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ตรง',	translit:'dtrong_M',	hint:'3M', part:'advx', lvl:1, en:'straight/directly to a point'},
 	{id:1130, typ:'word', ns:1, ccls:'h', end:'dead', mark:'0', tone:'L', th:'หยุด',	translit:'hut_L',	hint:'4L', part:'verb', lvl:1, en:'stop'},
 	{id:1131, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'เชิญ',	translit:'chön_M',	hint:'4M', part:'verb', lvl:9, en:'invite'},
 	{id:1132, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ตาม',	translit:'dtaam_M',	hint:'3M', part:'prep', lvl:9, en:'according'},
@@ -158,7 +172,7 @@ voyc.dict = [
 	{id:1137, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ไหน',	translit:'nai_R',	hint:'3R', part:'advx', lvl:1, en:'where'},
 	{id:1138, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'มา',	translit:'ma_M',	hint:'2M', part:'verb', lvl:1, en:'come'},
 	{id:1139, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'แล้ว',	translit:'laew_H',	hint:'H',	part:'advx',	lvl:1, en:'already (tense marker)'},
-	{id:1140, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'อยู่',	translit:'yuu_F',	hint:'F',	part:'verb',	lvl:1, en:'be at, live at, stay'},
+	{id:1140, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'อยู่',	translit:'yuu_F',	hint:'F',	part:'verb',	lvl:1, en:'residing at a point'},
 	{id:1141, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'สวย',	translit:'suay_R',	hint:'R',	part:'adjx',	lvl:1, en:'beautiful, attractive, pretty'},
 	{id:1142, typ:'word', ns:1, ccls:'h', end:'live', mark:'1', tone:'L', th:'ใหญ่',	translit:'yai_L',	hint:'L',	part:'adjx',	lvl:1, en:'big'},
 	{id:1143, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ทำ',	translit:'tam_M',	hint:'M',	part:'verb',	lvl:1, en:'do, make'},
@@ -186,10 +200,34 @@ voyc.dict = [
 	{id:1165, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ยัง',	translit:'yang_M',	hint:'3M',	part:'advx',	lvl:1, en:'yet'},
 	{id:1166, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ไง',	translit:'ngai_M',	hint:'2M',	part:'advx',	lvl:1, en:'how'},
 	{id:1167, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หิว',	translit:'hiu_M',	hint:'3R',	part:'advx',	lvl:1, en:'hungry'},
-	{id:1168, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'L', th:'ข้าว',	translit:'hiu_M',	hint:'4L',	part:'noun',	lvl:1, en:'rice'},
+	{id:1168, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'L', th:'ข้าว',	translit:'kaao_M',	hint:'4L',	part:'noun',	lvl:1, en:'rice'},
 	{id:1169, typ:'word', ns:1, ccls:'h', end:'dead', mark:'0', tone:'L', th:'ขอบ',	translit:'kawp_L',	hint:'3L',	part:'noun',	lvl:1, en:'edge'},
+	{id:1170, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'เย็น',	translit:'yen_M',	hint:'4M',	part:'adjx',	lvl:1, en:'cool'},
+	{id:1171, typ:'word', ns:1, ccls:'l', end:'dead', mark:'0', tone:'H', th:'นิด', 	translit:'nit_H', hint:'3H',	part:'adjx',	lvl:1, en:'tiny'},
+	{id:1172, typ:'word', ns:1, ccls:'h', end:'live', mark:'1', tone:'L', th:'หน่อย', 	translit:'naai_L', hint:'5L',	part:'noun',	lvl:1, en:'little bit'},
+	{id:1173, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'บาด', 	translit:'baat_L', hint:'3M',	part:'verb',	lvl:1, en:'wound'},
+	{id:1174, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ตำ', 	translit:'dtam_M', hint:'2M',	part:'verb',	lvl:1, en:'beat'},
+	{id:1176, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หลง', 	translit:'long_R', hint:'3R',	part:'adjx',	lvl:1, en:'lost'},
+	{id:1177, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ทาง', 	translit:'taang_M', hint:'3M',	part:'noun',	lvl:1, en:'way'},
+	{id:1180, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'โรง', 	translit:'roong_M', hint:'3M',	part:'noun',	lvl:1, en:'building'},
+	{id:1181, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'แรม', 	translit:'raem_M', hint:'3M',	part:'noun',	lvl:1, en:'a period of time'},
+	{id:1182, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'จริง', 	translit:'_M', hint:'4M',	part:'noun',	lvl:1, en:'truthful'},
+	{id:1184, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'M', th:'แน่', 	translit:'naae_F', hint:'3F',	part:'adjx',	lvl:1, en:'certain'},
+	{id:1186, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'ห้อง', 	translit:'hawng_F', hint:'4F',	part:'noun',	lvl:1, en:'room'},
+	{id:1187, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'พรุ่ง', 	translit:'prung_F', hint:'5F',	part:'advx',	lvl:1, en:'next day'},
+	{id:1188, typ:'word', ns:1, ccls:'m', end:'dead', mark:'2', tone:'L', th:'กลับ', 	translit:'glap_L', hint:'4L',	part:'verb',	lvl:1, en:'go back, return'},
+	{id:1190, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'F', th:'เมื่อ', 	translit:'meuua_F', hint:'4F',	part:'prep',	lvl:1, en:'a time'},
+	{id:1191, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ไหร่', 	translit:'_M', hint:'2M',	part:'noun',	lvl:1, en:''},
+	{id:1192, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ไม', 	translit:'_M', hint:'2M',	part:'noun',	lvl:1, en:''},
+	{id:1194, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'วาน', 	translit:'_M', hint:'2M',	part:'noun',	lvl:1, en:''},
 
-	
+	{id:1195, typ:'word', ns:1, ccls:'m', end:'live', mark:'2', tone:'F', th:'ใต้',	translit:'dai_F',	hint:'3F',	part:'prep',	lvl:2, en:'under'},
+	{id:1196, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'หน้า',	translit:'naa_F',	hint:'4F',	part:'prep',	lvl:2, en:'front'},
+	{id:1197, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หลัง',	translit:'lang_R',	hint:'4R',	part:'prep',	lvl:2, en:'back'},
+	{id:1198, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'ข้าง',	translit:'kaang_F',	hint:'4F',	part:'prep',	lvl:2, en:'side'},
+
+	{id:1199, typ:'word', ns:1, ccls:'h', end:'dead', mark:'0', tone:'H', th:'และ',	translit:'lae_H',	hint:'3H',	part:'conj',	lvl:1, en:'and'},
+
 	{id:2000, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'zero'},
 	{id:2001, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'one'},
 	{id:2002, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'two'},
@@ -203,6 +241,7 @@ voyc.dict = [
 	{id:2010, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'ten'},
 	{id:2011, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'eleven'},
 	
+	
 	{id:5000, typ:'word', ns:2, th:'อาหาร',	translit:'aa_M haan_R',	hint:'2M3R', part:'noun', en:'food'},
 	{id:5001, typ:'word', ns:2, th:'ประเทศ',	translit:'bpra_L tet_L',	hint:'3L3L', part:'noun', en:'country'},
 	{id:5002, typ:'word', ns:2, th:'ทิศเหนือ',	translit:'tit_H nʉʉa_L',	hint:'3H3R', part:'noun', en:'north'},
@@ -211,16 +250,50 @@ voyc.dict = [
 	{id:5005, typ:'word', ns:2, th:'สบาย',	translit:'sa_M baai_M',	hint:'1M3M', part:'adjx', en:'comfortable'},
 	{id:5006, typ:'word', ns:2, th:'สวัส',	translit:'sa_L wat_L',	hint:'1L3L', part:'noun', en:'good fortune'},
 	{id:5007, typ:'word', ns:2, th:'อร่อย',	translit:'a_M roi_M',	hint:'1M4M',	part:'adjx',	lvl:1, en:'delicious'},
-	{id:5008, typ:'word', ns:2, th:'เท่าไหร่',	translit:'tao_M rai_M',	hint:'3M3M',	part:'advx',	lvl:1, en:'how much, how many'},
+	{id:5008, typ:'word', ns:2, th:'เท่าไหร่',	translit:'tao_M rai_M',	hint:'4M4M',	part:'advx',	lvl:1, en:'how much, how many'},
+	{id:5009, typ:'word', ns:2, th:'ตำรวจ',	translit:'dtam_M ruat_L',	hint:'2M3L',	part:'noun',	lvl:1, en:'police'},
+	{id:5010, typ:'word', ns:2, th:'ตลาด',	translit:'dta_L laat_l',	hint:'1L3L',	part:'noun',	lvl:1, en:'market'},
+	{id:5011, typ:'word', ns:2, th:'ที่โน่น',	translit:'tii_F noon_F',	hint:'3F4F',	part:'advx',	lvl:1, en:'there (yonder)'},
+	{id:5012, typ:'word', ns:2, th:'อะไร',	translit:'a_L rai_M',	hint:'2L2M',	part:'advx',	lvl:1, en:'what?'},
 
-	{id:10000, typ:'cword', ns:2, set:[1077,1084], part:'noun', lvl:9, en:'river'},
-	{id:10001, typ:'cword', ns:2, set:[1073,1080], part:'verb', lvl:1, en:'cannot'},
-	{id:10002, typ:'cword', set:[1074,1159], part:'advx',	lvl:1, en:'here'},
-	{id:10003, typ:'cword', set:[1165,1166], part:'advx',	lvl:1, en:'how'},
-	{id:10004, typ:'cword', set:[1167,1168], part:'adjx',	lvl:1, en:'hungry'},
-	{id:10005, typ:'cword', set:[1167,1084], part:'adjx',	lvl:1, en:'thirsty'},
+	
+	{id:10000, typ:'cword', set:[1077,1084], part:'noun', lvl:9, en:'river'},
+	{id:10001, typ:'cword', set:[1073,1080], part:'verb', lvl:1, en:'cannot'},
+	{id:10002, typ:'cword', set:[1074,1159], part:'advx', lvl:1, en:'here'},
+	{id:10003, typ:'cword', set:[1165,1166], part:'advx', lvl:1, en:'how'},
+	{id:10004, typ:'cword', set:[1167,1168], part:'adjx', lvl:1, en:'hungry'},
+	{id:10005, typ:'cword', set:[1167,1084], part:'adjx', lvl:1, en:'thirsty'},
+	{id:10006, typ:'cword', set:[1091,1074], part:'advx', lvl:1, en:'one more time'},
+	{id:10007, typ:'cword', set:[1171,1172], part:'adjx',	lvl:1, en:'little bit'},
+	{id:10008, typ:'cword', set:[1173,1042], part:'adjx',	lvl:1, en:'injured'},
+	{id:10009, typ:'cword', set:[1174,1175], part:'noun',	lvl:1, en:'police'},
+	{id:10010, typ:'cword', set:[1176,1177], part:'advx',	lvl:1, en:'lost'},
+	{id:10011, typ:'cword', set:[1083,1087], part:'verb',	lvl:1, en:'know (someone, something, someplace)'},
+	{id:10013, typ:'cword', set:[1180,1181], part:'noun',	lvl:1, en:'hotel'},
+	{id:10015, typ:'cword', set:[1184,1001], part:'intj',	lvl:1, en:'sure'},
+	{id:10016, typ:'cword', set:[1074,1157], part:'advx',	lvl:1, en:'there'},
+	{id:10018, typ:'cword', set:[1036,1075], part:'advx',	lvl:1, en:'today'},
+	{id:10019, typ:'cword', set:[1186,1084], part:'noun',	lvl:1, en:'toilet'},
+	{id:10020, typ:'cword', set:[1187,1075], part:'advx',	lvl:1, en:'tomorrow'},
+	{id:10021, typ:'cword', set:[1082,1001], part:'verb',	lvl:1, en:'understand'},
+	{id:10022, typ:'cword', set:[1188,1097], part:'noun',	lvl:1, en:'u-turn'},
+	{id:10024, typ:'cword', set:[1190,1191], part:'advx',	lvl:1, en:'when, whenever'},
+	{id:10025, typ:'cword', set:[1074,1137], part:'advx',	lvl:1, en:'where is'},
+	{id:10026, typ:'cword', set:[1143,1192], part:'advx',	lvl:1, en:'why'},
+	{id:10027, typ:'cword', set:[1190,1194,1075], part:'advx',	lvl:1, en:'yesterday'},
+
+	{id:10028, typ:'cword', set:[1198,1013], part:'prep',	lvl:3, en:'inside'},
+	{id:10029, typ:'cword', set:[1198,1052], part:'prep',	lvl:3, en:'above, on top'},
+	{id:10030, typ:'cword', set:[1198,1195], part:'prep',	lvl:3, en:'beneath'},
+	{id:10031, typ:'cword', set:[1198,1196], part:'prep',	lvl:3, en:'in front'},
+	{id:10032, typ:'cword', set:[1198,1197], part:'prep',	lvl:3, en:'behind'},
+	{id:10033, typ:'cword', set:[1198,1198], part:'prep',	lvl:3, en:'beside'},
 	
 	{id:20000, typ:'phrase', set:[1118,5000], part:'noun', lvl:1, en:'food shop'},
+	{id:20001, typ:'phrase', set:[1037,1142], part:'noun', lvl:1, en:'large breast'},
+	{id:20001, typ:'phrase', set:[1004,1168], part:'noun', lvl:1, en:'dinner, meal'},
+	{id:20001, typ:'phrase', set:[1168,1170], part:'noun', lvl:1, en:'dinner, supper'},
+	
 	
 	{id:20500, typ:'expression', set:[1131,1096], en:'please, come in, after you'},
 	{id:20501, typ:'expression', set:[1131,1132,5005,1096], en:'Please make yourself comfortable.'},
@@ -228,12 +301,14 @@ voyc.dict = [
 	{id:20503, typ:'expression', set:[1035,1036,1096], lvl:1, en:'Excuse me.'},
 	{id:20504, typ:'expression', set:[1128,1137,1096], en:'Where you go?'},
 	{id:20505, typ:'expression', set:[1128,1137,1138,1096], en:'Where you come from?'},
-	{id:20506, typ:'expression', set:[5006,1002], lvl:1, en:'hello, goodbye'},
-	{id:20507, typ:'expression', set:[1073,1164], lvl:1, en:'no problem'},
+	{id:20506, typ:'expression', set:[5006,1002,1096], lvl:1, en:'hello, goodbye'},
+	{id:20507, typ:'expression', set:[1073,1164,1096], lvl:1, en:'no problem'},
 	{id:20508, typ:'expression', set:[1169,1012,1096],	lvl:1, en:'thank you'},
 	{id:20509, typ:'expression', set:[5005,1002,1096],	lvl:1, en:'well, fine'},
+	{id:20510, typ:'expression', set:[1182,100], part:'intj',	lvl:1, en:'really?!'},
 	
 	{id:30000, typ:'sentence', story:0,   line:0, set:[10000,1075,1002,1117,1103]},
+	
 	{id:30001, typ:'sentence', story:100, line:1, set:[1124,10000,2004,1013,5001,1119], en:'There are four rivers in Thailand.'},
 	{id:30002, typ:'sentence', story:100, line:2, set:[1015,1120,1121,5002,1122,5003], en:'They flow from north to south.'},
 	{id:30003, typ:'sentence', story:100, line:3, set:[1121,1123,1122,5004], en:'From the mountains to the sea.'},
@@ -244,28 +319,6 @@ voyc.dict = [
 	{id:30007, typ:'sentence', story:101, line:4, set:[1130], en:'Stop.'},
 
 
-	{id:5000, typ:'word', ns:2, th:'อีกที',	translit:'èek-tee',	hint:'',	part:'',	lvl:1, en:'one more time'},
-	{id:5000, typ:'word', ns:2, th:'นิดหน่อย',	translit:'nít-nòi',	hint:'',	part:'',	lvl:1, en:'little bit'},
-	{id:5000, typ:'word', ns:2, th:'บาดเจ็บ',	translit:'bàat jèp',	hint:'',	part:'',	lvl:1, en:'injured'},
-	{id:5000, typ:'word', ns:2, th:'ตำรวจ',	translit:'dtam-rùat',	hint:'',	part:'',	lvl:1, en:'police'},
-	{id:5000, typ:'word', ns:2, th:'หลงทาง',	translit:'lŏng taang',	hint:'',	part:'',	lvl:1, en:'lost'},
-	{id:5000, typ:'word', ns:2, th:'รู้จัก',	translit:'róo-jàk',	hint:'',	part:'',	lvl:1, en:'know (someone, something, someplace)'},
-	{id:5000, typ:'word', ns:2, th:'ตลาด',	translit:'dtà-làat',	hint:'',	part:'',	lvl:1, en:'market'},
-	{id:5000, typ:'word', ns:2, th:'โรงแรม',	translit:'rohng-raem',	hint:'',	part:'',	lvl:1, en:'hotel'},
-	{id:5000, typ:'word', ns:2, th:'จริงๆ',	translit:'jing-jing',	hint:'',	part:'',	lvl:1, en:'really'},
-	{id:5000, typ:'word', ns:2, th:'แน่ใจ',	translit:'nâe-jai',	hint:'',	part:'',	lvl:1, en:'sure [v]'},
-	{id:5000, typ:'word', ns:2, th:'ที่นั่น',	translit:'têe-nân',	hint:'',	part:'',	lvl:1, en:'there'},
-	{id:5000, typ:'word', ns:2, th:'ที่โน่น',	translit:'têe-nôhn',	hint:'',	part:'',	lvl:1, en:'there (further)'},
-	{id:5000, typ:'word', ns:2, th:'วันนี้',	translit:'wan-née',	hint:'',	part:'',	lvl:1, en:'today'},
-	{id:5000, typ:'word', ns:2, th:'ห้องน้ำ',	translit:'hông-náam',	hint:'',	part:'',	lvl:1, en:'toilet'},
-	{id:5000, typ:'word', ns:2, th:'พรุ่งนี้',	translit:'prûng-née',	hint:'',	part:'',	lvl:1, en:'tomorrow'},
-	{id:5000, typ:'word', ns:2, th:'เข้าใจ',	translit:'kâo-jai',	hint:'',	part:'',	lvl:1, en:'understand'},
-	{id:5000, typ:'word', ns:2, th:'กลับรถ',	translit:'glàp-rót',	hint:'',	part:'',	lvl:1, en:'u-turn'},
-	{id:5000, typ:'word', ns:2, th:'อะไร',	translit:'a-rai',	hint:'',	part:'',	lvl:1, en:'what'},
-	{id:5000, typ:'word', ns:2, th:'เมื่อไหร่',	translit:'mêua-rài',	hint:'',	part:'',	lvl:1, en:'when, whenever'},
-	{id:5000, typ:'word', ns:2, th:'ที่ไหน',	translit:'têe năi',	hint:'',	part:'',	lvl:1, en:'where is'},
-	{id:5000, typ:'word', ns:2, th:'ทำไม',	translit:'tam-mai',	hint:'',	part:'',	lvl:1, en:'why'},
-	{id:5000, typ:'word', ns:2, th:'เมื่อวานนี้',	translit:'mêua-waan-née',	hint:'',	part:'',	lvl:1, en:'yesterday'},
 
 	{id:5000, typ:'word', ns:2, th:'Polite particle [f]: ค่ะ',	translit:'kâ',	hint:'',	part:'',	lvl:1, en:'P'},
 	{id:5000, typ:'word', ns:2, th:'Polite particle [m]: ครับ',	translit:'kráp',	hint:'',	part:'',	lvl:1, en:'P'},
@@ -288,5 +341,8 @@ from here to there
 หัว	hua jai  heart vs mind
 เท่าไร	tao rai	how much (age, cost, price, date)
 yin dii (my pleasure, you're welcome)
+
+ได้ยิน	Pom dai yin	I have heard		
+
 */	
 ]
