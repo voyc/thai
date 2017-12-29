@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>Test Suite</title>
+<title>Expressions</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
@@ -23,63 +23,14 @@
 <script src='../icon/lib/menu.js'></script>
 
 <script>
-voyc.setwords = {
-	title: 'Words',
-	set:[1114,1117,1081,1199]
-};
-
-voyc.setnested = {
-	title: 'Nested',
-	set: [[1101,1114,1102],[1103,1114,1104]]
-};
-
-voyc.setwordsandnested = {
-	title: 'Words and Nested',
-	set:[1114,1117,[1101,1114,1102],[1103,1114,1104],1081,1199]
-};
-
-voyc.setwordsets = {
+voyc.setexpressions = {
 	title: 'Expressions',
-	set:[20500, 20500]
-};
-
-voyc.setcbwords = {
-	title: 'Callback Words',
-	cb: function(r) {return (r.part == 'conj')}
-};
-
-voyc.setcbsets = {
-	title: 'Callback Expressions',
 	cb: function(r) {return (r.typ == 'expression')}
 };
 
-voyc.setcustom = {
-	title: 'Custom Sentences',
-	custom: [
-		{th:'ผม ซื้อ เสื้อ ใหม่ เพรอะว่า มี หนาว', en:'I buy new shirt because it is cold.'},
-		{th:'ผม ด้วย ซื้อ เสื้อกันหนาว', en:'I also buy sweater.'},
-		{th:'เมื่อ มี หนาว ผม ดื่ม น้ำ อุ่น', en:'When it is cold, I drink warm water.'},	
-		{th:'มี หนาว ใน ธันวาคม และ มกราคม', en:'It gets cold in December and January'},
-	]
-}
-
 voyc.drawGroups = function() {
 	s = '';
-	console.log('start');
-	s += voyc.drawPanel(voyc.setwords);
-	console.log('setwords');
-	s += voyc.drawPanel(voyc.setnested);
-	console.log('setnested');
-	s += voyc.drawPanel(voyc.setwordsandnested);
-	console.log('setwordsandnested');
-	s += voyc.drawPanel(voyc.setwordsets);
-	console.log('setwordsets');
-	s += voyc.drawPanel(voyc.setcbwords);
-	console.log('setcbwords');
-	s += voyc.drawPanel(voyc.setcbsets);
-	console.log('setcbsets');
-	s += voyc.drawCustomPanel(voyc.setcustom);
-	console.log('setcustom');
+	s += voyc.drawPanel(voyc.setexpressions);
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 }
@@ -90,7 +41,7 @@ addEventListener('load', function() {
 
 	// practice button
 	voyc.$('practice').addEventListener('click', function(event) {
-		voyc.practice({'title': 'Test Suite'});
+		voyc.practice({'title': 'Expressions'});
 	});
 
 	// load sounds, etc.
@@ -102,7 +53,7 @@ addEventListener('load', function() {
 	<header class='fixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>Test Suite</span>
+			<span id='hdrtitle' style='vertical-align:middle'>Expressions</span>
 			<button id="practice" >Practice</button>
 		</hdr>
 	</header>

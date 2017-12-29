@@ -225,8 +225,22 @@ voyc.dict = [
 	{id:1196, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'หน้า',	translit:'naa_F',	hint:'4F',	part:'prep',	lvl:2, en:'front'},
 	{id:1197, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หลัง',	translit:'lang_R',	hint:'4R',	part:'prep',	lvl:2, en:'back'},
 	{id:1198, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'ข้าง',	translit:'kaang_F',	hint:'4F',	part:'prep',	lvl:2, en:'side'},
-
 	{id:1199, typ:'word', ns:1, ccls:'h', end:'dead', mark:'0', tone:'H', th:'และ',	translit:'lae_H',	hint:'3H',	part:'conj',	lvl:1, en:'and'},
+	{id:1200, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'ซื้อ',	translit:'sʉʉ_H',	hint:'4H',	part:'verb',	lvl:1, en:'buy'},
+	{id:1201, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'เสื้อ',	translit:'sʉʉa_F',	hint:'5F',	part:'noun',	lvl:1, en:'shirt'},
+	{id:1202, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หนาว',	translit:'naao_R',	hint:'4R',	part:'noun',	lvl:1, en:'cold'},
+	{id:1203, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ปี',	translit:'bpii_M',	hint:'2M',	part:'noun',	lvl:1, en:'year'},	
+	{id:1204, typ:'word', ns:1, ccls:'l', end:'dead', mark:'0', tone:'H', th:'เพรอะ',	translit:'praw_H',	hint:'5H',	part:'conj',	lvl:1, en:'because'},
+	{id:1205, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'F', th:'ว่า',	translit:'waa_F',	hint:'3F',	part:'conj',	lvl:1, en:'as'},
+	{id:1206, typ:'word', ns:1, ccls:'h', end:'live', mark:'1', tone:'L', th:'อุ่น',	translit:'oon_L',	hint:'4L',	part:'adjx',	lvl:1, en:'warm'},
+	{id:1207, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'F', th:'ถ้า',	translit:'taa_F',	hint:'3F',	part:'conj',	lvl:1, en:'if'},
+	{id:1208, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'ดัง',	translit:'dang_M',	hint:'3M',	part:'advx',	lvl:1, en:'like'},
+	{id:1209, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'นั้น',	translit:'nan_H',	hint:'4H',	part:'pron',	lvl:1, en:'that'},
+	{id:1210, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'แม้',	translit:'mae_H',	hint:'3H',	part:'conj',	lvl:1, en:'though'},
+	{id:1211, typ:'word', ns:1, ccls:'m', end:'live', mark:'1', tone:'L', th:'ก่อน',	translit:'gaawn_L',	hint:'4L',	part:'adverb',	lvl:1, en:'before'},
+	{id:1212, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'กัน',	translit:'gan_M',	hint:'3M',	part:'conj',	lvl:1, en:'together'},
+	
+
 
 	{id:2000, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'zero'},
 	{id:2001, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'one'},
@@ -255,7 +269,24 @@ voyc.dict = [
 	{id:5010, typ:'word', ns:2, th:'ตลาด',	translit:'dta_L laat_l',	hint:'1L3L',	part:'noun',	lvl:1, en:'market'},
 	{id:5011, typ:'word', ns:2, th:'ที่โน่น',	translit:'tii_F noon_F',	hint:'3F4F',	part:'advx',	lvl:1, en:'there (yonder)'},
 	{id:5012, typ:'word', ns:2, th:'อะไร',	translit:'a_L rai_M',	hint:'2L2M',	part:'advx',	lvl:1, en:'what?'},
-
+	{id:5013, typ:'word', ns:2, cat:'month', th:'มกราคม',	translit:'ma_H ga_L ra_M kom_M',	hint:'1H1L2M2M', lvl:2, en:'January'},
+	{id:5014, typ:'word', ns:2, cat:'month', th:'กุมภาพันธ์',	translit:'goom_M pa_M pan_M',	hint:'3M2M5M', lvl:2, en:'February'},
+	{id:5015, typ:'word', ns:2, cat:'month', th:'มีนาคม',	translit:'mii_M na_M kom_M',	hint:'2M2M2M', lvl:2, en:'March'},
+	{id:5016, typ:'word', ns:2, cat:'month', th:'เมษายน',	translit:'me_M sa_R yon_M',	hint:'2M2R2M', lvl:2, en:'April'},
+	{id:5017, typ:'word', ns:2, cat:'month', th:'พฤษภาคม',	translit:'prit_H sa_L paa_M kom_M',	hint:'2H1L2M2M', lvl:2, en:'May'},
+	{id:5018, typ:'word', ns:2, cat:'month', th:'มิถุนายน',	translit:'mi_H tu_L naa_M yon_M',	hint:'2H2L2M2M', lvl:2, en:'June'},
+	{id:5019, typ:'word', ns:2, cat:'month', th:'กรกฎาคม',	translit:'ga_L ra_H ga_L daa_M kom_M',	hint:'1L1H1L2M2M', lvl:2, en:'July'},
+	{id:5020, typ:'word', ns:2, cat:'month', th:'สิงหาคม',	translit:'sing_R haa_R kom_M',	hint:'3R2R2M', lvl:2, en:'August'},
+	{id:5021, typ:'word', ns:2, cat:'month', th:'กันยายน',	translit:'gan_M yaa_M yon_M',	hint:'3M2M2M', lvl:2, en:'September'},
+	{id:5022, typ:'word', ns:2, cat:'month', th:'ตุลาคม',	translit:'dtu_L laa_M kom_M',	hint:'2L2M2M', lvl:2, en:'October'},
+	{id:5023, typ:'word', ns:2, cat:'month', th:'พฤศจิกายน',	translit:'prit_H sa_L ji_L gaa_M yon_M',	hint:'2H1L2L2M2M', lvl:2, en:'November'},
+	{id:5024, typ:'word', ns:2, cat:'month', th:'ธันวาคม',	translit:'tan_M waa_M kom_M',	hint:'3M2M2M', lvl:2, en:'December'},
+	{id:5025, typ:'word', ns:2, set:[1204,1205], part:'conj',	lvl:1, en:'because'},
+	{id:5026, typ:'word', ns:2, set:[1208,1209], part:'conj',	lvl:1, en:'so'},
+	{id:5027, typ:'word', ns:2, set:[1210,1205], part:'conj',	lvl:1, en:'although'},
+	{id:5028, typ:'word', ns:2, set:[1197,1121],part:'advx',	lvl:1, en:'after'},
+	{id:5029, typ:'word', ns:3, set:[1202,1212,1201],	part:'noun',	lvl:1, en:'jacket'},
+	
 	
 	{id:10000, typ:'cword', set:[1077,1084], part:'noun', lvl:9, en:'river'},
 	{id:10001, typ:'cword', set:[1073,1080], part:'verb', lvl:1, en:'cannot'},
@@ -306,9 +337,10 @@ voyc.dict = [
 	{id:20508, typ:'expression', set:[1169,1012,1096],	lvl:1, en:'thank you'},
 	{id:20509, typ:'expression', set:[5005,1002,1096],	lvl:1, en:'well, fine'},
 	{id:20510, typ:'expression', set:[1182,100], part:'intj',	lvl:1, en:'really?!'},
+	{id:20512, typ:'expression', set:[5006,1002,1203,1072,1096], part:'',	lvl:1, en:'Happy New Year'},
 	
 	{id:30000, typ:'sentence', story:0,   line:0, set:[10000,1075,1002,1117,1103]},
-	
+
 	{id:30001, typ:'sentence', story:100, line:1, set:[1124,10000,2004,1013,5001,1119], en:'There are four rivers in Thailand.'},
 	{id:30002, typ:'sentence', story:100, line:2, set:[1015,1120,1121,5002,1122,5003], en:'They flow from north to south.'},
 	{id:30003, typ:'sentence', story:100, line:3, set:[1121,1123,1122,5004], en:'From the mountains to the sea.'},

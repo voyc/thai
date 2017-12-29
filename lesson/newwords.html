@@ -24,19 +24,84 @@
 
 <script>
 
-voyc.startWord = 1195;
-voyc.startPhrase = 10007;
+voyc.startWord = 1204;
+voyc.startPhrase = 20513;
+voyc.type = 'expression';
 
 voyc.newwords = [
-	{th:'ใป',		en:'undefined'},
-	{th:'บน',		en:'undefined'},
-	{th:'หน้า',	en:'undefined'},
-	{th:'หลูง',	en:'undefined'},
-	{th:'ข้าง',	en:'undefined'},
+	//{th:'สุข สันต์ วัน เกีด นะ ครับ', en:'Happy Birthday'},
+	{th:'ผม ซื้อ เสื้อ ใหม่ เพรอะว่า มี หนาว', en:'I buy new shirt because it is cold.'},
+	{th:'ผม ด้วย ซื้อ เสื้อกันหนาว', en:'I also buy sweater.'},
+	{th:'เมื่อ มี หนาว ผม ดื่ม น้ำ อุ่น', en:'When it is cold, I drink warm water.'},	
+	{th:'มี หนาว ใน ธันวาคม และ มกราคม', en:'It gets cold in December and January'},
+
+
+	{th:'และ ถ้า แต่ ดังนั้น เมื่อ เพราะว่า แม้ว่า หรือ ก่อน หลังจาก ด้วย', en:'and if but so when because although or before after also'},
+	{th:'ทาน ให้ อร่อย', en:'Enjoy your meal (drink)'},
+
+	{th:'ผมจะไปหาหมอโรคผิวหนังเพราะผมมีปัญหาเกี่ยวกับนิ้วเท้า', wo:'I will go to see dermatologist because I have problem with toe'},
+	{th:'ผมจะไปหาหมอเมือไร', wo:'will go to see doctor when'},
+	{th:'วันนี้วันอะไร',	wo:'day this day what', en:'what day is today?'},
+	{th:'วันนี้วันที่เท่าไร',	wo:'day this date how much', en:'what is the date today?'},
+	{th:'เดือนนี้เดือนอะไร',	wo:'month this month what', en:'what month is this?'},
+	{th:'ปีนี้ปีอัไร',		wo:'year this year what', en:'what year is this?'},
+
+/*
+	th: 'ใน', translit:'nai', en:'in',
+
+	ขวบ	age
+
+พ.ศ. 2560
+ค.ศ. 2017
+
+พัน	thousand
+two thousand seventeen
+one nine nine two
+
+finger
+toe
+hand
+foot
+concerning with
+problem/concern
+
+
+เห็น	see, visualize
+ดู	look at, glance
+แล	look at, inspect
+
+ดูแล	take care
+*/
+
+
+	//{th:'', en:'It is cold before 9 AM because there is no sun.'},
+	//{th:'', en:'It gets warm when the sun comes up.'},
+	//{th:'', en:''},
 ];
 
+voyc.setcustom = {
+	title:'Custom',
+	custom: [
+		{th:'ผม ซื้อ เสื้อ ใหม่ เพรอะว่า มี หนาว', en:'I buy new shirt because it is cold.'},
+		{th:'ผม ด้วย ซื้อ เสื้อกันหนาว', en:'I also buy sweater.'},
+		{th:'เมื่อ มี หนาว ผม ดื่ม น้ำ อุ่น', en:'When it is cold, I drink warm water.'},	
+		{th:'มี หนาว ใน ธันวาคม และ มกราคม', en:'It gets cold in December and January'},
+	]
+}
+
+voyc.setexpressions = {
+	title: 'Expressions',
+	cb: function(r) {return (r.typ == 'expression')}
+};
+
+voyc.setcword = {
+	title: 'Compound Words',
+	cb: function(r) {return (r.typ == 'cword')}
+};
+
+
 voyc.lookupNewWords = function(newin) {
-	var pat = "{id:%id%, typ:'cword', set:[%set%], part:'',	lvl:1, en:'%en%'},<br/>";
+	var pat = "{id:%id%, typ:"+ voyc.type +", set:[%set%], part:'',	lvl:1, en:'%en%'},<br/>";
 	var cpat = "{id:%id%, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'%th%',	translit:'_M',	hint:'2M',	part:'noun',	lvl:1, en:''},";
 	var s = '';
 	var srow = '';
@@ -87,11 +152,26 @@ voyc.findInDict = function(word) {
 	return 0;
 }
 
+voyc.draw = function() {
+	var a = voyc.lookupNewWords(voyc.newwords);
+	var s = a[0] + a[1];
+	s += voyc.drawPanel(voyc.setexpressions);
+	s += voyc.drawPanel(voyc.setcword);
+	s += voyc.drawPanel(voyc.setcustom);
+	voyc.$('content').innerHTML = s;
+	(new voyc.Minimal()).attachAll(voyc.$('content'));
+}
 			
 addEventListener('load', function() {
-	var a = voyc.lookupNewWords(voyc.newwords);
-	voyc.$('content').innerHTML = a[0] + a[1];
+	var s = voyc.draw();
 
+	// practice button
+	voyc.$('practice').addEventListener('click', function(event) {
+		voyc.practice({'title': 'Expressions'});
+	});
+
+	// load sounds, etc.
+	voyc.initLesson();
 }, false);
 </script>
 </head>

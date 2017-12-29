@@ -25,6 +25,17 @@ voyc.merge = function(a,b) {
 voyc.initLesson = function() {
 }
 
+voyc.getCardByWord = function(word) {
+	var card = false;
+	for (var i=0; i<voyc.dict.length; i++) {
+		if (voyc.dict[i].th == word) {
+			card = voyc.dict[i];
+			break;
+		}
+	}
+	return card;
+}
+
 voyc.getCardById = function(id) {
 	var card = false;
 	for (var i=0; i<voyc.dict.length; i++) {
@@ -50,9 +61,16 @@ voyc.drawStory = function(storyid) {
 	document.getElementById('content').innerHTML = s;
 }
 
+
 /**
 	entry point, draw a panel
-	input panel is an object containing title and set, or title and cb
+	input panel is an object containing 
+		title and set, where set:[234,52254,6234,52345,2453], or 
+		title and cb, where cb is a callback function that returns a set of matching words from dict, or 
+		title and custom, where custom is an array of th/en custom
+	output is a panel with selectable table rows suitable for practice.
+	
+	When the input has custom, the output will be either new words, or a complete panel.
 **/
 voyc.drawPanel = function(panel) {
 	var s = '';
@@ -71,6 +89,50 @@ voyc.drawPanel = function(panel) {
 		}
 	}
 
+	// compose and draw
+	var p;
+	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
+		p = panel.set[i];
+		c = voyc.compose(p);
+		if (c) {
+			s += voyc.drawRow(c);
+		}
+	}
+
+	s += "</table></div>";
+	return s;
+}
+
+voyc.drawCustomPanel = function(panel) {
+	var s = '';
+	s += "<div select class='panel list blu'>";
+	s += "<h3>" + panel.title + "</h3>";
+	s += "<table>";
+
+	panel.set = panel.set || [];
+	var row,acomp,subset;
+	
+	// loop thru panel.custom
+	for (var i=0; i<panel.custom.length; i++) {
+		row = panel.custom[i];
+		acomp = row.th.split(' ');  // make array of components
+		set = [];
+		
+		// loop thru array of components
+		for (var j=0; j<acomp.length; j++) {
+			comp = acomp[j];
+			dictrow = voyc.getCardByWord(comp);
+			dictrow.id
+			if (dictrow) {
+				set.push(dictrow.id);
+			}
+			else {
+				console.log(comp + ' not in dict');
+			}
+		}
+		panel.set.push(set);
+	}
+	
 	// compose and draw
 	var p;
 	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
@@ -169,6 +231,14 @@ voyc.drawRow = function(card, s) {
 	return s;
 }
 
+voyc.setFromString = function(s) {
+	var a = s.split(',');
+	for (var i=0; i<a.length; i++) {
+		a[i] = parseInt(a[i]);
+	}
+	return a;
+}
+
 voyc.practice = function(opt) {
 	// pull an array of selected elements, or all
 	var ra = document.querySelectorAll('tr[id].selected');
@@ -187,7 +257,8 @@ voyc.practice = function(opt) {
 	var seq = 1;
 	for (var i=0; i<ra.length; i++) {
 		a = ra[i];
-		c = voyc.compose(parseInt(a.id));
+		set = voyc.setFromString(a.id);
+		c = voyc.compose(set);
 		o = {
 			'i':c['id'],
 			'n':seq++,
