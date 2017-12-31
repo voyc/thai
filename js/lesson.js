@@ -23,6 +23,48 @@ voyc.merge = function(a,b) {
 
 // load sounds
 voyc.initLesson = function() {
+	voyc.initDict();
+}
+
+voyc.initDict = function() {
+
+
+	//dict
+	//add th for multisylable words
+	var word;
+	for (var i=0; i<voyc.dict.length; i++) {
+		word = voyc.dict[i];
+		if (typeof(!word.ns) == 'undefined') {
+			debugger;
+		}
+		if (word.ns > 1 && typeof(word.th) == 'undefined' && typeof(word.set) == 'undefined') {
+			debugger;
+		}
+		if (word.ns > 1 && typeof(word.th) == 'undefined' ) {
+			if (typeof(word.set) == 'undefined') {
+				debugger;
+			}
+			card = voyc.compose(word.set);
+			word.th = card.th;
+			word.translit = card.translit;
+		}
+	}
+
+	var x = 1;
+	
+	//add length
+	//group by length
+	//sort each group by alpha
+	//loop thru source
+	//   loop through groups
+	//	  compare equal
+	//	  compare greater than
+    //
+	//on match
+	//   push set
+    //
+	//on nomatch
+	//   push nomatch array
 }
 
 voyc.getCardByWord = function(word) {
@@ -90,7 +132,7 @@ voyc.drawPanel = function(panel) {
 	}
 
 	// compose and draw
-	var p;
+	var p,c;
 	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
 		p = panel.set[i];
 		c = voyc.compose(p);
@@ -111,6 +153,7 @@ voyc.drawCustomPanel = function(panel) {
 
 	panel.set = panel.set || [];
 	var row,acomp,subset;
+	var	set = [];
 	
 	// loop thru panel.custom
 	for (var i=0; i<panel.custom.length; i++) {
@@ -134,10 +177,11 @@ voyc.drawCustomPanel = function(panel) {
 	}
 	
 	// compose and draw
-	var p;
+	var p,c;
 	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
 		p = panel.set[i];
-		c = voyc.compose(p);
+		c = {id:0, th:'', en:'', translit:''};
+		c = voyc.compose(p,c);
 		if (c) {
 			s += voyc.drawRow(c);
 		}
@@ -169,8 +213,8 @@ voyc.compose = function(set, c) {
 			id = set;
 			set = voyc.tempset[id];
 		}
+		c = {'id':id, th:'', en:'', translit:''};
 	}
-	c = {'id':id, th:'', en:'', translit:''};
 
 	// force set to always be an array
 	if (!set.length)  set = [set];

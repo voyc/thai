@@ -63,6 +63,20 @@ voyc.setcustom = {
 	]
 }
 
+voyc.setanthem = {
+	title: 'Thai National Anthem',
+	custom: [
+		{th:'ประเทศไทยรวมเลือดเนื้อชาติเชื้อไทย', en:''},
+		{th:'เป็นประชารัฐ ไผทของไทยทุกส่วน', en:''},
+		{th:'อยู่ดำรงคงไว้ได้ทั้งมวล', en:''},
+		{th:'ด้วยไทยล้วนหมาย รักสามัคคี', en:''},
+		{th:'ไทยนี้รักสงบ แต่ถึงรบไม่ขลาด', en:''},
+		{th:'เอกราชจะไม่ให้ใครข่มขี่', en:''},
+		{th:'สละเลือดทุกหยาดเป็นชาติพลี', en:''},
+		{th:'เถลิงประเทศชาติไทยทวี มีชัย ชโย', en:''},
+	]
+}
+
 voyc.drawGroups = function() {
 	s = '';
 	console.log('start');
@@ -80,11 +94,16 @@ voyc.drawGroups = function() {
 	console.log('setcbsets');
 	s += voyc.drawCustomPanel(voyc.setcustom);
 	console.log('setcustom');
+	s += voyc.drawCustomPanel(voyc.setanthem);
+	console.log('setanthem');
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 }
 
 addEventListener('load', function() {
+	// load sounds, etc.
+	voyc.initLesson();
+
 	// draw panels content
 	voyc.drawGroups();
 
@@ -92,9 +111,6 @@ addEventListener('load', function() {
 	voyc.$('practice').addEventListener('click', function(event) {
 		voyc.practice({'title': 'Test Suite'});
 	});
-
-	// load sounds, etc.
-	voyc.initLesson();
 }, false);
 </script>
 </head>
