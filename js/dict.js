@@ -256,7 +256,7 @@ voyc.dict = [
 	{id:2010, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'ten'},
 	{id:2011, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'eleven'},
 	
-	
+	// multi-syllable without set
 	{id:5000, typ:'word', ns:2, th:'อาหาร',	translit:'aa_M haan_R',	hint:'2M3R', part:'noun', en:'food'},
 	{id:5001, typ:'word', ns:2, th:'ประเทศ',	translit:'bpra_L tet_L',	hint:'3L3L', part:'noun', en:'country'},
 	{id:5002, typ:'word', ns:2, th:'ทิศเหนือ',	translit:'tit_H nʉʉa_L',	hint:'3H3R', part:'noun', en:'north'},

@@ -27,9 +27,24 @@ voyc.initLesson = function() {
 }
 
 voyc.initDict = function() {
+	// called once up front to initialize the dict
+	// called again if necessary to initialize custom words
+
+	// build out dict
+	//    at completion:
+	//       required: id, typ, lvl, ns, ln, th, translit, hint, wo, en
+	//    ns = 0:
+	//       typ=glyph
+	//    ns = 1
+	//       typ=[syllable,word]
+	//       required: ccls, end, mark, tone
+	//    ns > 1
+	//       typ:[cword,phrase,expression,sentence,story]
+	//       required: set ?
+	//       input: id, typ, lvl, [th,set], 
+	//         if th and no set, required: translit, hint, wo, en
 
 
-	//dict
 	//add th for multisylable words
 	var word;
 	for (var i=0; i<voyc.dict.length; i++) {
@@ -46,26 +61,83 @@ voyc.initDict = function() {
 			}
 			card = voyc.compose(word.set);
 			word.th = card.th;
-			word.translit = card.translit;
+			if (!word.translit) {
+				word.translit = card.translit;
+				word.wo = card.wo;
+			}
 		}
+		word.ln = word.th.length;
 	}
 
-	var x = 1;
+	// sort dict by length and thai
+//	fix2 = function(n) {return ((''+n).length < 2) ? '0'+n : ''+n};
+//	voyc.dict.sort(function(a, b) {
+//		aa = fix2(a.ln) + a.th;
+//		bb = fix2(b.ln) + b.th;
+//		return aa.localeCompare(bb);
+//	});
+
+	voyc.dict.sort(function(a,b) {
+		return (!(b.ln - a.ln)) ? a.th.localeCompare(b.th) : (b.ln - a.ln);
+	});
 	
-	//add length
-	//group by length
-	//sort each group by alpha
-	//loop thru source
-	//   loop through groups
-	//	  compare equal
-	//	  compare greater than
-    //
-	//on match
-	//   push set
-    //
-	//on nomatch
-	//   push nomatch array
+	// break dict into sections by length
+	voyc.dictbyln = {};
+	var lastlen = 10000;
+	for (var i=0; i<voyc.dict.length; i++) {
+		word = voyc.dict[i];
+		if (word.ln < lastlen) {
+			lastlen = word.ln;
+			voyc.dictbyln[lastlen] = i;
+		}
+	}
+	
+	var x = 1;
 }
+
+voyc.decompose = function(word) {
+	var set = [];
+	var start = 0;
+	nf = 0;
+	var test = word.substring(start);
+	var found = false;
+	while (start < word.length) {
+		found = false;
+		card = voyc.findWordInDictByLength(test);
+		if (card) {
+			if (start > nf) {
+				console.log('not found: ' + word.substring(nf,start));
+			}
+			//console.log('found: ' + card.th);
+			set.push(card.id);
+			start += card.th.length;
+			nf = start;
+		}
+		else {
+			//console.log('not found: ' + test);
+			start ++;
+		}
+		test = word.substring(start);
+		
+	}
+	return set;
+}
+
+voyc.findWordInDictByLength = function(str) {
+	var card = false;
+	var b = 0;
+	var word = {};
+	for (var i=0; i<voyc.dict.length; i++) {
+		word = voyc.dict[i];
+		b = str.indexOf(word.th);
+		if (!b) {
+			card = voyc.dict[i];
+			break;
+		}
+	}
+	return card;
+}
+
 
 voyc.getCardByWord = function(word) {
 	var card = false;
@@ -103,7 +175,6 @@ voyc.drawStory = function(storyid) {
 	document.getElementById('content').innerHTML = s;
 }
 
-
 /**
 	entry point, draw a panel
 	input panel is an object containing 
@@ -120,9 +191,10 @@ voyc.drawPanel = function(panel) {
 	s += "<h3>" + panel.title + "</h3>";
 	s += "<table>";
 
-	// build set
+	panel.set = panel.set || [];
+
+	// build set from callback function
 	if (panel.cb) {
-		panel.set = panel.set || [];
 		for (key in voyc.dict) {
 			card = voyc.dict[key];
 			if (panel.cb(card)) {
@@ -131,57 +203,25 @@ voyc.drawPanel = function(panel) {
 		}
 	}
 
+	// build set from custom rows, add custom rows to dict
+	if (panel.custom) {
+		//return 'missing panel';
+
+		// loop thru panel.custom
+		for (var i=0; i<panel.custom.length; i++) {
+			line = panel.custom[i];
+			word = { id:voyc.nextsetid++, th:line.th, en:line.en};
+			word.set = voyc.decompose(line.th);
+			panel.set.push(word.id);
+			voyc.tempset[word.id] = word.set;
+		}
+	}
+
 	// compose and draw
 	var p,c;
 	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
 		p = panel.set[i];
 		c = voyc.compose(p);
-		if (c) {
-			s += voyc.drawRow(c);
-		}
-	}
-
-	s += "</table></div>";
-	return s;
-}
-
-voyc.drawCustomPanel = function(panel) {
-	var s = '';
-	s += "<div select class='panel list blu'>";
-	s += "<h3>" + panel.title + "</h3>";
-	s += "<table>";
-
-	panel.set = panel.set || [];
-	var row,acomp,subset;
-	var	set = [];
-	
-	// loop thru panel.custom
-	for (var i=0; i<panel.custom.length; i++) {
-		row = panel.custom[i];
-		acomp = row.th.split(' ');  // make array of components
-		set = [];
-		
-		// loop thru array of components
-		for (var j=0; j<acomp.length; j++) {
-			comp = acomp[j];
-			dictrow = voyc.getCardByWord(comp);
-			dictrow.id
-			if (dictrow) {
-				set.push(dictrow.id);
-			}
-			else {
-				console.log(comp + ' not in dict');
-			}
-		}
-		panel.set.push(set);
-	}
-	
-	// compose and draw
-	var p,c;
-	for (var i=0; i<panel.set.length; i++) {  // loop thru each p in panel
-		p = panel.set[i];
-		c = {id:0, th:'', en:'', translit:''};
-		c = voyc.compose(p,c);
 		if (c) {
 			s += voyc.drawRow(c);
 		}

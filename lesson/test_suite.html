@@ -56,7 +56,7 @@ voyc.setcbsets = {
 voyc.setcustom = {
 	title: 'Custom Sentences',
 	custom: [
-		{th:'ผม ซื้อ เสื้อ ใหม่ เพรอะว่า มี หนาว', en:'I buy new shirt because it is cold.'},
+		{th:'ผมซื้อเสื้อใหม่เพรอะว่ามีหนาว', en:'I buy new shirt because it is cold.'},
 		{th:'ผม ด้วย ซื้อ เสื้อกันหนาว', en:'I also buy sweater.'},
 		{th:'เมื่อ มี หนาว ผม ดื่ม น้ำ อุ่น', en:'When it is cold, I drink warm water.'},	
 		{th:'มี หนาว ใน ธันวาคม และ มกราคม', en:'It gets cold in December and January'},
@@ -77,6 +77,26 @@ voyc.setanthem = {
 	]
 }
 
+voyc.setroyalanthem = {
+	title: 'Thai National Anthem',
+	custom: [
+		{th:'ข้าวรพุทธเจ้า',	en:'We, servants of His great Majesty'},
+		{th:'เอามโนและศิระกราน',	en:'prostrate our heart and head'},
+		{th:'นบพระภูมิบาล บุญดิเรก',	en:'to pay respect to the ruler, whose merits are boundless'},
+		{th:'เอกบรมจักริน',	en:'our glorious sovereign'},
+		{th:'พระสยามินทร์',	en:'the greatest of Siam'},
+		{th:'พระยศยิ่งยง',	en:'with great and lasting honor'},
+		{th:'เย็นศิระเพราะพระบริบาล',	en:'(We are) secure and peaceful because of your royal rule'},
+		{th:'ผลพระคุณ ธ รักษา',	en:'the result of royal protection'},
+		{th:'ปวงประชาเป็นสุขศานต์',	en:'(is) people in happiness and in peace'},
+		{th:'ขอบันดาล',	en:'May it be that'},
+		{th:'ธ ประสงค์ใด',	en:'whatever you will'},
+		{th:'จงสฤษดิ์ดัง',	en:'be done'},
+		{th:'หวังวรหฤทัย',	en:'according to the hopes of your great heart'},
+		{th:'ดุจถวายชัย ชโย',	en:'as we wish (you) victory, hurrah!'},
+	]
+}
+
 voyc.drawGroups = function() {
 	s = '';
 	console.log('start');
@@ -92,10 +112,12 @@ voyc.drawGroups = function() {
 	console.log('setcbwords');
 	s += voyc.drawPanel(voyc.setcbsets);
 	console.log('setcbsets');
-	s += voyc.drawCustomPanel(voyc.setcustom);
+	s += voyc.drawPanel(voyc.setcustom);
 	console.log('setcustom');
-	s += voyc.drawCustomPanel(voyc.setanthem);
+	s += voyc.drawPanel(voyc.setanthem);
 	console.log('setanthem');
+	s += voyc.drawPanel(voyc.setroyalanthem);
+	console.log('setroyalanthem');
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 }
