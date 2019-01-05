@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>SenGen</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<style>#content {font-size:2rem}</style>
+
+<script>var voyc = {};</script>
+<script src='sengen.js'></script>
+<script src='numgen.js'></script>
+<script src='grammar.js'></script>
+<script src='vocab.js'></script>
+<script src='../../../jslib/utils.js'></script>
+
+<script>
+window.addEventListener('load', function() {
+	voyc.vocab = new voyc.Vocab();
+	voyc.sengen = new voyc.SenGen();
+
+	var a = [];
+	a = a.concat(voyc.sengen.genRequest({pattern:'@goodbye', count:1, target:[]}));  // 
+	var s = voyc.printArray(a);
+	document.getElementById('content').innerHTML = s;
+});
+</script>
+
+</head>
+<body>
+<div id='content'></div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+Find all sentences containing 
+	target word and 
+	all mastered words.
+
+	
+Format of sentences includes
+	constant
+	array
+	pattern
+	function
+	label (array,pattern,function)
+
+or
+
+Format includes constants only.
+	This would give a way high number of sentences
+	in the case of functions for numbers, dates, times.
+	What if constant, array, pattern are all resolved?
+	Function can itself look for only mastered words.
+	What if pattern is a function?
+		composes phrases of only mastered words
+	What if array is a function?
+		returns an array of only mastered words
+	Can a pattern be nested inside an array?
+	Can an array be nested inside a pattern?
+	
+Sentence, components
+	search components of every sentence
+		looking for one target, all mastered
+
+Test
+	sentence of all constants
+	sentence containing functions
+		1. number
+		2. array
+		3. pattern
+
+A test set of mastered words
+A test set of sentences containing all constants.
+Gradually rebuild sentences as patterns, arrays, functions
+
+function @number(n,m,i)
+	pick one with target
+	pick one with mastered
+
+function @choose(a[])
+	pick target if present
+	pick one with mastered
+
+function @pattern(s)
+	pick one with target if present
+	pick one with all mastered
+
+$label substitution
+	may refer to array, pattern
+
+Make a set of words.
+Make a set of phrases.
+Make a set of sentences.
+Generate list of components.
+
+Sort dict by length
+Char-by-char loop thru sentence
+	compare every dict entry to sentence segment by length
+	
+List of components must be 
+letter
+syllable
+word
+phrase
+expression
+sentence
+QA
+story
+
+----------
+
+conditional logic
+If p then q
+pattern, p, q
+pattern with substitution
+conditional if p then q, if p then therefore q, when p q
+will (future), negative
+subj, pronouns
+p and q can contain labels
+$subj specified in p, reused in q, perhaps as pronoun
+if {$psubj} $pverb {$qsubj} {will} {not} then $qverb.
+if weather cold then Khun Pin will stay home.
+
+----------
+
+Substitution rewrite
+Label
+List
+Function
+Pattern
+
+Infinite nesting
+Label within list
+Label within label
+List within list
+
+Kinds of list
+Choose one
+Repeat with all
+
+Goes with, label type
+Classifier with noun
+Then clause with if condition
+
+Write all of these patterns within a consistent language. Then code.
+Is there a language already?
+
+------------------------
+
+sentence generator
+
+input: target pattern or all, target word (opt), mastered words
+recursive loop
+	one|count|all
+	label substitution
+	function execution
+
+test: generate all sentences	
+test: generate all sentences for a target word
+test: generate all sentences for mastered words
+test: generate all sentences for target pattern
+
+-----------------------
+
+syntactic and semantic parser
+
+input: string
+output: arrays, variables, tables
+
+-------------------
+
+story teller
+
+where you go?
+
+fact: 
+subj: I
+verb: go see
+obj: museum
+when: timestamp, degree of accuracy
+where: geo coordinates, degree of accuracy
+with whom: alone
+how: by bus
+why: to learn about Chiang Mai history
+
+subj: I
+verb: go 
+obj: market
+when: timestamp, degree of accuracy, begin
+where: geo coordinates, degree of accuracy, georect
+with whom: alone
+how: walking
+why: to buy groceries
+
+where you from?
+
+subj: I
+verb: live
+obj:
+pred adj:  
+when: 2011 to 2015
+where: San Diego
+with whom:
+how:
+why:
+more adj:
+more adv:
+
+subj: I
+verb: eat
+obj: khao soy  (adj: delicious, spicy)
+pred adj:  
+when: today, lunch
+where: raan ahaan
+with whom: kon dio
+how: with bowl and spoon
+why: was hungry
+more adj: delicious, spicy
+more adv: 
+
+did you eat already? yes
+what did you eat: khao soi
+where did you eat: raan ahaan
+was it good? yes it was delicious
+who did you eat with: alone
+why did you go there? hungry
+
+function @when
+timestamp
+day daypart hour 
+recently, a while ago, earlier, yesterday, day before yesterday, last week, last month, last year
+soon, tonight, tomorrow, next day, next {week, month, year}
+expressions meaning time/precision
+
+//ทานข้าวเช้ารึยัง
+//papaya
+// fruit what bang
+// gender specific adj 'สวย','หล่อ',
+
+ task 1: nested semantics
+ 'person > {family,professional,personGender,familyGender]}'
+ 'personGender > '
+ 'familyGender > '
+ 
+ task 2: controlled vocabulary
+   one target word
+   remainder mastered words
+
+ subtask: evaluate strings to internal structures
+
+ /**
+**/
+nums = function() {
+	var a = [];
+	function str(n) {
+		var s = voyc.translateNumber(n,'en','digit');
+		a.push(s);
+		//var s = '';
+		//s +=        voyc.translateNumber(n,'en','digit');
+		//s += ' : ' + voyc.translateNumber(n,'th','digit');
+		//s += ' : ' + voyc.translateNumber(n,'th','word');
+		//return s;
+	}
+
+	for (var i=0; i<5; i++) {
+		//str(voyc.genNumber(1000,10000,500));
+		str(voyc.genNumber(10000,100000,1000));
+		str(voyc.genNumber(100000,1000000,10000));
+		str(voyc.genNumber(1000000,10000000,10000));
+	}
+	return a;
+}
+
+var news = [
+'โลกออนไลน์แห่แชร์ ราคาตุ๊กตุ๊กเชียงใหม่ หลังมีเหตุไล่นักท่องเที่ยว-ขู่แกร็บคาร์ ',
+'ราคาตุ๊กตุ๊กเชียงใหม่ – เป็นเรื่องราวที่ถูกวิพากษ์วิจารณ์อย่างกว้างขวางในสังคมออนไลน์ หลังผู้ใช้เฟซบุ๊กชื่อ Winston Vaduz โพสต์คลิปวิดีโอลงกลุ่ม “จังหวัดเชียงใหม่ CM108.com” พร้อมกับแคปชั่นว่า “Welcome to Chiang Mai” ? โดยในคลิปเป็นเหตุการณ์ของกลุ่มคนขับรถรับจ้าง ตุ๊กตุ๊ก แท๊กซี่ เข้ารุมรถแกร็บ ขณะรับนักท่องเที่ยวมาส่ง ทั้งด่า ข่มขู่ กระโดดถีบ เรื่องแย่งลูกค้านักท่องเที่ยว บริเวณหน้าอาเขตเชียงใหม่ ซึ่งมีผู้ชายสวมเสื้อสีน้ำตาลเป็นคนขับรถสามล้อรับจ้าง ตะโกนท้าทายด่าทอคนขับรถแกร็บเป็นภาษาเหนือว่า “มันเป๋นจะได คิงเป็นไค๋ คิงบะมีสิทธิอู้จะอี้ คิงลงมา คิงลงมา (มันเป็นยัง มึงเป็นใคร มึงไม่มีสิทธิพูดอย่างนี้ มึงลงมาจากรถเลย)”',
+'ต่อมาขนส่งเชียงใหม่ นำตัวผู้ก่อเหตุมาสอบสวนและเตรียมดำเนินคดี ที่ทำให้เสื่อมเสียชื่อเสียง และภาพลักษณ์ด้านการท่องเที่ยวของจังหวัดเชียงใหม่',
+'ต่อมาขนส่งเชียงใหม่ นำตัวผู้ก่อเหตุมาสอบสวนและเตรียมดำเนินคดี ที่ทำให้เสื่อมเสียชื่อเสียง และภาพลักษณ์ด้านการท่องเที่ยวของจังหวัดเชียงใหม่',
+'ขณะที่ในสังคมออนไลน์ มีผู้ถ่ายภาพราคารถตุ๊กตุ๊กเชียงใหม่ มาเผยแพร่ ซึ่งมีผู้แชร์ต่อ และเข้ามาแสดงความคิดเห็นเป็นจำนวนมาก เนื่องจากมีราคาแพง ทำให้คนหันไปใช้บริการแกร็บคาร์ ที่มีความแน่นอนในเรื่องของราคา และระยะทางให้ผู้บริโภคพิจารณา ถึงแม้ว่าจะเป็นการบริการที่ยังไม่ได้การรับรองทางกฎหมายก็ตาม',
+];
+
+function translate() {
+	//thai1000.sort(function(a,b) {return (a.length - b.length);});
+	thai1000.sort(function(a,b) {
+		var x = b.t.length - a.t.length;	// by length descending
+		//if (x == 0) {
+		//	// we need a sort method per http://www.thai-language.com/ref/alphabetical-order
+		//	x = (a.t == b.t) ? 0 : (a.t > b.t) ? 1 : -1;	// by thai alpha, incorrect
+		//}
+		return x;
+	});
+	
+	var s = '';
+	for (var i=0; i<thai1000.length; i++) {
+		s += ' ' + thai1000[i].t.length + ' ' + thai1000[i].t + '<br/>';
+	}
+	return s;
+}
+

@@ -1,0 +1,6 @@
+สิบ;ten
+ร้อย;hundred
+พัน;thousand
+หมื่น;ten thousand
+แสน;hundred thousand
+ล้าน;million

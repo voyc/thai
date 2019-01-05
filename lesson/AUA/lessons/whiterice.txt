@@ -1,0 +1,293 @@
+แว่น;F glasses
+แว่นสายตา;FRM glasses-eyesight
+แว่นกันแดด;FML glasses-protect-sunlight
+แว่นสายตาใกล้;FRMF glasses-eyesight close
+แว่นสายตายาว;FRMM glasses-eyesight distance
+แว่นขยาย;FLR glasses enlarge
+ผม ใส่ แว่นสายตาใกล้;I wear reading glasses
+ผม ไม่ ใส่ แว่นสายตายาว;I do not wear glasses for distance
+ไม่ ใส่ แว่นกันแดด เมื่อ ออกไป ข้างนอก;Not wear sunglasses when out-go outside.
+เมื่อ ออกไป ข้างนอก ไม่ ใส่ แว่นกันแดด;When out-go outside, not wear sunglasses.
+เมื่อ ออกไป ข้างนอก;When go outside
+เมื่อ อยู่ ข้างในบ้าน; When stay inside
+เมื่อ ออกไป ข้างนอก จะ ใส่ หมวก;When go outside will wear hat.
+เมื่อ ออกไป ข้างนอก จะ สวม หมวก;When go outside will wear hat.
+เมื่อ ออกไป ข้างนอก จะ ไม่ ใส่ แว่นกันแดด ;When go outside not wear sunglasses.
+เมื่อ ออกไป ข้างนอก จะ ใส่ เสื้อ แขน ยาว;When go outside will shirt sleeves long.
+แขน;arm
+ขา;leg
+ข่า;galangal
+คอ;neck
+ขอ;ask
+ยาว;long
+สั้น;short
+กางเกง;pants
+ครีม;cream
+ครีมกันแดด;sunscreen (cream-protect-sunlight)
+เมื่อ ออกไป ข้างนอก จะ ใส่ ครีมกันแดด;When go outside wear sunscreen.
+ไปด้วย;go together
+เมื่อ ออกไป ข้างนอก จะ เอา ร่ม ไปด้วย
+ขอ สร้อยคอ;ask necklace
+สร้อยคอ;necklace
+กางเกง ขา สั้น;short pants
+เสื้อ แขน สั้น;short-sleeve shirt
+ถ้าฝนตกจะไม่ออกไปข้างนอก;If it rains will not go outside
+ถ้าฝนตกจะอยู่ข้างใน;If it rains will stay inside.
+ถ้าฝนตกจะไปเอาร่ม;If it rains will take umbrella.
+ถ้าฝนตกจะเอาร่มไปด้วย;If it rains will take umbrella go together.
+ข้างหน้ามีรถขวางอยู่	In front the car is blocked.
+ข้างหลังมีรถขวางอยู่	Behind the car is blocked.
+ข้างหลังไปไม่ได้	Behind cannot go.
+ข้างหลังบ้านมีสวนผลไม้	Behind the house is the orchard (garden fruit).
+ข้างในบ้านภรรยาของผมกำล้งทำงานอยู่	Inside the house my wife is working.
+ภรรยาของผมกำล้งทำงานอยู่ข้างในบ้าน	My wife is working inside the house.
+ข้างนอกฝนกำล้งตก	Outside rain is falling.
+ข้างนอกร้อนมาก	Outside very hot.
+ข้างบนเสียงดัง	Upstairs is noisy.
+ข้างบนขึ้นไปไม่ได้	Upstairs cannot go.
+ภรรยานั่งข้างข้างผม	Wife sit beside me.
+ข้างข้างบ้านมีงานเลี้ยง	House beside there is party.
+ภรรยาขอคุณอยู่ที่ไหน	Your wife is where?
+ข้างหลัง	Behind
+ข้างล่าง	Downstairs
+ใต้	under, south
+ใน	in
+ตะวันออก	East, sunrise
+ตะวันตก	West, sunset
+ตะวันลับขอบฟ้า	
+ตะวัน	sun
+ลับ	hide
+ขอบฟ้า	horizon	
+เหนือ	north
+
+
+Wait for friend
+When my friend comes, then I will order.
+If I boil the water, then I can make coffee.
+When the water has boiled, then I can make coffee.
+First you must boil the water, then you can make coffee.
+If I eat too much, then I get fat.
+If I eat fresh vegetables, then I get healthy.
+คุณหยุดที่ทุกป้ายรถเมล์
+
+กระทง ceremonial vessel containing flower, candle, incense
+ลอย adj. Floating, transient
+ลอย v. To set a float or a drift
+ลอย กระทง float boat festival
+กระทง ลอย floating kratong, small boat
+กระทง ใหญ่ big kratong, parade float
+ส้อม;F fork
+ช้อน; H spoon
+ช้อนส้อม;HF spoon, fork
+คัน;M clf fork, spoon, etc
+คู่;F clf pair
+ช้อนส้อม หนึ่ง คู่;spoon fork one pair
+ส้อม หนึ่ง คัน;one fork
+ช้อน หนึ่ง คัน;one spoon
+ซ้าย;H left
+ขวา;R right
+ส้อม ซ้าย;FH fork left 
+ช้อน ขวา;HR spoon right
+จาน;M plate
+ชาม;M bowl
+ถ้วย;F cup
+แก้ว;F glass
+ขวด;L bottle
+ถุง;R bag
+ใบ;M clf empty containers
+หน้า;F in front, face
+หลัง;R behind, back
+บน;M on top
+ใต้;F below, under, south
+ใน;M in, inside
+นอก;F out, outside
+นอกจาก;FL except (outside of)
+ยกเว้น;HH except (exempt)
+ข้าง;F side
+ข้างใน;M inside
+ข้างนอก;F outside
+ข้างข้าง;FF	beside
+ช้อน อยู่ ด้าน ขวา ของ จาน;spoon is side-right of plate
+ส้อม อยู่ ด้าน ซ้าย ของ จาน;fork is side-left of plate
+จาน อยู่ ระหว่าง ช้อน กับ ส้อม;plate is between spoon with fork
+จาน อยู่ กลาง ช้อน กับ ส้อม;plate is middle spoon with fork
+จาน อยู่ ตรงกลาง ช้อน กับ ส้อม;plate is in-the-middle spoon with fork
+ช้อน อยู่ ใน ชาม;spoon is in bowl
+ชาม อยู่ บน จาน;bowl is on plate
+ชาม วาง บน จาน;bowl put on plate
+ไม่ ได้ ไป ใต้;no can go south
+ได้ ใต้;can south
+ไป ใบ;go clf-empty-container
+ว่าง;free
+วาง;put-down
+ระวัง;careful
+ระหว่าง;between
+ไหมใหม่ไม่ไหม้ไหม;silk new not burn, correct?
+ระวัง วาง ระหว่าง ผิด;careful put between wrong
+สาย;late
+ซ้าย;left
+ใส่;wear
+
+staying or leaving
+ลา ก่อน;goodbye (leave temporarily)
+พบกันใหม่; see you again
+
+staying
+กลับมาอีกนะ;come back again
+มาอีกนะ;come again
+มาใหม่นะ;come again (new)
+
+leaving only
+ไป ละ นะ;goodbye "I'm leaving" (go leave)
+ลา ละ นะ;goodbye "I'm leaving"(leave leave)
+กลับ ก่อน นะ;I'm going home "I'm leaving" (return temporarily)
+ไป ก่อน นะ;goodbye "I'm leaving" (go temporarily)
+ไป กัน เถอะ;let's go (together)
+ปะ ไป กัน เถอะ;let's go (together)
+
+หน้า;face
+น่ารัก;cute
+หน้า น่ารัก;cute face
+
+
+ตื่นเช้า	;wake up morning
+หกโมงเช้า;6 AM
+หกโมง;6 AM
+หกโมงครึ่ง;6:30 AM
+
+ข้าง = ด้าน
+สวม = ใส่
+
+
+อนุสาวรีย์ สาม กษัตริย์
+สาม กษัตริย์
+กษัตริย์ สาม พระองค์
+กษัตริย์ มังราย
+พระเจ้า มังราย
+พระ
+พระเจ้า อยู่หัว
+พระเจ้า แผ่น ดิน
+พระบาท สม เด็จ พระเจ้า อยู่ หัว (formal)
+
+ลง	come down, get off
+ลง รถ
+ลง ที่ ไหน
+ลง ที่ อนุสาวรีย์ สาม กษัตริย์
+ไป ไหน
+ไป ที่ วัดอุปคุต
+
+ขึ้น
+ขึ้น รถ
+ขึ้น รถเมล์  ที่ ไหน
+ขึ้น ที่ อนุสาวรีย์ สาม กษัตริย์
+
+สถานี	station
+สถานี ขน ส่ง อาเขต	station 2 arcade
+สถานี ขน ส่ง ช้างเผือก	station 1 Chang Puak
+ขน ส่ง อาเขต	station 2 arcade
+ขน ส่ง ช้างเผือก	station 1 Chang Puak
+สถานี รถไฟ	train station
+ป้ายรถเมล์	bus stop
+
+placesChiangMai
+สถานี ขน ส่ง อาเขต
+สถานี ขน ส่ง ช้างเผือก
+อนุสาวรีย์ สาม กษัตริย์
+วัด อุปคุต
+ตลาด สมเพชร
+
+people in Thailand
+กษัตริย์ มังราย
+พระเจ้า มังราย
+พระเจ้า อยู่หัว
+พระเจ้า แผ่น ดิน
+พระบาท สม เด็จ พระเจ้า อยู่ หัว
+
+whereYouGo
+คุณไปที่ไหน
+ไปที่ไหน
+ไปไหน
+
+
+where is phrao
+พร้าวอยู่ที่ไหน
+phrao is north of Chiang Mai
+พร้าวอยู่ทางทิศเหนือของเชียงใหม่
+
+พระอาทิตย์	sun
+พระจันทร์	moon
+วันอาทิตย์	sunday
+วันจันทร์	monday
+
+ทิศ	direction (also see nw, se, etc)
+ทิศตะวันออก	east
+ทิศตะวันตก	west
+ทิศเหนือ	north
+ทิศใต้		south
+
+
+ตะวันออก	east, sunrise
+ตะวันตก	west, sunset
+ตะวันลับขอบฟ้า	sunset
+ลับ	hide, secret
+
+ขอ ข่า		give me galangal
+ขา	leg
+ข้าพเจ้า	me, I (formal)
+ข้า	me, I (informal among men of same age, older generation)
+
+ระหว่าง	between (third)
+
+คอ;M neck
+ขอ;R ask
+ขา;R leg
+ข่า;L galangal
+คอย;M wait
+ข่าว;L news
+ขาย;R sell
+ขาว;R white
+ของ;R of
+ถ้วย;F cup
+ด้วย;F also
+เท่านั้น;only
+ข้าว;rice
+เข้า;enter
+เข่า;knee
+
+เข้ามา;come in
+ข้าวขาว;white rice
+ข้าวกล้อง;brown rice
+
+คุณดูทีวีไหม;you watch tv?
+ผมดูข่าวเท่านั้น;I watch news only.
+กางเกงขาสั้นสีขาว;short pants white
+กางเกงขายาวสีขาว;long pants white
+ข้าว ขาว;rice white
+เขา ขาย ข้าว ขาว;he sell rice white 
+เขา เข้า มา;she comes in
+เขา เข้า มา ขาย ข้าว ขาว;she come in sell rice white
+ข้าว กล้อง;rice brown
+เขา เข่า เข้า;he knee enter
+ขาว ข่าว ข้าว;white news rice
+เขา ขาว;he white
+เข่า เขา ขาว;knee his white
+ข้าว เขา ขาว;rice his white
+เขา ขาย ข่าว;he sells news
+เขา ขาย ไข่ ไก่;he sells eggs chicken
+คอ ของ เขา ขาว;neck of his white
+ขอ ข่า ขาว;ask galangal white 
+มี ข่า ใน แกง ไหม;is galangal in soup?
+พอแล้ว;enough
+เหนื่อย;tired
+
+ม้าของเขาเข้ามา;his horse come in
+ม้าของเขาเข้ามากินข้าวขาว;his horse come in eat white rice
+หมามา;dog come
+หมามาหาข้าวกิน;dog come to find rice to eat
+ม้าของเขาสีขาว;his horse white
+ม้าและหมาเข้ามา;horse and dog come in
+ม้าไม่มาหาหมา;horse not come to find dog
+
+
+
+

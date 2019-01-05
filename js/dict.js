@@ -49,7 +49,7 @@ voyc.dict = [
 	{id:1006, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ผม',	translit:'pom_R',	hint:'2R', part:'pron', lvl:1, en:'I (male)'},
 	{id:1007, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ฉัน',	translit:'chan_R',	hint:'3R', part:'pron', lvl:1, en:'I (female)'},
 	{id:1008, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ของ',	translit:'kawng_R',	hint:'3R', part:'prep', lvl:9, en:'of'},
-	{id:1009, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หัว',	translit:'hua_R',	hint:'3R', part:'noun', lvl:9, en:'head'},
+	{id:1009, typ:'word', ns:1, cat:'anatomy', ccls:'h', end:'live', mark:'0', tone:'R', th:'หัว',	translit:'hua_R',	hint:'3R', part:'noun', lvl:9, en:'head'},
 	{id:1010, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'รู',	translit:'ruu_M',	hint:'2M', part:'noun', lvl:9, en:'hole'},
 	{id:1011, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ยิน',	translit:'yin_M',	hint:'3M', part:'verb', lvl:9, en:'hear'},
 	{id:1012, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'คุณ',	translit:'kun_M',	hint:'3M', part:'pron', lvl:1, en:'you'},
@@ -100,7 +100,7 @@ voyc.dict = [
 	{id:1060, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'เป็น',	translit:'bpen_M',	hint:'4M', part:'verb', lvl:1, en:'is'},
 	{id:1062, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'คือ',	translit:'kʉʉ_M',	hint:'3M', part:'verb', lvl:9, en:'is'},
 	{id:1061, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'สวน',	translit:'suan_R',	hint:'3R', part:'noun', lvl:9, en:'garden'},
-	{id:1063, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'ฟัน',	translit:'fan_M',	hint:'3M', part:'noun', lvl:9, en:'teeth'},
+	{id:1063, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'0', tone:'M', th:'ฟัน',	translit:'fan_M',	hint:'3M', part:'noun', lvl:9, en:'tooth'},
 	{id:1064, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ฝัน',	translit:'fan_R',	hint:'3R', part:'noun', lvl:9, en:'dream'},
 	{id:1065, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'ฝน',	translit:'fon_R',	hint:'2R', part:'noun', lvl:9, en:'rain'},
 	{id:1066, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'ตก',	translit:'dtok_L',	hint:'2L', part:'verb', lvl:9, en:'to fall'},
@@ -123,7 +123,7 @@ voyc.dict = [
 	{id:1083, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'รู้',	translit:'ruu_H',	hint:'2H', part:'verb', lvl:9, en:'know'},
 	{id:1084, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'น้ำ',	translit:'naam_H',	hint:'4H', part:'noun', lvl:9, en:'water'},
 	{id:1085, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'ช้า',	translit:'chaa_H',	hint:'3H', part:'advx', lvl:1, en:'slowly'},
-	{id:1086, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'เท้า',	translit:'tao_H',	hint:'4H', part:'noun', lvl:9, en:'feet'},
+	{id:1086, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'2', tone:'H', th:'เท้า',	translit:'tao_H',	hint:'4H', part:'noun', lvl:9, en:'foot'},
 	{id:1087, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'จัก',	translit:'jak_L',	hint:'3L', part:'verb', lvl:9, en:'split'},
 	{id:1088, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'กับ',	translit:'gab_L',	hint:'3L', part:'prep', lvl:9, en:'with'},
 	{id:1091, typ:'word', ns:1, ccls:'m', end:'dead', mark:'0', tone:'L', th:'อีก',	translit:'iik_L',	hint:'3L', part:'advx', lvl:9, en:'more/again'},
@@ -223,7 +223,7 @@ voyc.dict = [
 	{id:1194, typ:'word', ns:1, ccls:'l', end:'live', mark:'0', tone:'M', th:'วาน', 	translit:'_M', hint:'2M',	part:'noun',	lvl:1, en:''},
 
 	{id:1195, typ:'word', ns:1, ccls:'m', end:'live', mark:'2', tone:'F', th:'ใต้',	translit:'dai_F',	hint:'3F',	part:'prep',	lvl:2, en:'under'},
-	{id:1196, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'หน้า',	translit:'naa_F',	hint:'4F',	part:'prep',	lvl:2, en:'front'},
+	{id:1196, typ:'word', ns:1, cat:'anatomy', ccls:'h', end:'live', mark:'2', tone:'F', th:'หน้า',	translit:'naa_F',	hint:'4F',	part:'prep',	lvl:2, en:'front, face'},
 	{id:1197, typ:'word', ns:1, ccls:'h', end:'live', mark:'0', tone:'R', th:'หลัง',	translit:'lang_R',	hint:'4R',	part:'prep',	lvl:2, en:'back'},
 	{id:1198, typ:'word', ns:1, ccls:'h', end:'live', mark:'2', tone:'F', th:'ข้าง',	translit:'kaang_F',	hint:'4F',	part:'prep',	lvl:2, en:'side'},
 	{id:1199, typ:'word', ns:1, ccls:'h', end:'dead', mark:'0', tone:'H', th:'และ',	translit:'lae_H',	hint:'3H',	part:'conj',	lvl:1, en:'and'},
@@ -240,7 +240,32 @@ voyc.dict = [
 	{id:1210, typ:'word', ns:1, ccls:'l', end:'live', mark:'2', tone:'H', th:'แม้',	translit:'mae_H',	hint:'3H',	part:'conj',	lvl:1, en:'though'},
 	{id:1211, typ:'word', ns:1, ccls:'m', end:'live', mark:'1', tone:'L', th:'ก่อน',	translit:'gaawn_L',	hint:'4L',	part:'adverb',	lvl:1, en:'before'},
 	{id:1212, typ:'word', ns:1, ccls:'m', end:'live', mark:'0', tone:'M', th:'กัน',	translit:'gan_M',	hint:'3M',	part:'conj',	lvl:1, en:'together'},
-	
+
+	{id:1213, typ:'word', ns:1, cat:'anatomy', ccls:'m', end:'dead', mark:'0', tone:'L', th:'ปาก',	translit:'bpaak_L',	hint:'3L',	part:'noun',	lvl:1, en:'mouth'},
+	{id:1214, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'2', tone:'H', th:'ลิ้น',	translit:'lin_H',	hint:'4H',	part:'noun',	lvl:1, en:'tongue'},
+	{id:1215, typ:'word', ns:1, cat:'anatomy', ccls:'h', end:'live', mark:'0', tone:'R', th:'หู',	translit:'huu_R',	hint:'2R',	part:'noun',	lvl:1, en:'ear'},
+	{id:1216, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'0', tone:'M', th:'คาง',	translit:'kaang_M',	hint:'3M',	part:'noun',	lvl:1, en:'chin'},
+	{id:1217, typ:'word', ns:1, cat:'anatomy', ccls:'m', end:'live', mark:'2', tone:'F', th:'แก้ม',	translit:'gaaem_F',	hint:'4F',	part:'noun',	lvl:1, en:'cheek'},
+	{id:1218, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'2', tone:'H', th:'คิ้ว',	translit:'kiu_H',	hint:'4H',	part:'noun',	lvl:1, en:'eyebrow'},
+	{id:1229, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'0', tone:'M', th:'คอ',	translit:'kaw_M',	hint:'2M',	part:'noun',	lvl:1, en:'neck/throat'},
+	{id:1220, typ:'word', ns:1, cat:'anatomy', ccls:'h', end:'live', mark:'1', tone:'L', th:'ไหล่',	translit:'lai_L',	hint:'4L',	part:'noun',	lvl:1, en:'shoulder'},
+	{id:1221, typ:'word', ns:1, cat:'anatomy', ccls:'h', end:'live', mark:'0', tone:'R', th:'แขน',	translit:'kaaen_R',	hint:'3R',	part:'noun',	lvl:1, en:'arm'},
+	{id:1222, typ:'word', ns:1, cat:'anatomy', ccls:'h', end:'dead', mark:'0', tone:'L', th:'ศอก',	translit:'saawk_L',	hint:'3L',	part:'noun',	lvl:1, en:'elbow'},
+	{id:1223, typ:'word', ns:1, cat:'anatomy', ccls:'l', end:'live', mark:'0', tone:'M', th:'มือ',	translit:'mʉʉa_M',	hint:'3M',	part:'noun',	lvl:1, en:'hand'},
+
+	{id:5030, typ:'word', ns:2, cat:'anatomy', th:'จมูก',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5031, typ:'word', ns:2, cat:'anatomy', th:'เหงึอก',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5032, typ:'word', ns:2, cat:'anatomy', th:'หน้าผาก',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5033, typ:'word', ns:2, cat:'anatomy', th:'ข้อมึอ',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5034, typ:'word', ns:2, cat:'anatomy', th:'นิ้วมึอ',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5035, typ:'word', ns:2, cat:'anatomy', th:'เล็บมึอ',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5036, typ:'word', ns:2, cat:'anatomy', th:'นิ้วเท้า',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	{id:5037, typ:'word', ns:2, cat:'anatomy', th:'เล็บเท้า',	translit:'ja_L muk_L',	hint:'1L3L',	part:'noun',	lvl:1, en:'nose'},
+	//1009 head
+	//1196 face
+	//1063 tooth
+	//1086 foot
+
 
 
 	{id:2000, typ:'word', ns:1, ccls:'l', end:'live', mark:'1', tone:'L', th:'สี่',	translit:'sii_F',	hint:'3F', part:'adjx', en:'zero'},
@@ -340,6 +365,10 @@ voyc.dict = [
 	{id:20509, typ:'expression', ns:2, set:[5005,1002,1096],	lvl:1, en:'well, fine'},
 	{id:20510, typ:'expression', ns:2, set:[1182,100], part:'intj',	lvl:1, en:'really?!'},
 	{id:20512, typ:'expression', ns:2, set:[5006,1002,1203,1072,1096], part:'',	lvl:1, en:'Happy New Year'},
+/*
+Tan Hai aroy
+ครับผม	Yes Sir
+*/
 	
 	{id:30000, typ:'sentence', ns:2, story:0,   line:0, set:[10000,1075,1002,1117,1103]},
 

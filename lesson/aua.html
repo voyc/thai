@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
-<title>Categories</title>
+<title>AUA</title>
 <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 <style>[hidden] {display:none ! important;}</style>
 <link  href='../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
@@ -23,22 +23,39 @@
 <script src='../icon/lib/menu.js'></script>
 
 <script>
-voyc.drawGroups = function() {
-	s = '';
-	s += voyc.drawPanel({title:'months'        , cb:function(r) {return (r.cat == 'month')}});
-	s += voyc.drawPanel({title:'anatomy'        , cb:function(r) {return (r.cat == 'anatomy')}});
+voyc.startWord = 1204;
+voyc.startPhrase = 20513;
+voyc.type = 'expression';
+
+voyc.setcustom = {
+	title:'Custom',
+	custom: [
+//		{th:'อย่าง', en:'M	type'},
+		{th:'ใบ', en:'M clf empty containers, cards; n. leaf'},
+		{th:'แผ่น', en:'L clf flat objects'},
+		{th:'ตัว', en:'M clf body, animal, furniture, shirts, pants'},
+		{th:'ลูก', en:'F clf offspring, fruit, round objects'},
+		{th:'ชิ้น', en:'H clf pieces of food, writing, work'},
+		{th:'ก้อน', en:'F clf lumps, clouds, butter, bread, charcoal'},
+		{th:'ชุด', en:'H clf sets'},
+		{th:'คู่ ', en:'F clf pairs'},
+		{th:'ผืน', en:'R clf cloth objects'},
+	]
+}
+
+voyc.draw = function() {
+	var s = '';
+	s += voyc.drawPanel(voyc.setcustom);
 	voyc.$('content').innerHTML = s;
 	(new voyc.Minimal()).attachAll(voyc.$('content'));
 }
-
-
+			
 addEventListener('load', function() {
-	// draw panels content
-	voyc.drawGroups();
+	var s = voyc.draw();
 
 	// practice button
 	voyc.$('practice').addEventListener('click', function(event) {
-		voyc.practice({'title': 'Categories'});
+		voyc.practice({'title': 'Expressions'});
 	});
 
 	// load sounds, etc.
@@ -50,7 +67,7 @@ addEventListener('load', function() {
 	<header class='fixed'>
 		<hdr>
 			<icon type='draw' name='menu' class='bit' open='leftname-menu'></icon>
-			<span id='hdrtitle' style='vertical-align:middle'>Categories</span>
+			<span id='hdrtitle' style='vertical-align:middle'>New Words</span>
 			<button id="practice" >Practice</button>
 		</hdr>
 	</header>

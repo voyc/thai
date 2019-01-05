@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>NumGen test</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<script>var voyc = {};</script>
+<script src='numgen.js'></script>
+<script src='time.js'></script>
+<script src='sengen.js'></script>
+<script>
+window.addEventListener('load', function(evt) {
+	document.getElementById('testsuite').addEventListener('click', function(evt) { testsuite() }, false);
+	document.getElementById('getTranslate').addEventListener('click', function(evt) { getTranslate() }, false);
+	document.getElementById('getSpecial').addEventListener('click', function(evt) { getSpecial() }, false);
+	document.getElementById('showquestion').addEventListener('click', function(evt) { showQuestion() }, false);
+	document.getElementById('showanswer').addEventListener('click', function(evt) { showAnswer() }, false);
+	//testsuite();
+	//gen();
+	hoohah();
+}, false);
+
+testsuite = function() {
+	var s = '';
+	var e = '';
+	var t = '';
+	var d = '';
+	var a;
+
+	a = voyc.genNumber(1,10,1);
+	e = voyc.translateNumber(a, 'en','word');
+	d = voyc.translateNumber(a, 'th','digit');
+	t = voyc.translateNumber(a, 'th','word');
+	s += a + ' : ' + d + ' : ' + e + ' : ' + t + '<br/>';
+
+	a = voyc.genNumber(2,10,2);
+	e = voyc.translateNumber(a, 'en','word');
+	d = voyc.translateNumber(a, 'th','digit');
+	t = voyc.translateNumber(a, 'th','word');
+	s += a + ' : ' + d + ' : ' + e + ' : ' + t + '<br/>';
+
+	a = voyc.genNumber(0,1000,50);
+	e = voyc.translateNumber(a, 'en','word');
+	d = voyc.translateNumber(a, 'th','digit');
+	t = voyc.translateNumber(a, 'th','word');
+	s += a + ' : ' + d + ' : ' + e + ' : ' + t + '<br/>';
+
+	a = voyc.genNumber(0,10000,500);
+	e = voyc.translateNumber(a, 'en','word');
+	d = voyc.translateNumber(a, 'th','digit');
+	t = voyc.translateNumber(a, 'th','word');
+	s += a + ' : ' + d + ' : ' + e + ' : ' + t + '<br/>';
+
+	a = voyc.genNumber(0,1000000,1);
+	e = voyc.translateNumber(a, 'en','word');
+	d = voyc.translateNumber(a, 'th','digit');
+	t = voyc.translateNumber(a, 'th','word');
+	s += a + ' : ' + d + ' : ' + e + ' : ' + t + '<br/>';
+
+	a = voyc.randomElement(['abc', 'dog', 'able']);
+	s += a + '<br/>';
+
+	var w = chooseone3(which);
+	var u = chooseone3(unittime);
+	s += w.q + ' ' + u.q + ' -- ' + w.a + ' ' + u.a + '<br/>';
+
+	
+	document.getElementById('testout').innerHTML = s;
+}
+
+getTranslate = function() {
+	var n = voyc.genNumber(1,1000000,1);
+	var s = '';
+	s +=        voyc.translateNumber(n,'en','digit');
+	s += ' : ' + voyc.translateNumber(n,'th','digit');
+	s += ' : ' + voyc.translateNumber(n,'th','word');
+	document.getElementById('testout').innerHTML = s;
+}
+
+getSpecial = function() {
+	function str(n) {
+		var s = n.toString();
+		s += ' : ' + voyc.translateNumber(n,'th','digit');
+		s += ' : ' + voyc.translateNumber(n,'th','word');
+		s += '<br/>';
+		return s;
+	}
+	var n = 0;
+	var s = '';
+	
+	s += str(0);
+	s += str(10);
+	s += str(11);
+	s += str(12);
+	s += str(19);
+	s += str(20);
+	s += str(21);
+	s += str(22);
+	s += str(29);
+	s += str(30);
+	s += str(31);
+	s += str(40);
+	s += str(41);
+	s += str(42);
+	s += str(950630);
+	
+	document.getElementById('testout').innerHTML = s;
+}
+
+hoohah = function() {
+	var a = [];
+	function str(n) {
+		var s = voyc.translateNumber(n,'en','digit');
+		a.push(s);
+		//var s = '';
+		//s +=        voyc.translateNumber(n,'en','digit');
+		//s += ' : ' + voyc.translateNumber(n,'th','digit');
+		//s += ' : ' + voyc.translateNumber(n,'th','word');
+		//return s;
+	}
+
+	for (var i=0; i<5; i++) {
+//		str(voyc.genNumber(1000,10000,500));
+//		str(voyc.genNumber(10000,100000,5000));
+//		str(voyc.genNumber(100000,1000000,50000));
+		str(voyc.genNumber(10000,91000,10000));
+		str(voyc.genNumber(100000,910000,100000));
+		str(voyc.genNumber(1000000,9100000,1000000));
+		a = shuffle(a);
+		a = a.splice(0,200);
+		var s = a.join(voyc.breakSentence);
+		document.getElementById('content').innerHTML = s;
+	}
+}
+
+showQuestion = function() {
+	var w = chooseone3(which);
+	var u = chooseone3(unittime);
+	document.getElementById('question').innerHTML = w.q + ' ' + u.q;
+	document.getElementById('answer').innerHTML = w.a + ' ' + u.a;
+	document.getElementById('answer').style.display = 'none';
+	
+	
+}
+
+showAnswer = function() {
+	document.getElementById('answer').style.display = 'block';
+}
+</script>
+</head>
+<body>
+<button id=testsuite>test suite</button>
+<button id=getTranslate>get and translate</button>
+<button id=getSpecial>get special</button>
+<div id=testout>testout</div>
+
+<button id=showquestion>Question</button>
+<button id=showanswer>Answer</button>
+<div id=question>question</div>
+<div id=answer>answer</div>
+<div id=content>content</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+Marcus Krug		150,000	10:00 living room couch, 9:00 bedroom, dance, 5:32 wet bar, 4:20 libraray, 3:29 shoots Dr Ralph, pool lounge
+Colin Ningbo	130,000 8:15 enter wet bar, 4:15 exit
+Kim Euston		120,000	9:45 living room, hallway, pool
+BaltasarCabasso	120,000	10:00 billiards, 8:20 pool, 7:12 pool lounge (pos#3)
+Dr Ralph Asbury	110,000 10:00 dining area, 9:20 exit behind bedroom, 7:25 reappear next to billiards, library
+Dimitri Lefkos	100,000 8:39 living room laptop, 7:45 walk, 6:45 pool, 6:37 shot by Hernandez
+Vincent Krug	105,000 10:00 behind holy pillar, 8:44 office laptop, 7:50 pool lounge (pos#1)
+Jaroslav Benak	 85,000 10:00 dining area, 6:23 walking, 5:03 pool lounge (pos#2 standing)
+Omid Maklouf	 80,000 10:00 billiards, shoot Baltasar, pool lounge (pos#4)
+BasiaRomanowski	 75,000	10:00 living room couch, bedroom, dance, 6:20 library
+Tulia Hernandez       ? 6:37 shoots Dimitri Lefkos
+
+Security Director, makes four appearances
+1 hot tub deck
+2 upper parking
+3 west mansion
+4 east mansion, stationary
+when he uses the radio, he calls in more guards, like one more for the roof
+
+personal guards
+Marcus Krug
+
+
+room guards
+#1, dining room, 1-minute route with 3 stations: heater, pexiglass, post
+#2, hot tub, 50-second route with 2 stations: hot tub, overlook 
+#3, fan, 2.5 minute route with 3 stations: landing, corner, landing, billiards guard
+#4, under pool, stationary?
+#5, billiards, stationary 
+#6, roof, 2.75 minute route with 4 stations: trash chute, under dish, front-east corner, front-west corner
+
+upper parking
+lower parking
+guard house
+
+civilians
+bartender in the dining area
+Vincent Krug's date in the dining area
+Colin Ningbo's date in the wet bar
+drunk guy under the pool
+
+building layout
+west to east
+roof
+3F: dining area, stair, bedroom
+2F: hottub, hottub lounge, hall, deck, bridge, hallway, office, pool lounge, pool
+1F: wet bar, Dr Ralph's room, empty room, library, billiards
+upper parking, fan, drunk, overhang
+lower parking
+
+
+http://hitman.wikia.com/wiki/Category:Hitman:_Sniper_targets
+

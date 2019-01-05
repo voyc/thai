@@ -1,0 +1,24 @@
+1	Hello	สวัสดี ครับ/ค่ะ	SÀ-WÀT-DEE KRÁB/KÀ
+2	How are you?	สบายดีไหม ครับ/ค่ะ	SA-BAI-DEE MĂI KRÁB/KÁ
+3	I'm OK, thank you.	สบายดี ครับ/ค่ะ, ขอบคุณ	SA-BAI-DEE KRÁB/KÀ, KÒB-KOON
+4	What is your name?	คุณชื่ออะไร ครับ/คะ	KOON CHÊU ÀA-RAI KRÁB/KÁ
+5	My name is Steven	ผมชื่อสตีเว่นครับ	PHŎM CHÊU SÀ-TEE-WÊN KRÁB
+6	Where are you from?	คุณมาจากไหน ครับ/คะ	KOON MAA JÀK NĂI KRÁB/KÁ
+7	I am from England	ผม/ฉัน มาจากอังกฤษ ครับ/ค่ะ	PHŎM/CHĂN MAA JÀK ANG-GRÌT KRÁB/KÀ
+8	How long have you been in Thailand?	คุณอยู่เมืองไทยมานานเท่าไหร่แล้ว ครับ/คะ	KOON YÒO MUANG-THAI MA NAN THÂO-RÀI LÁEW KRÁB/KÁ
+9	I have been in Thailand for 6 months.	ผม/ฉัน อยู่เมืองไทยมา 6 เดือนแล้ว ครับ/ค่ะ	PHŎM/CHĂN YÒO MUANG-THAI MA HÒK DEUAN LÁEW KRÁB/KÀ
+10	What is your job?	คุณทำงานอะไร ครับ/คะ	KOON TAM-NGAN ÀA-RAI KRÁB/KÁ
+11	I am a teacher.	ผม/ฉัน เป็นครู ครับ/ค่ะ	PHŎM/CHĂN PEN KROO KRÁB/KÀ
+12	Do you like living in Thailand?	คุณชอบอยู่เมืองไทยไหม ครับ/คะ	KOON CHÔB YÒO MUANG-THAI MÁI KRÁB/KÁ
+13	Yes, I like living here very much.	ครับ/ค่ะ, ผม/ฉัน ชอบอยู่ที่นี่มาก	KRÁB/KÀ, PHŎM/CHĂN CHÔB YÒO TÊE-NÊE MÂK
+14	How old are you?	คุณอายุเท่าไหร่ ครับ/คะ	KOON AA-YÓO THÂO-RÀI KRÁB/KÁ
+15	I am 30 years old	ผม/ฉัน อายุสามสิบปี ครับ/ค่ะ	PHŎM/CHĂN AA-YÓO SĂM-SÌB KRÁB/KÀ
+16	Where do you live?	คุณอาศัยอยู่ที่ไหน ครับ/คะ	KOON AA-SĂI YÒO TÊE-NĂI KRÁB/KÁ
+17	I live in Chiang Mai.	ผม/ฉัน อาศัยอยู่ที่เชียงใหม่ ครับ/ค่ะ	PHŎM/CHĂN AA-SĂI YÒO TÊE CHIANG-MÀI KRÁB/KÀ
+18	Nice to meet you.	ยินดีที่ได้พบ ครับ/ค่ะ	YIN-DEE TÊE DÂI PHÓB KRÁB/KÀ
+19	Nice to meet you as well.	ยินดีทีได้พบเช่นกัน ครับ/ค่ะ	YIN-DEE TÊE DÂI PHÓB CHÊN-GAN KRÁB/KÀ
+20	Goodbye.	ลาก่อน	LA-GÒN
+
+
+http://langhub.com/en-th/beginner-thai/105-first-conversation
+

@@ -1,0 +1,28 @@
+กิจกรรม ของ คุณ ต่อ วัน คือ อะไร	gid-ja-gum khong khun tor won kue aa rai	activity of you per day is	What is your activity per day?
+ไป ร้าน กาแฟ	bpai raan gaa fae	go to coffeeshop
+กิน ข้าว เช้า	gin khao chao	eat breakfast
+อ่าน หนัง สือ มานี	aan nung sue ma nee	read Manee book
+กิน ข้าว เที่ยง	gin khao tiang	eat lunch
+ไป ซื้อ ของ	bpai sue khong	go to shopping
+อ่าน หนัง สือ	aan nung sue	read book
+เดิน ออก กำ ลัง กาย	doen oak-gum-lang-gaai	walk exercise
+ดู YouTube	duu YouTube	watch YouTube
+ไป นอน	bpai nawn	go to sleep
+
+กี่ ปี แล้ว ที่ คุณ ทำ อย่าง นี้	gii pee laew tee khun thaam yang nee	How many year did you do like this?
+เพียง สาม เดือน	piang saam duen	only 3 months
+คุณ รู้ สึก เบื่อ ไหม	khun ru suek bue mai	Did you feel bored?
+ไม่ เบื่อ	mai bue	not bored
+กี่ ชั่ว โมง คุณ ทำ งน ต่อ หนึ่ง วัน	gii chua mong khun thaam ngan tor nueng won	How many hour did you work per one day?
+เท่า ไร	thao rai na	how many?
+สิบ หรือ สิบสอง ชั่ว โมง ต่อ วัน	sib rue sib song chua mong tor won	ten or twelve hours per day
+คุณ มี วัน หยุด ทุก ปี ใช่มั้ย	khun mee won yud tuk pee chai mai	Did you have holiday every year?
+ใช่	chai	yes
+
+How many day did you have holiday per year?
+=gee won khun mee won yud tor pee
+= sib song won
+=that’s good= dee mak loei
+=how many year did you work this job?
+= gii pee laew khun thaam Ngan nee
+=see sib ha pee laew

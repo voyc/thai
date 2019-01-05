@@ -1,0 +1,107 @@
+/**
+	NumGen Number Generator
+	Generate a random number.
+**/
+function NumGen() {
+	
+}
+
+NumGen.prototype.genNumber = function(start, end, interval) {
+	var a = [];
+	for (var i=start; i<=end; i+=interval) {
+		a.push(i);
+	}
+	var r = chooseone(a);
+	return r;
+}
+
+voyc.randomElement(a) {
+	return a[Math.floor(Math.random()*a.length)];
+	
+}
+
+// pick a random element of an array
+voyc.chooseone = function(a) {
+	var r = Math.random();
+	r = a.length * r;
+	r = Math.floor(r);
+	r = a[r];
+	return r;
+}
+
+translateNumber = function(n,la) {
+	if (la == 'en') {
+		var t = n.toString();
+		var s = '';
+		var j = 0;
+		for (var i=0; i<t.length; i++) {
+			if (s.length) s += ' ';
+			j = parseInt(t[i],10);
+			s += digit['en'][j];
+		}
+		return s;
+	}
+	else if (la == 'th') {
+		var t = n.toString();
+		var s = '';
+		var j = 0;
+		var p = 0;
+		for (var i=0; i<t.length; i++) {
+			if (s.length) s += ' ';
+			j = parseInt(t[i],10);
+			p = t.length - i - 1;
+
+			if (p == 1 && t[t.length-2] == 1 && t[t.length-1] == 0) {
+				s += 'sip';
+				break;
+			}
+			else if (p == 1 && t[t.length-2] == 1 && t[t.length-1] == 1) {
+				s += 'sip et';
+				break;
+			}
+
+			else {
+				s += digit['th'][j];
+				s += ' ' + magnitude['th'][t.length - i - 1];
+			}
+		}
+		return s;
+	}
+}
+
+var digit = {};
+digit['en'] = [
+	'zero',
+	'one',
+	'two',
+	'three',
+	'four',
+	'five',
+	'six',
+	'seven',
+	'eight',
+	'nine',
+];
+digit['th'] = [
+	'soon',
+	'nung',
+	'song',
+	'saam',
+	'si',
+	'haa',
+	'hok',
+	'jet',
+	'bad',
+	'kao',
+];
+
+var magnitude = {};
+magnitude['th'] = [
+	'', // one
+	'sip', // ten
+	'roi´', // hundred
+	'pan',  // thousand, 
+	'mʉʉn`', // ten thousand
+	'saenˇ', // hundred thousand
+	'laan´', // million
+];

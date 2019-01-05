@@ -24,6 +24,9 @@ voyc.merge = function(a,b) {
 // load sounds
 voyc.initLesson = function() {
 	voyc.initDict();
+
+	var stacks = localStorage.getItem('stacks');
+
 }
 
 voyc.initDict = function() {
@@ -204,6 +207,7 @@ voyc.drawPanel = function(panel) {
 	}
 
 	// build set from custom rows, add custom rows to dict
+	var word, line;
 	if (panel.custom) {
 		//return 'missing panel';
 
@@ -235,7 +239,7 @@ voyc.drawPanel = function(panel) {
 	Compose a set of cards.
 	A set can contain nested sets.  set=[1,2,[3,4,[5,6,7]],8,9]
 	input set array; Each element is an id or an array of ids.  
-	output/output c is an object that looks very much like a card
+	input/output c is an object that looks very much like a card
 */
 voyc.firstsetid = 1000000;
 voyc.nextsetid = voyc.firstsetid;
@@ -341,8 +345,9 @@ voyc.practice = function(opt) {
 	var seq = 1;
 	for (var i=0; i<ra.length; i++) {
 		a = ra[i];
-		set = voyc.setFromString(a.id);
-		c = voyc.compose(set);
+		//set = voyc.setFromString(a.id);
+		//c = voyc.compose(set);
+		c = voyc.compose(parseInt(a.id));
 		o = {
 			'i':c['id'],
 			'n':seq++,
@@ -457,4 +462,10 @@ addEventListener('load', function() {
 	
 	// create post object to call flash
 	voyc.post = new voyc.Post('flash','http://flash.voyc.com','../../flash/index.html');
+}, false);
+
+window.addEventListener('message', function(evt) {
+	if (evt.data != 'ack') {
+		localStorage.setItem('stacks', evt.data);
+	}
 }, false);

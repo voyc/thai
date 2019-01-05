@@ -1,0 +1,131 @@
+เจอ กัน;meet
+พบ กัน;meet
+เช่น กัน;same to you
+
+คุณ เป็น อย่าง ไร บ้าง ครับ;you are how?
+เป็น อย่าง ไร บ้าง;are how? 
+
+สบายดี ครับ;good
+แลัวคุณล่ะ;and you?
+เหนื่อย;tired
+คุณ ทาน ข้าว รึยัง;you eat rice yet?
+ยัง ไม่ ทาน;not eat yet  ***
+คุณ กิน ข้าว แล้ว ไหม;you eat rice already?
+วันนี้ คุณ ทำ อะไร คะ;today you do what?
+วันนี้ คุณ ทำ อะไร บ้าง คะ;what have you done today?
+วันนี้ คุณ จะ ทำ อะไร บ้าง คะ;what will you do today? ***
+อ่าน หนังสือ;read book
+ดู หนัง;watch movie
+นอนหลับ;sleep
+วันนี้คุณจะทำอะไร;***
+ผม จะ เดิน ไป ชุมชน สันติธรรม;I will walk to community Santitam
+ออกกำลังกาย;exercise
+ผม ไป ออกกำลังกาย;I go to exercise ***
+ผม จะ ไป ออกกำลังกาย;I will go to exercise ***
+ผม สำรวจ และ สังเกต;I survey and observe. ***
+เดิน ออกกำลังกาย;walk exercise
+คุณ ไป ที่ไหน;you go where?
+ไป ไหน;go where?
+กลับ บ้าน;return home
+คุณ ไป ที่ไหน มา;you go where come? Where you come from?
+ไป ไหน มา;go where come?
+ไป ไหน มา บ้าง;go where come (details)?
+ห้าง;mall
+ห้าง เมย่า;maya mall
+ยินดี ที่ ได้ยิน เสียง ของ คุณ;pleasure to hear your voice?
+ยินดี ที่ได้ เห็น คุณ;pleasure to see you
+ยินดี ที่ได้ พบ คุณ;pleasure to see you
+ยินดี ที่ได้ เจอ คุณ;pleasure to see you
+ดีใจ ที่ได้ เห็น คุณ;happy to see you
+ดีใจ ที่ได้ พบ คุณ;happy to see you
+ดีใจ ที่ได้ เจอ คุณ;happy to see you
+ฉัน ก็ เหมือน กัน;same to you
+เช่น กัน;same to you
+ฉัน ด้วย;me too
+อะไร นะ;what?
+ขอ ให้มี วันที่ดี นะคะ;wish you good day?
+แล้ว พบ กัน ใหม่;and see you again
+แล้ว เจอ กัน ค่ะ;and see you
+แล้ว พบ กัน ภาย ใน ๑ ชั่วโมง;and see you in one hour
+ลา ก่อน;good bye
+โชคดี;good luck
+เดินทาง โดย ปลอดภัย;travel safe
+เดิน ทาง ปลอด ภัย;travel safe
+ขับ ปลอดภัย;drive safe
+ขอให้ มี ความสุข วันหยุด สุดสัปดาห์;wish have happy holiday weekend
+ดูแล ตัวเอง ด้วย นะ;take care of yourself
+ราตรี สวัสดิ์;good night
+นอนหลับฝันดี;sleep good dream
+ฝันดี;good dream
+กินข้าวกับอะไร;eat rice with what?
+ห้าง ห้อง;mall room 
+ด้วย โดย; alsoF byM
+ไป ด้วยกัน;go together
+เดิม;original
+เหมือน เดิม;same as before
+นั่ง ข้างนอก;sit outside
+คุณ กิน ข้าว ไหม;you want to eat (with me now)?
+
+ เจอ = pop = hen
+haa haa hang (mall)
+tidai, yindii
+ฉลอง;celebrate
+
+todo
+x implement set to add working words
+x what about target words?  new type: t
+make semantic sentences of these expressions
+add dict and translate
+x separate objects
+x learned -> vocab
+
+ญาติ;cousin
+หลาน;grandchild
+ลูก;child
+อา;younger paternal aunt or uncle
+น้า;younger maternal aunt or uncle
+กว้าง;wide
+แคบ;narrow
+สว่าง;bright
+เหม็นอับ;smelly
+เหลือง;yellow
+เขียว;green
+นํ้าตาล;brown
+ส้ม;orange
+เทา;gray
+
+AP name
+Only two staff
+Only coffee
+sit outside
+Same drink
+
+Conversational expressions
+New words
+Review words
+Mastered words, keep current
+Look at recent date, stats
+Stats: total, last10 tries, 
+
+Persons, family, friends, jobs, names
+
+
+
+
+target words:
+target patterns:
+mastered words:
+mastered patterns
+genRequest parameters for target words, patterns
+support in tokenize or substitute for mastered words and patterns
+
+Translations of with
+PrepositionFrequency
+กับ	with, against, versus
+ด้วย	with, by, of, at, together with, thanks to
+โดย	by, with, of, per, at, by means of
+ตาม	on, along, in accordance with, with
+ต่อ	per, to, on, for, against, with
+ในส่วน	with respect to, with
+พร้อมด้วย	with
+เข้ากับ	with

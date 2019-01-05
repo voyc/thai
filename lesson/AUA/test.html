@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<script>
+voyc = {};
+voyc.semanticConventions = `
+expression @meToo > [ฉัน,ผม] ด้วย
+noun @rent > $number(1000,30000,500) [,บาท] ต่อ เดือน
+noun @rentDeposit > ค่ามัดจำ $number(1000,30000,500) บาท
+expression @seeYouLater > [,แล้ว] [เจอ,พบ] กัน ใหม่
+expression @takeCare > ดูแล ตัวเอง ด้วย
+expression @goodbye > [@seeYouLater,@takeCare]
+`;
+
+replacer = function(str,name,offset,s) {
+	var v = lookupSemantic(name);
+	return v;
+}
+
+lookupSemantic = function(name) {
+	for (var i=0; i<voyc.semantics.length; i++) {
+		if (voyc.semantics[i].name == name) {
+			return voyc.semantics[i].value;
+		}
+	}
+	return null;
+}
+
+voyc.semantics = [];
+var w = voyc.semanticConventions;
+w = w.replace(/\[/g, '$list(');
+w = w.replace(/\]/g, ')');
+
+var s = w.split('\n');
+var a = [];
+for (var i=0; i<s.length; i++) {
+	var m = s[i].match(/(.*) (@.*) > (.*)/);
+	if (m && m.length == 4) {
+		voyc.semantics.push({pos:m[1],name:m[2],value:m[3]});
+	}
+}
+for (var i=0; i<voyc.semantics.length; i++) {
+	voyc.semantics[i].value = voyc.semantics[i].value.replace(/(\@[a-zA-Z0-9]*)/g,replacer);
+}
+
+var x = 1;
+
+/**
+	@goodbye > $list($list(,แล้ว)  $list(เจอ,พบ) กัน ใหม่,ดูแล ตัวเอง ด้วย)
+
+Expand strings	
+1. treat arrays as a function - find and replace [] to $list() globally
+2. break lines into array
+3. regexp, array of pos/name/value objects
+4. nested label substitution - find and replace repeatedly, leaving only strings with embedded functions
+
+Run functions
+1. Use only sentence and conversation.
+2. run lists - are we doing nested lists?
+3. run numbers
+**/
+
+</script>
+</head>
+<body>
+</body>
+</html>
