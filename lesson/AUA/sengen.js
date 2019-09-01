@@ -9,6 +9,7 @@ voyc.SenGen = function() {
 	this.maxSentences = 10000;
 	this.target = [];
 	this.orgpattern = '';
+	this.buildSemantics();
 }
 
 voyc.SenGen.prototype.buildSemantics = function() {
@@ -61,14 +62,15 @@ voyc.SenGen.prototype.genSentence = function(req) {
 	req.pattern = req.pattern || '';
 	this.target = req.target || [];
 	
-	// convert string into js array of named patterns
-	this.buildSemantics();
-
 	// process functions
 	var r = [];
 	var sem = voyc.cloneArray(voyc.semantics);
 	for (var i=0; i<sem.length; i++) {
 		if (req.pattern && sem[i].name != req.pattern) {
+			continue;
+		}
+		var sentenceEquivalents = ['sentence', 'expression', 'phrase'];
+		if (sentenceEquivalents.indexOf(sem[i].pos) < 0) {
 			continue;
 		}
 		var out = this.replaceFunction(sem[i].pattern);
@@ -148,8 +150,11 @@ voyc.SenGen.prototype.findClose = function(s,pos) {
 
 voyc.SenGen.prototype.selectFromList = function(s) {
 	var w = s.split(',');
-	r = this.sortRecency(w);
-	return r[0];
+	var r = this.sortRecency(w);
+	var n = Math.round(Math.random() * Math.min(r.length / 3, 5));
+	var a = r.slice(n,n+1);
+	this.setRecency(a);
+	return a;
 }
 
 /**
@@ -175,7 +180,7 @@ voyc.SenGen.prototype.sortRecency = function(a) {
 		var ro = 0;
 		for (var j=0; j<w.length; j++) {
 			var v = voyc.vocab.get(w[j]);
-			if (!v) console.log('word not in vocab');
+			if (!v) console.log(['word not in vocab', w[j]]);
 			if (v.r > rr) {
 				rr = v.r;
 			}
@@ -249,8 +254,10 @@ voyc.SenGen.prototype.filterStatus = function(a) {
 		}
 		var numt = this.target.length;
 		if (((numt && tcnt) || !numt) && (tcnt+mcnt == numwords)) {
-		//if ((numt && tcnt && tcnt+mcnt == numwords) || (!numt && mcnt == numwords)) {
 			r.push(sen);
+		}
+		else {
+			console.log(['filtered out', sen]);
 		}
 	}
 	return r;

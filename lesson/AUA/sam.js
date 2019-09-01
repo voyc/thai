@@ -8,6 +8,7 @@ voyc.Sam = function() {
 
 voyc.Sam.prototype.setup = function(container) {
 	voyc.vocab = new voyc.Vocab();
+	voyc.dictionary = new voyc.Dictionary();
 	voyc.sengen = new voyc.SenGen();
 	voyc.chat = new voyc.Chat();
 	voyc.chat.setup(container);
@@ -21,8 +22,12 @@ voyc.Sam.prototype.setup = function(container) {
 			self.reply(note.payload);
 		}
 	});
+	
+	var e = document.getElementById('facecontainer');
+	voyc.face = new PokerFace(e);
+	voyc.face.load();
 
-	voyc.chat.post(voyc.idhost, 'สวัสดีคะ');
+	voyc.chat.post(voyc.idhost, voyc.sengen.genSentence({pattern:'@hello'}), ['สวัสดี']);
 }
 
 voyc.Sam.prototype.reply = function(o) {
@@ -45,13 +50,25 @@ voyc.Sam.prototype.reply = function(o) {
 			this.req.target.splice(0,1);
 		case 'yes':
 		case 'again':
-			var r = voyc.sengen.genRequest(this.req);
+			var r = voyc.sengen.genSentence(this.req);
 			voyc.chat.post(voyc.idhost, r[0], ['again']);
+			break;
+		case 'translate':
+			var s = o.msg.substr(10);
+			var r = voyc.dictionary.translate(s);
+			voyc.chat.post(voyc.idhost, r);
+			break;
+		case 'สวัสดี':
+			voyc.chat.post(voyc.idhost, voyc.sengen.genSentence({pattern:'@howAreYou'}), ['สบาย ดี']);
 			break;
 		default:
 			voyc.chat.post(voyc.idhost, 'Would you like an example sentence?', ['yes', 'no']);
 			break;
 	}
+	
+	// show emotion
+	voyc.face.setPleasure(Math.random()*100);
+	voyc.face.setFocus(Math.random()*100);
 }
 
 /**

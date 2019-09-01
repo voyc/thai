@@ -13,6 +13,7 @@
 <script src='grammar.js'></script>
 <script src='vocab.js'></script>
 <script src='../../../jslib/utils.js'></script>
+<script src='pokerface/pokerface.js'></script>
 
 <script>
 window.addEventListener('load', function() {
@@ -20,7 +21,7 @@ window.addEventListener('load', function() {
 	voyc.sengen = new voyc.SenGen();
 
 	var a = [];
-	a = a.concat(voyc.sengen.genSentence({pattern:'@goodWeekend', count:10, target:[]}));
+	a = a.concat(voyc.sengen.genSentence({pattern:'', count:1000, target:[]}));
 	var s = voyc.printArray(a);
 	document.getElementById('content').innerHTML = s;
 });

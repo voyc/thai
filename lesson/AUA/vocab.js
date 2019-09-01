@@ -153,7 +153,7 @@ voyc.Vocab.prototype.finger = function(word, recency) {
 		e.r = recency;
 	}
 	else {
-		console.log('finger vocab word not found');
+		console.log(['finger vocab word not found', word]);
 	}
 	this.store();
 }

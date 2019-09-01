@@ -13,15 +13,31 @@
 <script src='numgen.js'></script>
 <script src='grammar.js'></script>
 <script src='vocab.js'></script>
+<script src='dictionary.js'></script>
+<script src='dict2.js'></script>
 <script src='../../../jslib/chat.js'></script>
 <script src='../../../jslib/observer.js'></script>
 <script src='../../../jslib/utils.js'></script>
+<script src='pokerface/pokerface.js'></script>
 
 <link  href='../../../minimal/normaleyes.css' rel='stylesheet' type='text/css'></link>
 <link  href='../../../minimal/minimal.css' rel='stylesheet' type='text/css'></link>
 <script src='../../../minimal/minimal.js'></script>
 <script src='../../../jslib/dragger.js'></script>
 <link  href='../../../jslib/chat.css' rel='stylesheet' type='text/css'></link>
+
+<style>
+#chatcontainer {
+	position:relative;
+}
+#facecontainer {
+	height:50px;
+	width:50px;
+	bottom:90px;  /* height of chatfoot */
+	position:absolute;
+	z-index: 2;
+}
+</style>
 
 <script>
 window.addEventListener('load', function() {
@@ -32,6 +48,7 @@ window.addEventListener('load', function() {
 
 </head>
 <body>
+<div id='facecontainer'></div>
 <div id='chatcontainer'></div>
 </body>
 </html>

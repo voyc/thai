@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>test Dictionary</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<style>#content {font-size:2rem}</style>
+
+<script>var voyc = {};</script>
+<script src='dictionary.js'></script>
+<script src='dict2.js'></script>
+
+<script>
+window.addEventListener('load', function() {
+	voyc.dictionary = new voyc.Dictionary();
+	
+	// test lookup
+	var s = '';
+	var m = voyc.dictionary.lookup('ตำ');
+	for (var i=0; i<m.length; i++) {
+		s += m[i].t + '\t' + m[i].n + '\t' + m[i].l + '\t' + m[i].p + '\t' + m[i].e + '<br/>';
+	}
+	var m = voyc.dictionary.lookup('maybe');
+	for (var i=0; i<m.length; i++) {
+		s += m[i].t + '\t' + m[i].n + '\t' + m[i].l + '\t' + m[i].p + '\t' + m[i].e + '<br/>';
+	}
+	s += '<br/>';
+
+	// test translate
+	var t = 'แปล ว่า อะไร';
+	var e = voyc.dictionary.translate(t);
+	s += t + '\t' + e + '<br/>';
+
+	var t = 'monk good stay at temple';
+	var e = voyc.dictionary.translate(t);
+	s += t + '\t' + e + '<br/>';
+	s += '<br/>';
+
+	// check for dupes
+	s += voyc.dictionary.checkDupes();
+	s += '<br/>';
+
+	// list all
+	s += voyc.dictionary.listAll();
+	s += '<br/>';
+
+	document.getElementById('content').innerHTML = s;
+});
+</script>
+
+</head>
+<body>
+<div id='content'></div>
+</body>
+</html>

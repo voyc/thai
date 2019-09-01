@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>Parse</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<style>
+td {
+	border: 1px solid black;
+	padding:0 .5rem;;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:.3rem;
+}
+
+</style>
+
+<script>var voyc = {};</script>
+<script src='parse.js'></script>
+<script src='dictionary.js'></script>
+<script src='dict2.js'></script>
+<script src='vocab.js'></script>
+<script src='../../../jslib/utils.js'></script>
+
+<script>
+window.addEventListener('load', function() {
+	voyc.dictionary = new voyc.Dictionary();
+	voyc.vocab = new voyc.Vocab();
+
+	voyc.$('test1').addEventListener('click', function() {
+		// test cases
+		//var a = voyc.parse('ผ้าปูที่นอน');	// 4 syllables ending in not matched
+		//var a = voyc.parse('ผ้าปูที่');	// 3 syllables ending in matched
+		//var a = voyc.parse('ผ้า');	// 1 syllable matched
+		//var a = voyc.parse('ปู');		// 1 syllable not matched
+		//var a = voyc.parse('');	// empty string
+
+		var a = voyc.parse('ไมตรี');
+
+		var match = a[0];
+		var nomatch = a[1];
+
+		var s = '';
+		s += '<h1>Matched</h1>'
+		for (var i=0; i<match.length; i++) {
+			s += match[i] + '<br/>';
+		}
+		s += '<h1>Not Matched</h1>'
+		for (var i=0; i<nomatch.length; i++) {
+			s += nomatch[i] + '<br/>';
+		}
+		
+		document.getElementById('content').innerHTML = s;
+	}, true);
+	
+	voyc.$('test2').addEventListener('click', function() {
+		// test cases
+		var aInput = [
+			'ผ้าปูที่นอน',
+			'ผ้าปูที่',
+			'ผ้า',
+			'ปู',
+		]
+		
+		var s = '';
+		s += '<table>';
+		s += '<tr><td>Input</td><td>Matched</td><td>NotMatched</td></tr>';
+		for (var j=0; j<aInput.length; j++) {
+			var a = voyc.parse(aInput[j]);
+			
+			var match = a[0];
+			var nomatch = a[1];
+
+			s += '<tr>';
+			s += '<td>';
+			s += aInput[j];
+			s += '</td>';
+
+			s += '<td>';
+			var t = '';
+			for (var i=0; i<match.length; i++) {
+				t += match[i] + ', ';
+			}
+			s += t;
+			s += '</td>';
+
+			s += '<td>';
+			t = '';
+			for (var i=0; i<nomatch.length; i++) {
+				t += nomatch[i] + ', ';
+			}
+			s += t;
+			s += '</td>';
+			s += '</tr>';
+		}
+		s += '</table>';
+		document.getElementById('content').innerHTML = s;
+	}, true);
+
+	voyc.$('parse-dict').addEventListener('click', function() {
+		var s = '';
+		s += '<table>';
+		s += '<tr><td>Num</td><td>Input</td><td>Matched</td><td>NotMatched</td></tr>';
+
+		voyc.dictionary.iterate(function(m,j) {
+			if (m.t == 'ไมตรี') {
+			//	debugger;
+			}
+			var a = voyc.parse(m.t);
+			
+			var match = a[0];
+			var nomatch = a[1];
+
+			s += '<tr>';
+			s += '<td>';
+			s += j;
+			s += '</td>';
+			s += '<td>';
+			s += m.t;
+			s += '</td>';
+
+			s += '<td>';
+			var t = '';
+			for (var i=0; i<match.length; i++) {
+				t += match[i] + ', ';
+			}
+			s += t;
+			s += '</td>';
+
+			s += '<td>';
+			t = '';
+			for (var i=0; i<nomatch.length; i++) {
+				t += nomatch[i] + ', ';
+			}
+			s += t;
+			s += '</td>';
+			s += '</tr>';
+		});
+
+		s += '</table>';
+		document.getElementById('content').innerHTML = s;
+	});
+
+	voyc.$('btn-parse-area').addEventListener('click', function() {
+		var s = '';
+		s += '<table>';
+		s += '<tr><td>Num</td><td>Input</td><td>Matched</td><td>NotMatched</td></tr>';
+
+		var input = voyc.$('parse-area').value;
+		
+		s += '</table>';
+		document.getElementById('content').innerHTML = input;
+	});
+});
+</script>
+
+</head>
+<body>
+<button id='test1'>Test 1</button>
+<button id='test2'>Test 2</button>
+<button id='parse-dict'>Parse Dict</button>
+<br/>
+<textarea id='parse-area'></textarea>
+<br/>
+<button id='btn-parse-area'>Parse</button>
+<div id='content'></div>
+</body>
+</html>

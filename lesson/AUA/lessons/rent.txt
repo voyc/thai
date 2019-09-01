@@ -1,0 +1,73 @@
+story (stored in memory)
+generate conversation from story
+
+
+dialog @rentApartment 
+
+s v o 
+person1 @landlord
+person2 @renter
+
+i {want,will} rent apartment
+
+I want to rent apartment.
+When
+How long
+How
+How much
+Why
+Where
+How big
+How many rooms
+You will sign lease
+Deposit
+
+You want [all,kitchen,balcony,Security,Reception,Safe box]
+
+Both sides are asking questions
+
+เช่า	rent
+ค่าเช่า	rental fee
+ให้ เช่า	for rent
+ห้อง เช่า	room for rent
+อพาร์ทเม้น ให้ เช่า	apartment for rent
+บ้านให้เช่า	House for rent
+คุณ มี ห้อง เช่า ไหม	You have room for rent?
+ค่าเช่า เท่าไหร่	How much per rent per month?
+สองพันบาท ต่อ เดือน	Two thousand baht per month.
+ค่ามัดจำ เท่าไหร่	How much security deposit?
+ผม ขอ ดู ห้อง ได้ไหม	Can I see the room?
+มี ห้องน้ำ ใน ห้อง ไหม	private bathroom
+มี ห้องน้ำ ใน ตัว ไหม	private bathroom
+มี น้ำ อุ่น ไหม	hot shower
+{น ห้อง} มี แอร์ ไหม	air con
+มี ไวไฟ ไหม	wifi
+ไวไฟ	inflammable
+ผม หา ห้อง เช่า 	I look or room for rent.
+ผม {ต้องการ,อยาก} เช่า ห้อง	I want to rent a room.
+ผม {ต้องการ,อยาก} เช่า ห้อง (สำหรับ) เดือน มีนาคม และ เมษายน	I want to rent a room for March and April.
+{นานเท่าไร,นานแค่ไหน}	How long?
+หนึ่งปี	one year
+เริ่ม วันที่ หนึ่ง มีนาคม	Start 1 March.
+ถึง สามสิบ เมษายน	until 30 April.
+ถึง สิ้น เดือน เมษายน	Until end of april
+	Balcony, swimming pool, kitchen, cooking
+	
+	I just now paid my rent.
+	The bank receipt is attached.
+
+----------------
+
+ราคา	n price
+ลด	v lower
+ลด ราคา	v discount
+การ	prefix to make a verb into a noun
+การ ลด ราคา	 n discount
+
+market conversation
+ราคา เท่าไร	price how much?
+ลด ได้ ไหม	can lower? (smile)
+
+เหมือน ดื่ม	same drink
+
+	

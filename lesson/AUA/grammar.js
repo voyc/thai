@@ -41,18 +41,31 @@ voyc.semanticConventions = `
 	meat > {หมู ไก่ เป็ด ปลา กุ้ง หอย ปลาหมึก เนื้อ}
 `;
 voyc.semanticConventions = `
+expression @hello > สวัสดี @polite
+expression @howAreYou > [{คุณ} เป็น อย่าง [อะไร,ไร,ไง] บ้าง,สบาย ดี ไหม] @polite
+expression @polite > [คะ,ครับ]
 expression @meToo > [ฉัน,ผม] ด้วย
-noun @rent > $number(1000,30000,500) {บาท} ต่อ เดือน
-noun @rentDeposit > ค่ามัดจำ $number(1000,30000,500) บาท
-expression @takeCare > ดูแล ตัวเอง ด้วย
-expression @seeYouLater > {แล้ว} [เจอ,พบ] กัน [ใหม่,ภาย ใน $number(1,8,1) ชั่วโมง]
+phrase @rent > $number(1000,30000,500) {บาท} ต่อ เดือน
+phrase @rentDeposit > ค่ามัดจำ $number(1000,30000,500) บาท
+expr @takeCare > ดูแล ตัวเอง ด้วย
+expr @seeYouLater > {แล้ว} [เจอ,พบ] กัน [ใหม่,ภาย ใน $number(1,8,1) ชั่วโมง]
+expr @iGo > กลับ ก่อน นะ
+expr @iStay > ขับ ปลอดภัย
+expr @goodLuck > โชค ดี
+expr @bonVoyage > [เดินทาง ปลอดภัย,เดินทาง โดย ความปลอดภัย]
+expr @goodWeekend > ขอให้ มี ความสุข [สุดสัปดาห์,วันหยุด สุดสัปดาห์,ใน วันหยุด]
+expr @goodNight > [{นอนหลับ} ฝัน ดี {ราตรี สวัสดิ์},ราตรี สวัสดิ์]
 sentence @goodbye > [@seeYouLater,@takeCare,ลา [ก่อน,ละ นะ],ไป [ก่อน,ละ] นะ,@iGo,@iStay,@goodLuck,@bonVoyage,@goodWeekend,@goodNight]
-expression @iGo > กลับ ก่อน นะ
-expression @iStay > ขับ ปลอดภัย
-expression @goodLuck > โชค ดี
-expression @bonVoyage > [เดินทาง ปลอดภัย,เดินทาง โดย ความปลอดภัย]
-expression @goodWeekend > ขอให้ มี ความสุข [วันหยุด สุดสัปดาห์,ใน วันหยุด]
-expression @goodNight > [{นอนหลับ} ฝัน ดี {ราตรี สวัสดิ์},ราตรี สวัสดิ์]
+phrase @laundry > [การซักรีด,ผ้าเช็ดตัว $number(1,5,1) ผืน,ผ้าปูที่นอน $number(1,5,1) ผืน,ปลอกหมอน $number(1,5,1) ปลอก,ซัก {รีด} [เสื้อ,เสื้อแขนสั้น,เสื้อแขนยาว,กางเกง,กางเกงขาสั้น,กางเกงขายาว] $number(1,5,1) ตัว]
+expression @happyNewYear > ขอให้ มี ความสุข ใน วัน ขึ้นปีใหม่
+expression @buyForMonks > ฉัน ซื้อ ส้ม $number(10,20,1) ผล [สำหรับ,เพื่อ] ใส่บาตร
+noun @personNeutral > [คน,เรา,เขา,คุณ,ญาติ,เด็ก,พี่,น้อง,หลาน,ลูก,อา,น้า]
+noun @personMale > [ผู้ชาย,พ่อ,พี่ชาย,ลูกชาย,น้องชาย,หลานชาย,อาผู้ชาย,น้าชาย,ปู่,ตา]
+noun @personFemale > [ผู้หญิง,แม่,พี่สาว,ลูกสาว,น้องสาว,หลานสาว,อาผู้หญิง,น้าสาว,ย่า,ยาย]
+noun @person > [@personNeutral,@personMale,@personFemale]
+adj @adjPerson > [ตัวใหญ่,ตัวเล็ก,สูง,เตี้ย,อ้วน,ผอม,เหนื่อย,ง่วง,เก่ง,ขี้เกียจ,เมา]
+phrase @describePerson > @person @adjPerson
+sentence @comparePerson > @person @adjPerson กว่า @person
 `;
 
 /**
