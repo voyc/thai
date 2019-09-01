@@ -78,19 +78,19 @@ voyc.dict2 = [
 {s:2, l:300, n:1, p:'c', t:'ก็'		,e:'also'		,d:'too; as well; well...; [suggestion] should...; [a particle or conjunction that emphasizes that which follows]'},
 {s:2, l:300, n:1, p:'n', t:'กฎหมาย'	,e:'law'		,d:''},
 {s:2, l:300, n:1, p:'n', t:'กร'		,e:'worker'		,d:'laborer, doer, workman, [a suffix indicating] a person who... (does certain things), or an object that... (performs a certain function)'},
-{s:2, l:300, n:1, p:'n', t:'กรกฎาคม'	,e:'July'		,d:'month of July'},
 {s:2, l:300, n:1, p:'n', t:'กรม'		,e:'department'	,d:'[of government] a department; [of military] a regiment'},
 {s:2, l:300, n:1, p:'n', t:'กรรม'		,e:'deed'		,d:'kamma; karma; sin; bad karma earned'},
 {s:2, l:300, n:1, p:'n', t:'กรรมการ'	,e:'committee'	,d:'committee; board member'},
 {s:2, l:300, n:1, p:' ', t:'กระทำ'		,e:'make'			,d:'to do; make; perform; carry out; act'},
 {s:2, l:300, n:1, p:' ', t:'กระนั้น'		,e:'like'		,d:'in that way; like that'},
+{s:2, l:300, n:1, p:'n', t:'กรกฎาคม'	,e:'July'		,d:'month of July'},
 {s:2, l:300, n:1, p:' ', t:'กระจาย'		,e:'disperse'	,d:'to disperse; distribute; broadcast; spread; scatter'},
 {s:2, l:300, n:1, p:' ', t:'กระด้าง'		,e:'harsh'		,d:'[is] harsh; stiff; rough; coarse; crude; obstinate; rebellious; mutinous'},
 {s:2, l:300, n:1, p:' ', t:'กระดาน'	,e:'board'		,d:'board', d:'plank; deal; game board'},
 {s:2, l:300, n:1, p:' ', t:'กระดาษ'	,e:'paper'		,d:''},
-{s:2, l:300, n:1, p:' ', t:'กระดูก'		,e:'bone'		,d:''},
 {s:2, l:300, n:1, p:' ', t:'กระทรวง'	,e:'ministry'	,d:''},
 {s:2, l:300, n:1, p:' ', t:'กระมัง'		,e:'maybe'	,d:'likely as not, perhaps, maybe, probably'},
+{s:2, l:300, n:1, p:' ', t:'กระดูก'		,e:'bone'		,d:''},
 {s:2, l:300, n:1, p:' ', t:'กรุง'		,e:'city'	,d:'city, town, capital city'},
 {s:2, l:300, n:1, p:' ', t:'กรุงเทพฯ'	,e:'Bangkok'	,d:'Bangkok, a province in central Thailand, having the largest provincial population, probably around 8 million (including metropolitan areas in surrounding provinces)'},
 {s:2, l:300, n:1, p:' ', t:'กลม'		,e:'round'	,d:'[is] circular; round'},
@@ -1429,7 +1429,7 @@ yin dii (my pleasure, you're welcome)
 กาด  ธานินทร์;Gad Thanin
 กาด ต้นพยอม;Gad Ton Payorm
 ฟักทอง;pumpkin
-แปะก๊วย;ginkgo
+แปะก๊วย;gingko
 แห้ว;water chestnut
 เกาลัด;chestnut
 พุทรา;jujube, red date, chinese date
@@ -1490,7 +1490,7 @@ yin dii (my pleasure, you're welcome)
 มะเขือเทศ;tomato
 เคย;used to, ever
 เสร็จ;finished
-ผัดโหงวก๊วย;dish with ginkgo, chestnut, jujube, water chestnut, cashew, carrot
+ผัดโหงวก๊วย;dish with gingko, chestnut, jujube, water chestnut, cashew, carrot
 ตื่นนอน;wake up
 เข้าซอย;enter alley
 ข้าวซอย;northern style noodle soup
@@ -1509,10 +1509,38 @@ yin dii (my pleasure, you're welcome)
 ทับทิมกรอบ;crispy dessert with pomegranate color
 เข้าซอยไปกินข้าวซอย	enter alley go eat soup
 เดินทาง โดย สวัสดิภาพ;Travel with safety
-
 ดอกไม้มากมาย;many flowers
 มะขามหวาน;tamarind sweet
 มะขามเปรี้ยว;tamarind sour
-ชนิด kind
+ชนิด;kind
+
+กรกฎาคม มี สามสิบเอ็ด วัน;July has 31 days.
+กรกฎาคม มี ฝนตก มาก;July has much rain.
+กรกฎาคม มี ฝนตก มาก ที่สุด;July has the most rain.
+สว่าง;bright
+แสง ไฟ ไม่ สว่าง;Light not bright.
+ผมชอบกินกล้วยมากที่สุด;I like to eat bananas the most.
+เมษายน ร้อน ที่สุด; April is the most hot.
+คุณ เรียน วิชา อะไร;What subjects do you study?
+คุณ สอน วิชา อะไร;What subjects do you teach?
+คุณ เรียน กี่ วิชา ต่อ วัน;How many subjects do you study per day?
+ผม เรียน วิชา เคมี และ ชีววิทยา;I study subject chemistry and biology.
+ผม ชอบ มันเทศ อบ;I like baked sweet potato.
+แกง นี้ ใส่ มะเขือเปราะ ไหม;Does this curry contain thai eggplant?
+คุณ ชอบ มะเขือม่วง ไหม;Do you like thai eggplant?
+ไม่ ชอบ;not like
+ไม่ ??? ชอบ;not like
+ร้านค้า ?????? ขาย ต้นหอม และ ผักชี ด้วยกัน;Many shops sell spring onion and cilantro together.  (suan yai)
+ผู้หญิง ไทย มี หน้าตาน่ารัก;Thai lady has lovely face.
+ซัลซ่า ใส่ มะเขือเทศ, หัวหอม, พริก, มะนาว, ผักชี และ เกลือ;Salsa contains tomato, onion, chili, lime, cilantro, and salt.
+มะขามเปรี้ยว ใช้สำหรับ ทำอาหาร;Sour tamarind used for cooking.
+ใบ โหระพา ใช้สำหรับ ใส่ แกงเผ็ด, แกงเขียวหวาน และ ไข่เจียว;Sweet basil used for for put in red curry, green curry, and omelette.
+เขา กำลัง คั่ว เกาลัด;He is roasting chestnuts.
+เขา กิน เกาลัด คั่ว;He eats roasted chestnuts.
+ผม จะ เสร็จ อีก สิบ นาที;I will finish in 10 minutes more.
+ผัดโหงวก๊วย ใส่ แปะก๊วย แห้ว เกาลัด พุทรา เม็ดมะม่วงหิมพานต์ และ แครอท;ผัดโหงวก๊วย;Dish contains gingko, chestnut, jujube, water chestnut, cashew, and carrot.
+ 
+oyster sauce and soy sauce and sugar
 
 */
+
