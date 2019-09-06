@@ -1529,8 +1529,8 @@ yin dii (my pleasure, you're welcome)
 แกง นี้ ใส่ มะเขือเปราะ ไหม;Does this curry contain thai eggplant?
 คุณ ชอบ มะเขือม่วง ไหม;Do you like thai eggplant?
 ไม่ ชอบ;not like
-ไม่ ??? ชอบ;not like
-ร้านค้า ?????? ขาย ต้นหอม และ ผักชี ด้วยกัน;Many shops sell spring onion and cilantro together.  (suan yai)
+ไม่ ค่อย ชอบ;not like very much 
+ร้านค้า ส่วนใหญ่ ขาย ต้นหอม และ ผักชี ด้วยกัน;Many shops sell spring onion and cilantro together.
 ผู้หญิง ไทย มี หน้าตาน่ารัก;Thai lady has lovely face.
 ซัลซ่า ใส่ มะเขือเทศ, หัวหอม, พริก, มะนาว, ผักชี และ เกลือ;Salsa contains tomato, onion, chili, lime, cilantro, and salt.
 มะขามเปรี้ยว ใช้สำหรับ ทำอาหาร;Sour tamarind used for cooking.
@@ -1538,9 +1538,13 @@ yin dii (my pleasure, you're welcome)
 เขา กำลัง คั่ว เกาลัด;He is roasting chestnuts.
 เขา กิน เกาลัด คั่ว;He eats roasted chestnuts.
 ผม จะ เสร็จ อีก สิบ นาที;I will finish in 10 minutes more.
-ผัดโหงวก๊วย ใส่ แปะก๊วย แห้ว เกาลัด พุทรา เม็ดมะม่วงหิมพานต์ และ แครอท;ผัดโหงวก๊วย;Dish contains gingko, chestnut, jujube, water chestnut, cashew, and carrot.
- 
-oyster sauce and soy sauce and sugar
+ผัดโหงวก๊วย ใส่ แปะก๊วย แห้ว เกาลัด พุทรา เม็ดมะม่วงหิมพานต์ และ แครอท;ผัดโหงวก๊วย;Stirfry contains gingko, chestnut, jujube, water chestnut, cashew, and carrot.
+ผัดโหงวก๊วย ใส่ น้ำมันหอย ซีอิ้วขาว และ น้ำตาล;Stirfry contains oyster sauce and soy sauce and sugar.
+แต่งประโยคภาษาไทย;make sentence in Thai language
+แต่งตัว;get dressed
+แต่งงาน;get married
+แต่งบ้าน;decorate house
+แต่งสวน;decorate garden
+
 
 */
-
