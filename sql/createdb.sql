@@ -1,6 +1,3 @@
-
-/* create schema in database voyccom_thai as owner voyccom_jhagstrand */
-
 create schema thai;
 
 create table thai.dictionary (
