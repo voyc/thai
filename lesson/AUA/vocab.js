@@ -10,7 +10,8 @@
 		}
 **/
 voyc.Vocab = function() {
-	var list = [	// one-time init for new users
+	this.list = [];
+	var firstlist = [
 		{s:'m',w:'คน'},
 		{s:'m',w:'เรา'},
 		{s:'m',w:'คุณ '},
@@ -77,6 +78,9 @@ voyc.Vocab = function() {
 		{s:'m',w:'เข้ามา'},
 	];
 	this.retrieve();
+	if (!this.list) {
+		this.list = firstlist;
+	}
 }
 
 voyc.Vocab.prototype.store = function() {

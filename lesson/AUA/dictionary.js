@@ -54,8 +54,12 @@ voyc.Dictionary.prototype.translate = function(passage, lang) {
 	return s;
 }
 
-voyc.Dictionary.prototype.iterate = function(cb) {
+voyc.Dictionary.prototype.iterate = function(cb,primaryOnly) {
+	primaryOnly = primaryOnly || true;
 	for (var i=0; i<this.dict.length; i++) {
+		if (primaryOnly && this.dict[i].n > 1) {
+			continue;
+		}
 		cb(this.dict[i],i);
 	}
 }

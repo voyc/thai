@@ -1,0 +1,35 @@
+split into syllables
+	index, length of each
+for each syllable
+identify
+	leading consonant
+	leading consonants dipthong
+	vowel
+	vowel dipthong
+	missing vowel
+	tone mark
+	ending consonant
+lookup
+	class of leading consonant
+	length of vowel
+	live or dead
+apply rules
+	M mid-class live
+	L mid-class dead
+	L mid-class mai eak
+	F mid-class mai toh
+	R high-class live
+	L high-class dead
+	L high-class mai eak
+	F high-class mai toh
+	M low-class live
+	H low-class dead short
+	F low-class dead long
+	F low-class mai eak
+	H low-class mai toh
+
+result: tone, one of five
+
+
+
+
