@@ -1,12 +1,12 @@
 [submodule "icon"]
-	path = icon
+	path = html/icon
 	url = https://github.com/voyc/icon
 [submodule "minimal"]
-	path = minimal
+	path = html/minimal
 	url = https://github.com/voyc/minimal
 [submodule "jslib"]
-	path = jslib
+	path = html/jslib
 	url = https://github.com/voyc/jslib
 [submodule "fx"]
-	path = fx
+	path = html/fx
 	url = https://github.com/voyc/fx
