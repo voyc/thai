@@ -22,7 +22,7 @@ table {
 <script src='dictionary.js'></script>
 <script src='dict2.js'></script>
 <script src='vocab.js'></script>
-<script src='../../../jslib/utils.js'></script>
+<script src='../../jslib/utils.js'></script>
 
 <script>
 window.addEventListener('load', function() {
@@ -149,9 +149,27 @@ window.addEventListener('load', function() {
 		s += '<tr><td>Num</td><td>Input</td><td>Matched</td><td>NotMatched</td></tr>';
 
 		var input = voyc.$('parse-area').value;
+		var a = voyc.parse(input);
 		
+		var match = a[0];
+		var nomatch = a[1];
+		
+		s += '<tr><td>1</td><td>'+input+'</td><td>'+match+'</td><td>'+nomatch+'</td></tr>';
 		s += '</table>';
-		document.getElementById('content').innerHTML = input;
+		document.getElementById('content').innerHTML = s;
+	});
+	voyc.$('btn-collect').addEventListener('click', function() {
+		var s = '';
+		s += '<table>';
+
+		var input = voyc.$('parse-area').value;
+		var a = voyc.collect(input);
+
+		for (var k in a) {
+			s += '<tr><td>'+(parseInt(k)+1)+'</td><td>'+a[k].t+'</td><td>'+a[k].e+'</td><td>'+a[k].l+'</td></tr>';
+		}		
+		s += '</table>';
+		document.getElementById('content').innerHTML = s;
 	});
 });
 </script>
@@ -165,6 +183,7 @@ window.addEventListener('load', function() {
 <textarea id='parse-area'></textarea>
 <br/>
 <button id='btn-parse-area'>Parse</button>
+<button id='btn-collect'>Collect</button>
 <div id='content'></div>
 </body>
 </html>

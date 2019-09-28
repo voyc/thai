@@ -62,9 +62,10 @@ voyc.parse = function(input) {
 
 		// j is ending index pos. step backwards.
 		for (var j=slen; j>i; j--) {
-			if (i == 0) 
-				j--;
 			t = s.substring(i,j);
+			if (t == s) {
+				continue;
+			}
 			tlen = t.length;
 			m = this.dictionary.lookup(t);  // find t in Dictionary
 			if (m.length) {
@@ -75,10 +76,11 @@ voyc.parse = function(input) {
 				ui = j;
 				us = m[0].t;
 				sto(us, i, true);  // save matched part
-				i += us.length;  // bump up to next start position
+				i += us.length-1;  // bump up to next start position
 				break;
 			}
 		}
+		// comment this please, wtf?
 		if (j <= i) {
 			if (ui < 0) {
 				ui = i;
@@ -98,3 +100,60 @@ voyc.parse = function(input) {
 		unmatched
 	];
 }
+
+/**
+	Find all the words using only a subset of the alphabet.
+	
+	public static function voyc.collect(input)
+		@return array
+
+	Requires presence of Dictionary.
+*/
+voyc.collect = function(input) {
+	var matched  = [];
+
+	// split input into array of one-byte alphabet characters
+	var inp = input.split(/\n/);
+
+	var vocab = [];
+	for (var k in inp) {
+		var a = inp[k].split(/[ ;\t]/);
+		vocab.push({
+			char:a[0],
+			state:a[1]
+		});
+	}
+	
+	function inVocab(ch) {
+		var r = false;
+		for (var k in vocab) {
+			if (vocab[k].char == ch) {
+				r = vocab[k];
+				break;
+			}
+		}
+		return r;
+	}
+
+	// scan the dictionary
+	this.dictionary.iterate(function(dict,n) {
+		var t = dict.t;
+		var tlen = t.length;
+		var cnt = 0;
+		var wcnt = 0;
+		for (var i=0; i<tlen; i++) {
+			var m = inVocab(t[i]);
+			if (m) {
+				cnt++;
+				if (m.state == 'w') {
+					wcnt++;	
+				}
+			}
+		}
+		if (cnt == tlen && wcnt > 0) {
+			matched.push(dict);
+		}
+	});
+	return matched;
+}
+
