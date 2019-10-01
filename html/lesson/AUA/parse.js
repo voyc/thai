@@ -157,3 +157,78 @@ voyc.collect = function(input) {
 	return matched;
 }
 
+/**
+	Parse a word into syllables.
+	
+	public static function voyc.parseWord(input)
+		@return array
+
+	Requires presence of Dictionary.
+
+split into syllables
+	index, length of each
+for each syllable
+identify
+	leading consonant
+	leading consonants dipthong
+	vowel
+	vowel dipthong
+	default vowel open
+	default vowel closed
+	tone mark
+	ending consonant
+lookup
+	class of leading consonant
+	length of vowel
+	live or dead
+apply rules
+	M mid-class live
+	L mid-class dead
+	L mid-class mai eak
+	F mid-class mai toh
+	R high-class live
+	L high-class dead
+	L high-class mai eak
+	F high-class mai toh
+	M low-class live
+	H low-class dead short
+	F low-class dead long
+	F low-class mai eak
+	H low-class mai toh
+
+result: tone, one of five
+*/
+voyc.parseWord = function(input) {
+	var matched  = [];
+	var word = input;
+	var leadingConsonant = '';
+	var leadingConsonantDipthong = '';
+	var vowel = '';
+	var vowelDipthong = '';
+	var defaultVowelOpen = '';
+	var defaultVowelClosed = '';
+	var toneMark = '';
+	var endingConsonant = '';
+	var midClass = [];
+	var highClass = [];
+	var lowClass = [];
+	var sonorant = [];
+
+	function isConsonant(ch) {
+		alphabet.lookup();
+		return consonants.contains(ch);
+	}
+
+	// input word
+	// scan backwords
+	var wlen = word.length;
+	for (var w=wlen-1; w>-1; w--) {
+		var ch = input[w];
+		if (isConsonant(ch)) {
+			endingConsonant = ch
+		}
+
+	}
+
+}
+

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html;charset=UTF-8'>
+<title>test Alphabet</title>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<style>[hidden] {display:none ! important;}</style>
+<style>#content {font-size:2rem}</style>
+
+<script>var voyc = {};</script>
+<script src='alphabet.js'></script>
+<script src='alphabetData.js'></script>
+
+<script>
+window.addEventListener('load', function() {
+	voyc.alphabet = new voyc.Alphabet();
+	var s = '';
+	
+	// test lookup
+	var m = voyc.alphabet.lookup('ต');
+	for (var i=0; i<m.length; i++) {
+		s += voyc.alphabet.printDiacritic(m[i]) + '\t' + m[i].e + '\t' + m[i].p + '<br/>';
+	}
+
+	var m = voyc.alphabet.lookup('ii');
+	for (var i=0; i<m.length; i++) {
+		s += voyc.alphabet.printDiacritic(m[i]) + '\t' + m[i].e + '\t' + m[i].p + '<br/>';
+	}
+
+	s += '<br/>';
+
+	// list all
+	s += voyc.alphabet.listAll();
+	s += '<br/>';
+
+	document.getElementById('content').innerHTML = s;
+});
+</script>
+
+</head>
+<body>
+<div id='content'></div>
+</body>
+</html>
