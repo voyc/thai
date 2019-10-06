@@ -112,7 +112,7 @@ voyc.parse = function(input) {
 voyc.collect = function(input) {
 	var matched  = [];
 
-	// split input into array of one-byte alphabet characters
+	// split input into table of char/state objects
 	var inp = input.split(/\n/);
 
 	var vocab = [];
@@ -163,72 +163,179 @@ voyc.collect = function(input) {
 	public static function voyc.parseWord(input)
 		@return array
 
-	Requires presence of Dictionary.
+		return: tone, one of five: L,M,H,R,F
 
-split into syllables
-	index, length of each
-for each syllable
-identify
-	leading consonant
-	leading consonants dipthong
-	vowel
-	vowel dipthong
-	default vowel open
-	default vowel closed
-	tone mark
-	ending consonant
-lookup
-	class of leading consonant
-	length of vowel
-	live or dead
-apply rules
-	M mid-class live
-	L mid-class dead
-	L mid-class mai eak
-	F mid-class mai toh
-	R high-class live
-	L high-class dead
-	L high-class mai eak
-	F high-class mai toh
-	M low-class live
-	H low-class dead short
-	F low-class dead long
-	F low-class mai eak
-	H low-class mai toh
+		test cases
+			ไก่	L	ok
+			แดน	M	ok
+			ใด	M	ok
+			ทน	M	ok, default vowel closed
+			ทวีป	HF	error, is M, default vowel open not detected
+			ทำไม	MM	ok
+			นี่	F	ok
+			ที่นี่	FF	ok
+			นม	M	ok
+			นวด	F	ok
+			แน่	F	ok
+			ปวด	L	ok
+			ปาก	L	error, is M, finalConsonant not detected
+			ปี	M	ok
+			แปด	L	ok
+			ไม่	F	ok
 
-result: tone, one of five
+		todo
+			count trailing orphan glyphs
+			look at orphan glyphs
+			if consonant, try to add to previous syllable as finalConsonant
+			if cannot, try to make default vowel open
 */
-voyc.parseWord = function(input) {
-	var matched  = [];
+voyc.parseWord = function(input, returnDetails) {
+	returnDetails = returnDetails || false;
 	var word = input;
-	var leadingConsonant = '';
-	var leadingConsonantDipthong = '';
-	var vowel = '';
-	var vowelDipthong = '';
-	var defaultVowelOpen = '';
-	var defaultVowelClosed = '';
-	var toneMark = '';
-	var endingConsonant = '';
-	var midClass = [];
-	var highClass = [];
-	var lowClass = [];
-	var sonorant = [];
 
-	function isConsonant(ch) {
-		alphabet.lookup();
-		return consonants.contains(ch);
+	// find matching pattern for input word
+	var numMatches = 0;
+	var matchedPatterns = [];
+	for (var k in voyc.vowelPatterns) {
+		var pattern = new RegExp(voyc.vowelPatterns[k].syllablePattern, 'g');
+		var cnt = 0;
+		var m = [];
+		// for global pattern, must exec repeatedly, once for each match
+
+		while (m = pattern.exec(word)) {
+			m.patternIndex = k;
+			m.string = m[0];
+			m.vowel = voyc.vowelPatterns[k].print;
+			m.leadingConsonant = m[1];
+			m.toneMark = m[2];
+			if (m.length > 3) {
+				m.finalConsonant = m[3];
+			}
+
+			//m.leadingConsonant = voyc.alphabet.lookup(m[1])[0];
+			//m.finalConsonant = voyc.alphabet.lookup(m[3])[0];
+			//m.tonemark = voyc.alphabet.lookup(m[2])[0];
+
+			m.begin = m.index;
+			m.end = m.index + m.string.length; // up to but not including
+			matchedPatterns.push(m);
+			cnt++;
+			if (cnt > 50) {
+				break;  // stop runaway loop
+			}
+		}
+	}
+	var numMatches = matchedPatterns.length;
+
+	// sort matched patterns by index and length, both ascending
+	matchedPatterns.sort(function(a,b) {
+		var x = a.index - b.index;
+		if (x == 0) {
+			(a.end - a.begin) - (b.end - b.end);
+		}
+		return x;
+	});
+
+	// assemble possible chains of syllables
+	function addSyllableToChain(chain, syllable) {
+		chain.orphans.push({begin:chain.end, end:syllable.begin});
+		chain.numOrphanGlyphs += syllable.begin - chain.end;
+		chain.syllables.push(syllable);
+		chain.end = syllable.end;
 	}
 
-	// input word
-	// scan backwords
-	var wlen = word.length;
-	for (var w=wlen-1; w>-1; w--) {
-		var ch = input[w];
-		if (isConsonant(ch)) {
-			endingConsonant = ch
+	function isOverlap(chain, syllable) {
+		return (syllable.begin < chain.end);
+	}
+
+	var chains = [];
+	for (var k in matchedPatterns) {
+		var syllable = matchedPatterns[k];
+		var chained = false;
+
+		// add the syllable to each chain where it fits
+		for (var c in chains) {
+			chain = chains[c];
+			if (!isOverlap(chain, syllable)) {
+				addSyllableToChain(chain, syllable);
+				chained = true;
+			}
 		}
 
+		// if it did not fit on any chain, create a new chain and add it there
+		if (!chained) {
+			var chain = {
+				syllables:[],
+				orphans:[],
+				numOrphanGlyphs:0,
+				end:0
+			};
+			addSyllableToChain(chain, syllable);
+			chains.push(chain);
+		}
 	}
 
+	// choose the chain with the lowest number of orphans
+ 	var winnerIndex = -1;
+	var winnerNumOrphanGlyphs = 100;
+	for (var c in chains) {
+		chain = chains[c];
+		if (chain.numOrphanGlyphs < winnerNumOrphanGlyphs) {
+			winnerNumOrphanGlyphs = chain.numOrphanGlyphs;
+			winnerIndex = c;
+		}
+	}
+	var winner = chains[c];
+	var numSyllables = winner.syllables.length;
+
+	// analyze each syllable
+	var tone = '';
+	for (var s in winner.syllables) {
+		var syl = winner.syllables[s];
+		syl.rules = [];
+		syl.ending = '';
+		if (syl.finalConsonant) {
+			var finalConsonantMeta = voyc.alphabet.lookup(syl.finalConsonant)[0];
+			if (finalConsonantMeta.a == 's')  // sonorant
+				syl.ending = 'live', syl.rules.push('final sonorant consonant: live');
+			else
+				syl.ending = 'dead', syl.rules.push('final non-sonorant consonant: dead');
+		}
+		else {
+			var vowelMeta = voyc.vowelPatterns[syl.patternIndex];
+			if (vowelMeta.l == 's')
+				syl.ending = 'dead', syl.rules.push('open vowel short: dead');
+			else
+				syl.ending = 'live', syl.rules.push('open vowel long: live');
+		}
+
+		// apply tone rules
+		syl.tone = false;
+		var maiaek = '่';
+		var maitoh = '้';
+		var maidtree = '๊';
+		var maidtawaa = '๋';
+		var leadingConsonantMeta = voyc.alphabet.lookup(syl.leadingConsonant)[0];
+		var vowelMeta = voyc.vowelPatterns[syl.patternIndex];
+		if (leadingConsonantMeta.m == 'm' && syl.ending == 'live') syl.tone = 'M', syl.rules.push('mid-class live: M');
+		if (leadingConsonantMeta.m == 'm' && syl.ending == 'dead') syl.tone = 'L', syl.rules.push('mid-class dead: L');
+		if (leadingConsonantMeta.m == 'm' && syl.toneMark == maiaek) syl.tone = 'L', syl.rules.push('mid-class mai eak: L');
+		if (leadingConsonantMeta.m == 'm' && syl.toneMark == maitoh) syl.tone = 'F', syl.rules.push('mid-class mai toh: F');
+		if (leadingConsonantMeta.m == 'h' && syl.ending == 'live') syl.tone = 'R', syl.rules.push('high-class live: R');
+		if (leadingConsonantMeta.m == 'h' && syl.ending == 'dead') syl.tone = 'L', syl.rules.push('high-class dead: L');
+		if (leadingConsonantMeta.m == 'h' && syl.toneMark == maiaek) syl.tone = 'L', syl.rules.push('high-class mai eak: L');
+		if (leadingConsonantMeta.m == 'h' && syl.toneMark == maitoh) syl.tone = 'F', syl.rules.push('high-class mai toh: F');
+		if (leadingConsonantMeta.m == 'l' && syl.ending == 'live') syl.tone = 'M', syl.rules.push('low-class live: M');
+		if (leadingConsonantMeta.m == 'l' && syl.ending == 'dead' && vowelMeta.l == 's') syl.tone = 'H', syl.rules.push('low-class dead short: H');
+		if (leadingConsonantMeta.m == 'l' && syl.ending == 'dead' && vowelMeta.l == 'l') syl.tone = 'F', syl.rules.push('low-class dead long: F');
+		if (leadingConsonantMeta.m == 'l' && syl.toneMark == maiaek) syl.tone = 'F', syl.rules.push('low-class mai eak: F');
+		if (leadingConsonantMeta.m == 'l' && syl.toneMark == maitoh) syl.tone = 'H', syl.rules.push('low-class mai toh: H');
+		if (!syl.tone) 
+			debugger;
+
+		tone += syl.tone;
+	}
+
+	return {tone:tone, syllables:winner.syllables};
 }
 

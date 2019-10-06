@@ -24,9 +24,11 @@ voyc.Alphabet.prototype.lang = function(s) {
 voyc.Alphabet.prototype.lookup = function(word,lang) {
 	var lang = lang || this.lang(word);
 	var m = [];
-	for (var i=0; i<this.alpha.length; i++) {
-		if (this.alpha[i][lang].toLowerCase() == word.toLowerCase()) {
-			m.push(this.alpha[i]);
+	if (word) {
+		for (var i=0; i<this.alpha.length; i++) {
+			if (this.alpha[i][lang].toLowerCase() == word.toLowerCase()) {
+				m.push(this.alpha[i]);
+			}
 		}
 	}
 	return m;

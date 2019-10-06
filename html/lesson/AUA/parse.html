@@ -14,7 +14,10 @@ table {
 	border-collapse:collapse;
 	border-spacing:.3rem;
 }
-
+#detail {
+	border:1px solid red;
+	float:right;
+}
 </style>
 
 <script>var voyc = {};</script>
@@ -22,12 +25,17 @@ table {
 <script src='dictionary.js'></script>
 <script src='dict2.js'></script>
 <script src='vocab.js'></script>
+<script src='alphabet.js'></script>
+<script src='alphabetData.js'></script>
+<script src='vowelPatterns.js'></script>
 <script src='../../../html/jslib/utils.js'></script>
 
 <script>
 window.addEventListener('load', function() {
 	voyc.dictionary = new voyc.Dictionary();
 	voyc.vocab = new voyc.Vocab();
+	voyc.alphabet = new voyc.Alphabet();
+	voyc.vowelPatternsInit();
 
 	voyc.$('test1').addEventListener('click', function() {
 		// test cases
@@ -94,6 +102,21 @@ window.addEventListener('load', function() {
 			s += t;
 			s += '</td>';
 			s += '</tr>';
+		}
+		s += '</table>';
+		document.getElementById('content').innerHTML = s;
+	}, true);
+
+	voyc.$('parseWord').addEventListener('click', function() {
+		var s = '';
+		s += '<table>';
+
+		var input = voyc.$('parse-area').value;
+		var words = input.split(/\n/);
+		for (var w in words) {
+			var word = words[w];
+			var tone = voyc.parseWord(word).tone;
+			s += '<tr><td>'+word+'</td><td>'+tone+'</td><td><button onclick=parseWordDetail("'+word+'")>Detail</button></td></tr>';
 		}
 		s += '</table>';
 		document.getElementById('content').innerHTML = s;
@@ -172,6 +195,22 @@ window.addEventListener('load', function() {
 		document.getElementById('content').innerHTML = s;
 	});
 });
+
+function parseWordDetail(word) {
+	var s = '';
+	s += '<table>';
+	var m = voyc.parseWord(word,true);
+	for (var k in m) {
+		if (k == 'rules') {
+			s += '<tr><td>'+k+'</td><td>'+m[k].join("<br/>")+'</td></tr>';
+		}
+		else {
+			s += '<tr><td>'+k+'</td><td>'+m[k]+'</td></tr>';
+		}
+	}
+
+	document.getElementById('detail').innerHTML = s;
+}
 </script>
 
 </head>
@@ -184,6 +223,9 @@ window.addEventListener('load', function() {
 <br/>
 <button id='btn-parse-area'>Parse</button>
 <button id='btn-collect'>Collect</button>
+<button id='parseWord'>Parse Word</button>
+<div id='detail'>this is the detail window</div>
 <div id='content'></div>
+&#9676
 </body>
 </html>
