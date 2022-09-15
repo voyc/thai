@@ -4,4 +4,4 @@ min.css
 index.php
 Thumbs.db
 robots.txt
-__pycache__
+**/__pycache__/**

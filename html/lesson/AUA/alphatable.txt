@@ -1,0 +1,94 @@
+0x0e00	฀		 	 	 	blank
+0x0e01	ก	kg	c	m	 	
+0x0e02	ข	k	c	h	 	
+0x0e03	ฃ	s	o	 	 	obsolete
+0x0e04	ค	k	c	l	 	
+0x0e05	ฅ	o	o	 	 	obsolete
+0x0e06	ฆ	ค	c	 	k	
+0x0e07	ง	ng	c	l	s	
+0x0e08	จ	j	c	m	 	
+0x0e09	ฉ	ch	c	h	 	
+0x0e0A	ช	ch	c	l	 	
+0x0e0B	ซ	s	c	l	 	
+0x0e0C	ฌ	ช	c	 	k	
+0x0e0D	ญ	ย	c	 	k	
+0x0e0E	ฎ	ด	c	 	k	
+0x0e0F	ฏ	ต	c	 	k	
+0x0e10	ฐ	ถ	c	 	k	
+0x0e11	ฑ	ท	c	 	k	
+0x0e12	ฒ	ท	c	 	k	
+0x0e13	ณ	น	c	 	k	
+0x0e14	ด	d	c	m	 	
+0x0e15	ต	dt	c	m	 	
+0x0e16	ถ	t	c	h	 	
+0x0e17	ท	t	c	l	 	
+0x0e18	ธ	ท	c	 	k	
+0x0e19	น	n	c	l	s	
+0x0e1A	บ	b	c	m	 	
+0x0e1B	ป	bp	c	m	 	
+0x0e1C	ผ	p	c	h	 	
+0x0e1D	ฝ	f	c	h	 	
+0x0e1E	พ	p	c	l	 	
+0x0e1F	ฟ	f	c	l	 	
+0x0e20	ภ	พ	c	 	k	
+0x0e21	ม	m	c	l	s	
+0x0e22	ย	y	c	l	s	
+0x0e23	ร	r	c	l	s	
+0x0e24	ฤ	pri	b	 	 	
+0x0e25	ล	l	c	l	s	
+0x0e26	ฦ		u	 	 	unknown
+0x0e27	ว	w	c	l	s	
+0x0e28	ศ	ส	c	 	k	
+0x0e29	ษ	ส	c	 	k	
+0x0e2A	ส	s	c	h	 	
+0x0e2B	ห	h	c	h	 	
+0x0e2C	ฬ	ล	c	 	k	
+0x0e2D	อ	aw	c	m	 	
+0x0e2E	ฮ	h	c	l	 	
+0x0e2F	ฯ	abbr	s	 	 	abbreviation
+0x0e30	ะ	a	v	 	 	
+0x0e31	ั	a	v	 	 	
+0x0e32	า	aa	v	 	 	
+0x0e33	ำ	am	b	 	 	
+0x0e34	ิ	i	v	 	 	
+0x0e35	ี	ii	v	 	 	
+0x0e36	ึ	ʉ	v	 	 	
+0x0e37	ื	ʉʉ	v	 	 	
+0x0e38	ุ	u	v	 	 	
+0x0e39	ู	uu	v	 	 	
+0x0e3A	ฺ		u	 	 	unknown
+0x0e3B	฻		 	 	 	blank
+0x0e3C	฼		 	 	 	blank
+0x0e3D	฽		 	 	 	blank
+0x0e3E	฾		 	 	 	blank
+0x0e3F	฿	baht	s	 	 	baht
+0x0e40	เ	e	v	 	 	
+0x0e41	แ	ee	v	 	 	
+0x0e42	โ	o	v	 	 	
+0x0e43	ใ	ai	v	 	 	
+0x0e44	ไ	ai	v	 	 	
+0x0e45	ๅ		u	 	 	unknown
+0x0e46	ๆ	rept	s	 	 	repeat
+0x0e47	็	e	v	 	 	
+0x0e48	่	1	t	 	 	
+0x0e49	้	2	t	 	 	
+0x0e4A	๊	3	t	 	 	
+0x0e4B	๋	4	t	 	 	
+0x0e4C	์	silnt	t	 	 	
+0x0e4D	ํ		u	 	 	unknown
+0x0e4E	๎		u	 	 	unknown
+0x0e4F	๏		u	 	 	unknown
+0x0e50	๐	0	d	 	 	
+0x0e51	๑	1	d	 	 	
+0x0e52	๒	2	d	 	 	
+0x0e53	๓	3	d	 	 	
+0x0e54	๔	4	d	 	 	
+0x0e55	๕	5	d	 	 	
+0x0e56	๖	6	d	 	 	
+0x0e57	๗	7	d	 	 	
+0x0e58	๘	8	d	 	 	
+0x0e59	๙	9	d	 	 	
+0x0e5A	๚		u	 	 	unknown
+0x0e5B	๛		u	 	 	unknown
+0x0020	 	 	 	 	 	space
+
