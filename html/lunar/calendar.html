@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv=Content-Type content='text/html; charset=UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<title>Lunar Calendar</title>
+
+<style>
+body {
+	font-family:sans-serif;
+}
+table, td {
+	border:1px solid black;
+}
+table {
+	border-collapse:collapse;
+}
+td {
+	text-align:center;
+	width: 3rem;
+	height:3rem;
+}
+td.firstofmonth {
+	background-color:#cff;
+}
+td.solstice {
+	background-color:#ff8;
+}
+td.today {
+	background-color:#f88;
+}
+td.break {
+	border-left-style: hidden;
+	border-right-style: hidden;
+	height:.5rem;
+}
+img {
+	float:left;
+	width:1rem;
+}
+</style>
+
+<script src='lunardata.js'></script>
+
+<script>
+/*
+To Do:
+. enter holidays
+. link to solar events
+. link to holidays
+. view options: lunar, solar, both side-by-side
+. add day colors to solar calendar
+. prev, next, show more
+. default to whole year, scrolled to today
+
+solar: month/week 
+lunar: lunation/phase
+
+Lunations are numbered.  There are usually 12, sometimes 13, per year.  
+Lunar months are numbered, always 12 per year, but they do not seem to line up with the lunations.
+Lunar months also have names, known only to astrologers.
+The first lunar month begins usually in December, but that is NOT considered a New Year.
+*/
+
+incDate = function(dt) {
+	var d = dt.getDate();
+	d = d + 1;
+	var r  = new Date(dt);
+	r.setDate(d);
+	return r;
+}
+compareDate = function(dt1, dt2) {
+	var d1 = padleft(dt1.getDate());
+	var m1 = padleft(dt1.getMonth());
+	var y1 = dt1.getFullYear();
+	var sd1 = '' + y1 + m1 + d1;
+
+	var d2 = padleft(dt2.getDate());
+	var m2 = padleft(dt2.getMonth());
+	var y2 = dt2.getFullYear();
+	var sd2 = '' + y2 + m2 + d2;
+
+	return sd2 - sd1;
+}
+draw = function() {
+	// specs
+	var maxLun = 2;  // number of lunations to print
+	var maxPhase = 4;
+
+	var s = '<table>';
+	
+	// start with today
+	var dtToday = new Date();
+	
+	// back up to first new moon
+	var lunnum = 1172;
+	var count = function(foo) {count=0; for (var k in foo) {if (foo.hasOwnProperty(k)) {++count;}} return count;}
+	var mLun = count(lunations);
+	
+	for (var m=0; m<mLun; m++) {
+		var lun = lunations['lun' + (lunnum + m)];
+		var nextlun = lunations['lun' + (lunnum + m+1)];
+		var spmoon = new Date(lun['m0']);
+		var snmoon = new Date(nextlun['m0']);
+		if (Date.parse(spmoon) < Date.now() && Date.parse(snmoon) > Date.now()) {
+			lunnum = lunnum + m;
+			break;
+		}
+	}
+
+	// loop thru each lunation
+	for (var m=0; m<maxLun; m++) {
+		var lun = lunations['lun' + (lunnum + m)];
+		var nextlun = lunations['lun' + (lunnum + m+1)];
+			
+		s += '<tr><td class="break" colspan=12>&nbsp;<br/>Lunation ' + lun['mo'] + ' of year ' + parseInt(543+lun['yr']) + ' (' + lun['yr'] + ')</td></tr>'
+
+		// loop thru each phase
+		var phase = 0;
+		for (var phase=0; phase<maxPhase; phase++) {
+			s += '<tr>'
+			var rowdt = new Date(lun['m' + phase]);
+			var nextdt = new Date(lun['m' + (phase+1)]);
+			if (phase == 3) {
+				nextdt = new Date(nextlun['m0']);
+			}
+			var maxN = 15;  // loop emergency stop
+			for (var dt=rowdt,n=1; compareDate(dt,nextdt) && n<maxN; dt=incDate(dt), n++) {
+				var std = '<td>';
+				if (dt.getDate() == 1) {
+					std = '<td class="firstofmonth">';
+				}
+				if (isSolstice(dt)) {
+					std = '<td class="solstice">';
+				}
+				if (!compareDate(dt, dtToday)) {
+					std = '<td class="today">'
+				}
+				if (dt == rowdt) {
+					s += std + formatDate(dt, 'long', phase) + '</td>';
+				}
+				else {
+					s += std + formatDate(dt, 'short', phase) + '</td>';
+				}
+			}
+			s += '</tr>'
+		}
+		//if (m < (maxLun-1)) {
+		//	s += '<tr><td class="break" colspan=12>Month ' + nextlun['mo'] + '</td></tr>'
+		//}
+	}
+	s += '</tr>'
+	s += '</table>';
+
+	document.getElementById('calendar').innerHTML = s;
+}
+padleft = function(n) {
+	var s = n.toString();
+	if (s.length < 2)
+		s = '0' + s;
+	return s; 
+}
+formatDate = function(date, pattern, phase) {
+	var monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	var monthAbbrEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	var dayAbbrEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	var images = [
+		'i/moonnew.png',
+		'i/moon1qtr.png',
+		'i/moonfull.png',
+		'i/moon3qtr.png',
+	]
+
+	var day = date.getDate();
+	var monthIndex = date.getMonth();
+	var year = date.getFullYear();
+	var h = date.getHours();
+	var m = date.getMinutes();
+	var dayIndex = date.getDay();
+
+	var s = '';
+	if (pattern == 'long') {
+		s = '<img src="' + images[phase] + '"/>';
+		s += dayAbbrEn[dayIndex] + '<br/>' + day + '&nbsp;' + monthAbbrEn[monthIndex] + '<br/>' + padleft(h) + ':' + padleft(m);
+	}
+	else if (pattern == 'short') {
+		s = dayAbbrEn[dayIndex] + '<br/>' + day;
+		if (day == 1) {
+			s += '&nbsp;' + monthAbbrEn[monthIndex];
+		}
+	}
+	return s;
+}
+
+isSolstice = function(date) {
+	// loop thru each solar event
+	var dt = new Date();
+	for (var n=0; n<solar.length; n++) {
+		dt = new Date(solar[n]);
+		if (!compareDate(date,dt)) {
+			return true;
+		}
+	}
+	return false;
+}
+	
+window.addEventListener('load', function() {
+	draw();
+}, false);
+</script>
+</head>
+
+<body>
+<div id='calendar'></div>
+<br/>
+All dates and times are local Thailand.<br/>
+Lunar data: <a href='https://www.timeanddate.com/moon/phases/?year=2018'>https://www.timeanddate.com/moon/phases/</a><br/>
+Solar data: <a href='https://www.timeanddate.com/calendar/seasons.html'>https://www.timeanddate.com/calendar/seasons.html</a><br/>
+</body>
+</html>
+
