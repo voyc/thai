@@ -84,7 +84,7 @@ compareDate = function(dt1, dt2) {
 }
 draw = function() {
 	// specs
-	var maxLun = 2;  // number of lunations to print
+	var maxLun = 24;  // number of lunations to print
 	var maxPhase = 4;
 
 	var s = '<table>';
@@ -113,7 +113,7 @@ draw = function() {
 		var lun = lunations['lun' + (lunnum + m)];
 		var nextlun = lunations['lun' + (lunnum + m+1)];
 			
-		s += '<tr><td class="break" colspan=12>&nbsp;<br/>Lunation ' + lun['mo'] + ' of year ' + parseInt(543+lun['yr']) + ' (' + lun['yr'] + ')</td></tr>'
+		s += '<tr><td class="break" colspan=12>&nbsp;<br/>Month ' + lun['mo'] + ' of year ' + parseInt(543+lun['yr']) + ' (' + lun['yr'] + ')</td></tr>'
 
 		// loop thru each phase
 		var phase = 0;
