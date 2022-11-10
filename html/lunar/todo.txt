@@ -1,0 +1,8 @@
+
+. see draw() function in calendar.html
+. make a new version of that using wax/wane algoritm
+. clean up comments and put them in appropriate code files for real
+. link comments to spreadsheet
+. find an actual Siam Almanac
+. combine sketch and plunder
+
